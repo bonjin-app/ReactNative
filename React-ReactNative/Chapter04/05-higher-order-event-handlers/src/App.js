@@ -12,6 +12,7 @@ export default class App extends Component {
   // by the function that's returned as the event handler in the
   // computed property name.
   onClick = name => () => {
+    console.log([name])
     this.setState(state => ({
       ...state,
       [name]: state[name] + 1

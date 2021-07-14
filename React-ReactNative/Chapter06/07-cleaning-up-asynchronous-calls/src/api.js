@@ -7,11 +7,17 @@ function cancellable(promise) {
   // resolved or rejected based on the wrapped promise, and
   // on the "cancelled" value.
   const promiseWrapper = new Promise((resolve, reject) => {
+    console.log('promiseWrapper')
+
     promise.then(
       val => {
+        console.log('val')
+        console.log(cancelled)
         return cancelled ? reject({ cancelled: true }) : resolve(val);
       },
       error => {
+        console.log('error')
+        console.log(cancelled)
         return cancelled
           ? reject({ cancelled: true })
           : reject(error);

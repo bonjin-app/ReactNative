@@ -34,6 +34,8 @@ export default class UserListContainer extends Component {
   }
 
   componentDidMount() {
+    console.log('componentDidMount')
+
     // We have to store a reference to any async promises,
     // so that we can cancel them later when the component
     // is unmounted.
@@ -66,6 +68,7 @@ export default class UserListContainer extends Component {
   // that any asynchronous behavior is cleaned up so that
   // it doesn't try to interact with an unmounted component.
   componentWillUnmount() {
+    console.log('componentWillUnmount')
     this.job.cancel();
   }
 

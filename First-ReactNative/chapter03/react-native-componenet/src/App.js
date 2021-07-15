@@ -5,6 +5,7 @@ import ButtonView from './components/Button';
 import CustomButtonView from './components/CustomButton';
 import Counter from './components/Counter';
 import EventButton from './components/EventButton';
+import EventInput from './components/EventInput';
 
 export default function App() {
     return (
@@ -12,7 +13,8 @@ export default function App() {
         // <ButtonView />
         // <CustomButtonView />
         // <Counter />
-        <EventButton />
+        // <EventButton />
+        <EventInput />
     );
 }
 

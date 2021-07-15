@@ -16,3 +16,7 @@ https://babeljs.io/
 ### Expo
 npm install --global expo-cli
 expo init [project name]
+
+### React Native
+npx react-native init [project name]
+npm react-native init [project name] --version x.xx.x

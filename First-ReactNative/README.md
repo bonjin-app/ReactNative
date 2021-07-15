@@ -20,3 +20,10 @@ expo init [project name]
 ### React Native
 npx react-native init [project name]
 npm react-native init [project name] --version x.xx.x
+
+- run
+npm run ios
+npm run android
+or
+npx react-native run-ios
+npx react-native run-android

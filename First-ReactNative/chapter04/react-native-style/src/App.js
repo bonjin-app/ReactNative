@@ -6,6 +6,7 @@ import OtherStyle from './components/OtherStyle';
 import { Header, Contents, Footer } from './components/Layout';
 import { View } from 'react-native';
 import { viewStyles } from './components/styles';
+import ShadowBox from './components/ShadowBox';
 
 export default function App() {
     return (
@@ -16,10 +17,14 @@ export default function App() {
         //     <OtherStyle />
         // </Fragment>
 
+        // <View style={viewStyles.container}>
+        //     <Header />
+        //     <Contents />
+        //     <Footer />
+        // </View>
+
         <View style={viewStyles.container}>
-            <Header />
-            <Contents />
-            <Footer />
+            <ShadowBox />
         </View>
     );
 }

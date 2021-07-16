@@ -9,6 +9,7 @@ import { viewStyles } from './components/styles';
 import ShadowBox from './components/ShadowBox';
 import styled from 'styled-components';
 import Button from './components/Button';
+import Input from './components/Input';
 
 const Container = styled.View`
     flex: 1;
@@ -35,9 +36,15 @@ export default function App() {
         //     <ShadowBox />
         // </View>
 
+        // <Container>
+        //     <Button title="GIGAS" />
+        //     <Button title="React Native" />
+        // </Container>
         <Container>
             <Button title="GIGAS" />
             <Button title="React Native" />
+            <Input borderColor="#3498db" />
+            <Input borderColor="#9b59b6" />
         </Container>
     );
 }

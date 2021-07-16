@@ -23,7 +23,7 @@ const Contents = styled.Text`
 
 const Task = ({ item, deleteTask, toggleTask, updateTask }) => {
     const [isEditing, setIsEditing] = useState(false);
-    const [text, setText] = useState('item.text');
+    const [text, setText] = useState(item.text);
 
     const _handleUpdateButtonPress = () => {
         setIsEditing(true);
@@ -37,11 +37,20 @@ const Task = ({ item, deleteTask, toggleTask, updateTask }) => {
         }
     }
 
+    const _onBlur = () => {
+        if (isEditing) {
+            setIsEditing(false)
+            setText(item.text);
+        }
+    }
+
     return isEditing ? (
         <Container>
-            <Input value={text}
+            <Input
+                value={text}
                 onChangeText={text => setText(text)}
                 onSubmitEditing={_onSubmitEditing}
+                onBlur={_onBlur}
             />
         </Container>
     ) : (

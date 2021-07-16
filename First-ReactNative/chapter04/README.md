@@ -14,3 +14,7 @@ cd react-native-style
 npm install
 npm start
 ```
+
+## 자료
+styled-components
+https://styled-components.com/

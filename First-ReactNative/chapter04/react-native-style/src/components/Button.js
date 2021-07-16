@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { StyleSheet } from 'react-native';
 
 const ButtonContainer = styled.TouchableOpacity`
-    background-color: ${props => props.title === 'GIGAS' ? '#3498db' : '#9b59b6'};
+    background-color: ${props => props.title === 'GIGAS' ? props.theme.blue : props.theme.purple};
     border-radius: 15px;
     padding: 15px 40px;
     margin: 10px 0px;
@@ -13,7 +13,7 @@ const ButtonContainer = styled.TouchableOpacity`
 const Title = styled.Text`
     font-size: 20px;
     font-weight: 600;
-    color: #fff;
+    color: ${props => props.theme.text};
 `;
 
 const Button = (props) => {

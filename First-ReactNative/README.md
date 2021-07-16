@@ -27,3 +27,8 @@ npm run android
 or
 npx react-native run-ios
 npx react-native run-android
+
+
+### 커뮤니티
+리액트 네이티브 서울: https://www.facebook.com/groups/reactnativeseoul/
+리액트 네이티브 한국 사용자 그룹: https://www.facebook.com/groups/reactapp/

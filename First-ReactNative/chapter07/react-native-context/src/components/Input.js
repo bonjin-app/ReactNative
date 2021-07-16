@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
-import { UserConsumer } from '../contexts/UserContext'
+import UserContext from '../contexts/UserContext'
 
 const StyledInput = styled.TextInput`
     border: 1px solid #606060;
@@ -12,27 +12,21 @@ const StyledInput = styled.TextInput`
 
 const Input = () => {
     const [name, setName] = useState('');
+    const { dispatch } = useContext(UserContext)
 
     return (
-        <UserConsumer>
-            {({ dispatch }) => {
-                return (
-                    <StyledInput
-                        value={name}
-                        onChangeText={text => setName(text)}
-                        onSubmitEditing={() => {
-                            dispatch(name);
-                            setName('');
-                        }}
-                        placeholder="Enter a name..."
-                        authCapitalize="none"
-                        autoCorrect={false}
-                        returnKeyType="done"
-                    />
-                )
+        <StyledInput
+            value={name}
+            onChangeText={text => setName(text)}
+            onSubmitEditing={() => {
+                dispatch(name);
+                setName('');
             }}
-
-        </UserConsumer>
+            placeholder="Enter a name..."
+            authCapitalize="none"
+            autoCorrect={false}
+            returnKeyType="done"
+        />
     )
 }
 

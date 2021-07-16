@@ -29,10 +29,27 @@ const List = styled.ScrollView`
 export default function App() {
   const width = Dimensions.get('window').width;
   const [newTask, setNewTask] = useState('');
+  const [tasks, setTasks] = useState({
+    '1': { id: '1', text: 'GIGAS', completed: false },
+    '2': { id: '2', text: 'React Native', completed: true },
+    '3': { id: '3', text: 'React Native Sample', completed: false },
+    '4': { id: '4', text: 'Edit TODO Item', completed: false },
+  });
 
   const _addTask = () => {
-    alert(`Add ${newTask}`);
+    const id = Date.now().toString();
+    const newTaskObject = {
+      [id]: { id: id, text: newTask, completed: false },
+    };
     setNewTask('');
+    setTasks({ ...tasks, ...newTaskObject });
+  }
+
+  const _deleteTask = (id) => {
+    console.log(id)
+    const currentTasks = Object.assign({}, tasks);
+    delete currentTasks[id];
+    setTasks(currentTasks)
   }
 
   const _handleTextChange = (text) => {
@@ -52,10 +69,12 @@ export default function App() {
         />
 
         <List width={width}>
-          <Task text="GIGAS" />
-          <Task text="React Native" />
-          <Task text="React Native Sample" />
-          <Task text="Edit TODO Item" />
+          {Object.values(tasks)
+            .reverse()
+            .map((item, i) => (
+              <Task key={i} item={item} deleteTask={_deleteTask} />
+            ))
+          }
         </List>
       </Container>
     </ThemeProvider>

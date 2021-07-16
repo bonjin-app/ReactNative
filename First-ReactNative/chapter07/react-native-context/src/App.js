@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import User from './components/User';
-import UserContext from './contexts/UserContext';
+import { UserProvider } from './contexts/UserContext';
+import Input from './components/Input';
 
 const Container = styled.View`
   flex: 1;
@@ -12,10 +13,11 @@ const Container = styled.View`
 
 export default function App() {
   return (
-    <UserContext.Provider value={{ name: 'GIGAS' }}>
+    <UserProvider>
       <Container>
         <User />
+        <Input />
       </Container>
-    </UserContext.Provider>
+    </UserProvider>
   );
 }

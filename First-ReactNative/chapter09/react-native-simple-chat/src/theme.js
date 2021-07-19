@@ -24,4 +24,7 @@ export const theme = {
     buttonBackground: colors.blue,
     buttonTitle: colors.white,
     buttonUnfilledTitle: colors.blue,
+
+    // Navigation
+    headerTintColor: colors.black,
 }

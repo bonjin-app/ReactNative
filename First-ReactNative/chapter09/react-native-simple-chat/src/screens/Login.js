@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react'
 import styled from 'styled-components'
-import { Button } from 'react-native';
-import { Image, Input } from '../components';
+import { Image, Input, Button } from '../components';
 import { images } from '../utils/images';
 import { TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
@@ -42,6 +41,10 @@ const Login = ({ navigation }) => {
         setPassword(removeWhitespace(password));
     }
 
+    const _handleLoginButtonPress = () => {
+
+    };
+
     return (
         <KeyboardAwareScrollView
             contentContainerStyle={{ flex: 1 }}
@@ -66,12 +69,21 @@ const Login = ({ navigation }) => {
                     label="Password"
                     value={password}
                     onChangeText={_handlePasswordChange}
-                    onSubmitEditing={() => { }}
+                    onSubmitEditing={_handleLoginButtonPress}
                     placeholder="Password"
                     returnKeyType="done"
                     isPassword={true}
                 />
                 <ErrorText>{errorMessage}</ErrorText>
+
+                <Button
+                    title="Login"
+                    onPress={_handleLoginButtonPress} />
+
+                <Button
+                    title="Sign up with email"
+                    onPress={() => navigation.navigate('Signup')}
+                    isFilled={false} />
 
             </Container>
         </KeyboardAwareScrollView>

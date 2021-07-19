@@ -10,12 +10,18 @@ const colors = {
 export const theme = {
     background: colors.white,
     text: colors.black,
+    errorText: colors.red,
 
+    // Image Component
     imageBackground: colors.grey0,
 
+    // Input Component
     label: colors.grey1,
     inputPlaceholder: colors.grey1,
     inputBorder: colors.grey1,
 
-    errorText: colors.red,
+    // Button Component
+    buttonBackground: colors.blue,
+    buttonTitle: colors.white,
+    buttonUnfilledTitle: colors.blue,
 }

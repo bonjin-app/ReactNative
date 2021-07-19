@@ -2,9 +2,10 @@ import React, { useEffect, useState, useRef } from 'react'
 import styled from 'styled-components';
 import { Image, Input, Button } from '../components';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { Text } from 'react-native';
+import { Alert, Text } from 'react-native';
 import { removeWhitespace, validateEmail } from '../utils/common';
 import { images } from '../utils/images';
+import { signup } from '../utils/firebase';
 
 const Container = styled.View`
     flex: 1;
@@ -65,7 +66,16 @@ const Signup = () => {
         )
     }, [name, email, password, passwordConfirm, errorMessage])
 
-    const _handleSignupButtonPress = () => { };
+    const _handleSignupButtonPress = async () => {
+        try {
+            const user = await signup({ email, password, name, photoUrl });
+            console.log(user);
+            Alert.alert('Signup Success', user.email);
+
+        } catch (e) {
+            Alert.alert('Signup Error', e.message);
+        }
+    };
 
     return (
         <KeyboardAwareScrollView

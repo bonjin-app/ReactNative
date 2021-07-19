@@ -33,14 +33,12 @@ const uploadImage = async (url) => {
 
 export const signup = async ({ email, password, name, photoUrl }) => {
     const { user } = await Auth.createUserWithEmailAndPassword(email, password);
-    const storageUrl = photoUrl.startWith('https')
+    const storageUrl = photoUrl.startsWith('https')
         ? photoUrl
         : await uploadImage(photoUrl);
-
     await user.updateProfile({
         displayName: name,
         photoURL: storageUrl,
     });
-
     return user;
-}
+};

@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import { Button } from 'react-native';
 import { Image, Input } from '../components';
 import { images } from '../utils/images';
+import { TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 const Container = styled.View`
     flex: 1;
@@ -18,32 +20,37 @@ const Login = ({ navigation }) => {
     const passwordRef = useRef(null);
 
     return (
-        <Container>
-            <Image
-                url={images.logo}
-                imageStyle={{ borderRadius: 8 }}
-            />
-            <Input
-                label="Email"
-                value={email}
-                onChangeText={setEmail}
-                onSubmitEditing={() => passwordRef.current.focus()}
-                placeholder="Email"
-                returnKeyType="next"
-            />
+        <KeyboardAwareScrollView
+            contentContainerStyle={{ flex: 1 }}
+            extraScrollHeight={20}
+        >
+            <Container>
+                <Image
+                    url={images.logo}
+                    imageStyle={{ borderRadius: 8 }}
+                />
+                <Input
+                    label="Email"
+                    value={email}
+                    onChangeText={setEmail}
+                    onSubmitEditing={() => passwordRef.current.focus()}
+                    placeholder="Email"
+                    returnKeyType="next"
+                />
 
-            <Input
-                ref={passwordRef}
-                label="Password"
-                value={password}
-                onChangeText={setPassword}
-                onSubmitEditing={() => { }}
-                placeholder="Password"
-                returnKeyType="done"
-                isPassword={true}
-            />
+                <Input
+                    ref={passwordRef}
+                    label="Password"
+                    value={password}
+                    onChangeText={setPassword}
+                    onSubmitEditing={() => { }}
+                    placeholder="Password"
+                    returnKeyType="done"
+                    isPassword={true}
+                />
 
-        </Container>
+            </Container>
+        </KeyboardAwareScrollView>
     )
 }
 

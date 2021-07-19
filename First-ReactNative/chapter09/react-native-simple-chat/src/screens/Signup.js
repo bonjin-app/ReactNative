@@ -10,7 +10,7 @@ const Container = styled.View`
     justify-content: center;
     align-items: center;
     background-color: ${({ theme }) => theme.background};
-    padding: 0 20px;
+    padding: 40px 20px;
 `;
 
 const ErrorText = styled.Text`
@@ -33,21 +33,28 @@ const Signup = () => {
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
     const passwordConfirmRef = useRef(null);
+    const didMountRef = useRef(null);
 
     useEffect(() => {
-        let _errorMessage = '';
-        if (!name) {
-            _errorMessage = 'Please enter your name.';
-        } else if (!validateEmail(email)) {
-            _errorMessage = 'Please verify your email.';
-        } else if (password.length < 6) {
-            _errorMessage = 'The password must contain 6 characters at least.';
-        } else if (password !== passwordConfirm) {
-            _errorMessage = 'Passwords need to match.';
+        if (didMountRef.current) {
+            let _errorMessage = '';
+            if (!name) {
+                _errorMessage = 'Please enter your name.';
+            } else if (!validateEmail(email)) {
+                _errorMessage = 'Please verify your email.';
+            } else if (password.length < 6) {
+                _errorMessage = 'The password must contain 6 characters at least.';
+            } else if (password !== passwordConfirm) {
+                _errorMessage = 'Passwords need to match.';
+            } else {
+                _errorMessage = '';
+            }
+            setErrorMessage(_errorMessage);
+
         } else {
-            _errorMessage = '';
+            didMountRef.current = true
         }
-        setErrorMessage(_errorMessage);
+
     }, [name, email, password, passwordConfirm]);
 
     useEffect(() => {
@@ -60,13 +67,12 @@ const Signup = () => {
 
     return (
         <KeyboardAwareScrollView
-            contentContainerStyle={{ flex: 1 }}
             extraScrollHeight={20}
         >
             <Container>
                 <Image rounded={true} />
                 <Input
-                    length="Name"
+                    label="Name"
                     value={name}
                     onChangeText={(text) => setName(text)}
                     onSubmitEditing={() => {
@@ -80,7 +86,7 @@ const Signup = () => {
 
                 <Input
                     ref={emailRef}
-                    length="Email"
+                    label="Email"
                     value={email}
                     onChangeText={(text) => setEmail(removeWhitespace(text))}
                     onSubmitEditing={() => {
@@ -92,7 +98,7 @@ const Signup = () => {
 
                 <Input
                     ref={passwordRef}
-                    length="Password"
+                    label="Password"
                     value={password}
                     onChangeText={(text) => setPassword(removeWhitespace(text))}
                     onSubmitEditing={() => {
@@ -104,7 +110,7 @@ const Signup = () => {
 
                 <Input
                     ref={passwordConfirmRef}
-                    length="Password Confirm"
+                    label="Password Confirm"
                     value={passwordConfirm}
                     onChangeText={(text) => setPasswordConfirm(removeWhitespace(text))}
                     onSubmitEditing={() => {

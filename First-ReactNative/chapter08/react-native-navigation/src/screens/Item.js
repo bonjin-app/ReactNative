@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useLayoutEffect } from 'react'
 import styled from 'styled-components'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 const Container = styled.View`
     flex: 1;
@@ -12,7 +13,36 @@ const StyledText = styled.Text`
     margin-bottom: 10px;
 `
 
-const Item = ({ route }) => {
+const Item = ({ navigation, route }) => {
+
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerBackTitleVisible: false,
+            headerTintColor: '#ffffff',
+            headerLeft: ({ onPress, tintColor }) => {
+                return (
+                    <MaterialCommunityIcons
+                        name="keyboard-backspace"
+                        size={30}
+                        style={{ marginLeft: 11 }}
+                        color={tintColor}
+                        onPress={onPress}
+                    />
+                )
+            },
+            headerRight: ({ tintColor }) => {
+                return (
+                    <MaterialCommunityIcons
+                        name="home-variant"
+                        size={30}
+                        style={{ marginRight: 11 }}
+                        color={tintColor}
+                        onPress={() => navigation.popToTop()}
+                    />
+                )
+            }
+        })
+    }, [])
     return (
         <Container>
             <StyledText>Item</StyledText>

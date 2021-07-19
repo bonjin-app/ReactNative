@@ -14,6 +14,8 @@ export const theme = {
 
     // Image Component
     imageBackground: colors.grey0,
+    imageButtonBackground: colors.grey1,
+    imageButtonIcon: colors.white,
 
     // Input Component
     label: colors.grey1,

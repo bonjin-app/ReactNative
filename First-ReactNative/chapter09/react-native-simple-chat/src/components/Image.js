@@ -9,7 +9,7 @@ const Container = styled.View`
 `
 
 const StyledImage = styled.Image`
-    backgroud-color: ${({ theme }) => theme.imageBackground};
+    background-color: ${({ theme }) => theme.imageBackground};
     width: 100px;
     height: 100px;
 `

@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Home from '../screens/Home'
 import List from '../screens/List'
 import Item from '../screens/Item'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 const Stack = createStackNavigator();
 
@@ -22,7 +23,12 @@ const StackNavigation = () => {
                     color: '#ffffff',
                     fontSize: 24,
                 },
-                headerTitleAlign: 'center'
+                headerTitleAlign: 'center',
+                headerBackTitleVisible: true,
+                headerBackTitle: 'Prev',
+                headerTitle: ({ style }) => (
+                    <MaterialCommunityIcons name="react" style={style} />
+                )
             }}>
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen

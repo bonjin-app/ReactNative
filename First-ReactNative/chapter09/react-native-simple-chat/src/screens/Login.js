@@ -5,6 +5,7 @@ import { Image, Input } from '../components';
 import { images } from '../utils/images';
 import { TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { validateEmail, removeWhitespace } from '../utils/common';
 
 const Container = styled.View`
     flex: 1;
@@ -12,12 +13,34 @@ const Container = styled.View`
     align-items: center;
     background-color: ${({ theme }) => theme.background};
     padding: 20px;
+`;
+
+const ErrorText = styled.Text`
+    align-items: flex-start;
+    width: 100%;
+    height: 20px;
+    margin-bottom: 10px;
+    line-height: 20px;
+    color: ${({ theme }) => theme.errorText};
 `
 
 const Login = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const passwordRef = useRef(null);
+
+    const _handleEmailChange = (email) => {
+        const changedEmail = removeWhitespace(email);
+        setEmail(changedEmail);
+        setErrorMessage(
+            validateEmail(changedEmail) ? '' : 'Please verify your email.'
+        )
+    }
+
+    const _handlePasswordChange = (password) => {
+        setPassword(removeWhitespace(password));
+    }
 
     return (
         <KeyboardAwareScrollView
@@ -32,7 +55,7 @@ const Login = ({ navigation }) => {
                 <Input
                     label="Email"
                     value={email}
-                    onChangeText={setEmail}
+                    onChangeText={_handleEmailChange}
                     onSubmitEditing={() => passwordRef.current.focus()}
                     placeholder="Email"
                     returnKeyType="next"
@@ -42,12 +65,13 @@ const Login = ({ navigation }) => {
                     ref={passwordRef}
                     label="Password"
                     value={password}
-                    onChangeText={setPassword}
+                    onChangeText={_handlePasswordChange}
                     onSubmitEditing={() => { }}
                     placeholder="Password"
                     returnKeyType="done"
                     isPassword={true}
                 />
+                <ErrorText>{errorMessage}</ErrorText>
 
             </Container>
         </KeyboardAwareScrollView>

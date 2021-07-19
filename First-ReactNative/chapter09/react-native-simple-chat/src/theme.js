@@ -3,7 +3,7 @@ const colors = {
     black: '#000000',
     grey0: '#d5d5d5',
     grey1: '#a6a6a6',
-    red: '#84118',
+    red: '#e84118',
     blue: '#3679fe',
 }
 
@@ -16,4 +16,6 @@ export const theme = {
     label: colors.grey1,
     inputPlaceholder: colors.grey1,
     inputBorder: colors.grey1,
+
+    errorText: colors.red,
 }

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { Image, Input, Button } from '../components';
 import { images } from '../utils/images';
@@ -27,7 +27,12 @@ const Login = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [disabled, setDisabled] = useState(true);
     const passwordRef = useRef(null);
+
+    useEffect(() => {
+        setDisabled(!(email && password && !errorMessage));
+    }, [email, password, errorMessage])
 
     const _handleEmailChange = (email) => {
         const changedEmail = removeWhitespace(email);
@@ -78,7 +83,8 @@ const Login = ({ navigation }) => {
 
                 <Button
                     title="Login"
-                    onPress={_handleLoginButtonPress} />
+                    onPress={_handleLoginButtonPress}
+                    disabled={disabled} />
 
                 <Button
                     title="Sign up with email"

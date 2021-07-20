@@ -10,7 +10,6 @@ export const login = async ({ email, password }) => {
 }
 
 export const getCurrentUser = () => {
-    console.log(Auth.currentUser);
     const { uid, displayName, email, photoURL } = Auth.currentUser;
     return {
         uid,

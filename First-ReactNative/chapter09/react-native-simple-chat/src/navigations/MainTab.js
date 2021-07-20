@@ -4,6 +4,7 @@ import { Profile, ChannelList } from '../screens'
 import { createStackNavigator } from '@react-navigation/stack';
 import { MaterialIcons } from '@expo/vector-icons';
 import { ThemeContext } from 'styled-components/native';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native'
 import { theme } from '../theme';
 
 const Tab = createBottomTabNavigator();
@@ -21,13 +22,21 @@ const TabBarIcon = ({ focused, name }) => {
 }
 
 const MainTab = ({ navigation, route }) => {
-    const thene = useContext(ThemeContext);
+    const theme = useContext(ThemeContext);
 
     useEffect(() => {
-        const routeName = getFocusedRouteNameFromRoute(route);
-        const index = route.state?.index || 0;
+        const title = getFocusedRouteNameFromRoute(route) ?? 'Channels';
         navigation.setOptions({
-            headerTitle: titles[index],
+            headerTitle: title,
+            headerRight: () =>
+                title === 'Channels' && (
+                    <MaterialIcons
+                        name="add"
+                        size={26}
+                        style={{ margin: 10 }}
+                        onPress={() => navigation.navigate('Channel Creation')}
+                    />
+                )
         })
     }, [route])
 

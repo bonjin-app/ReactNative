@@ -14,3 +14,10 @@ npx react-native link
 
 delete node_modules
 npm run 
+
+- ICons
+https://github.com/oblador/react-native-vector-icons
+
+```
+npm install --save react-native-vector-icons
+```

@@ -1,8 +1,11 @@
 import * as firebase from 'firebase';
 import config from '../../firebase.json';
+import 'firebase/firestore';
 
 const app = !firebase.apps.length ? firebase.initializeApp(config) : firebase.app();
 const Auth = app.auth();
+
+
 
 export const login = async ({ email, password }) => {
     const { user } = await Auth.signInWithEmailAndPassword(email, password);
@@ -54,6 +57,20 @@ const uploadImage = async (url) => {
 
     blob.close();
     return await snapshot.ref.getDownloadURL();
+}
+
+export const DB = firebase.firestore();
+export const createChannel = async ({ title, description }) => {
+    const newChannelRef = DB.collection('channels').doc();
+    const id = newChannelRef.id;
+    const newChannel = {
+        id,
+        title,
+        description,
+        createdAt: Date.now(),
+    };
+    await newChannelRef.set(newChannel);
+    return id;
 }
 
 export const signup = async ({ email, password, name, photoUrl }) => {

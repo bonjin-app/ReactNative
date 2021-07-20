@@ -60,10 +60,12 @@ const Profile = () => {
             />
             <Input
                 label="Name"
-                value={user.name} />
+                value={user.name}
+                disabled />
             <Input
                 label="Email"
-                value={user.email} />
+                value={user.email}
+                disabled />
             <Button
                 title="logout"
                 onPress={_handleLogoutButtonPress}

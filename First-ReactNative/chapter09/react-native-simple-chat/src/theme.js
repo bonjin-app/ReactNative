@@ -21,6 +21,7 @@ export const theme = {
     label: colors.grey1,
     inputPlaceholder: colors.grey1,
     inputBorder: colors.grey1,
+    inputDisabledBackground: colors.grey0,
 
     // Button Component
     buttonBackground: colors.blue,
@@ -37,4 +38,5 @@ export const theme = {
     tabInactiveColor: colors.grey1,
 
     buttonLogout: colors.red,
+
 }

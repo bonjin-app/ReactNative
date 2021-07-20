@@ -9,6 +9,32 @@ export const login = async ({ email, password }) => {
     return user;
 }
 
+export const getCurrentUser = () => {
+    console.log(Auth.currentUser);
+    const { uid, displayName, email, photoURL } = Auth.currentUser;
+    return {
+        uid,
+        name: displayName,
+        email,
+        photoUrl: photoURL,
+    };
+}
+
+export const updateUserPhoto = async (photoUrl) => {
+    const user = Auth.currentUser;
+    const storageUrl = photoUrl.startsWith('https')
+        ? photoUrl
+        : await uploadImage(photoUrl);
+    await user.updateProfile({
+        photoURL: storageUrl,
+    });
+    return {
+        name: user.displayName,
+        email: user.email,
+        photoUrl: user.photoURL,
+    }
+}
+
 const uploadImage = async (url) => {
     const blob = await new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();

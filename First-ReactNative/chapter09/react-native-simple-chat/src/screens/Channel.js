@@ -1,17 +1,44 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react'
-import styled from 'styled-components'
-import { Text, FlatList } from 'react-native'
-import { DB, createMessage } from '../utils/firebase';
-import { Input } from '../components';
+import React, { useState, useEffect, useLayoutEffect, useContext } from 'react'
+import styled, { ThemeContext } from 'styled-components'
+import { DB, createMessage, getCurrentUser } from '../utils/firebase';
+import { Alert } from 'react-native';
+import { GiftedChat, Send } from 'react-native-gifted-chat'
+import { MaterialIcons } from '@expo/vector-icons';
 
 const Container = styled.View`
     flex: 1;
     background-color: ${({ theme }) => theme.background};
 `;
 
+const SendButton = (props) => {
+    const theme = useContext(ThemeContext);
+    return (
+        <Send
+            {...props}
+            disabled={!props.text}
+            containerStyle={{
+                width: 44,
+                height: 44,
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginHorizontal: 4,
+            }}
+        >
+            <MaterialIcons
+                name="send"
+                size={24}
+                color={
+                    props.text ? theme.sendButtonActivate : theme.sendButtonInactivate
+                }
+            />
+        </Send>
+    )
+}
+
 const Channel = ({ navigation, route: { params } }) => {
+    const theme = useContext(ThemeContext);
+    const { uid, name, photoUrl } = getCurrentUser();
     const [messages, setMessages] = useState([]);
-    const [text, setText] = useState('');
 
     useEffect(() => {
         const unsubscribe = DB.collection('channels')
@@ -24,32 +51,46 @@ const Channel = ({ navigation, route: { params } }) => {
                     list.push(doc.data());
                 });
                 setMessages(list);
-            })
+            });
 
         return () => unsubscribe();
     }, []);
 
     useLayoutEffect(() => {
-        navigation.setOptions({
-            headerTitle: params.title || 'Channel'
-        });
-    }, [])
+        navigation.setOptions({ headerTitle: params.title || 'Channel' });
+    }, []);
+
+    const _handleMessageSend = async messageList => {
+        const newMessage = messageList[0];
+        try {
+            await createMessage({ channelId: params.id, message: newMessage });
+
+        } catch (e) {
+            Alert.alert('Send Message Error', e.message);
+        }
+    };
 
     return (
         <Container>
-            <FlatList
-                keyExtractor={item => item['id']}
-                data={messages}
-                renderItem={({ item }) => (
-                    <Text style={{ fontSize: 24 }}>{item.text}</Text>
-                )}
-                inverted={true}
-            />
-            <Input
-                label=""
-                value={text}
-                onChangeText={text => setText(text)}
-                onSubmitEditing={() => createMessage({ channelId: params.id, text })}
+            <GiftedChat
+                listViewProps={{
+                    style: { backgroundColor: theme.background },
+                }}
+                placeholder="Enter a message..."
+                messages={messages}
+                user={{ _id: uid, name, avatar: photoUrl }}
+                onSend={_handleMessageSend}
+                alwaysShowSend={true}
+                textInputProps={{
+                    autoCapitalize: 'none',
+                    autoCorrect: false,
+                    textContentType: 'none', // iOS only
+                    underlineColorAndroid: 'transparent', // Android only
+                }}
+                multiline={false}
+                renderUsernameOnMessage={true}
+                scrollToBottom={true}
+                renderSend={props => <SendButton {...props} />}
             />
         </Container>
     )

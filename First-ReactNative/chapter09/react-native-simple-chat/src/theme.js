@@ -44,4 +44,7 @@ export const theme = {
     listDescription: colors.grey1,
     listIcon: colors.black,
 
+    sendButtonActivate: colors.blue,
+    sendButtonInactivate: colors.grey1,
+
 }

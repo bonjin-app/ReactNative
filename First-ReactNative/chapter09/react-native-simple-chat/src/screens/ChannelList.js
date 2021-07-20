@@ -3,6 +3,7 @@ import styled, { ThemeContext } from 'styled-components'
 import { FlatList } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { DB } from '../utils/firebase';
+import moment from 'moment'
 
 const Container = styled.View`
     flex: 1;
@@ -38,14 +39,10 @@ const ItemTime = styled.Text`
     color: ${({ theme }) => theme.listTime};
 `;
 
-const channels = [];
-for (let idx = 0; idx < 1000; idx++) {
-    channels.push({
-        id: idx,
-        title: `title ${idx}`,
-        description: `description ${idx}`,
-        createdAt: idx,
-    })
+const getDateOrTime = (ts) => {
+    const now = moment().startOf('day');
+    const target = moment(ts).startOf('day');
+    return moment(ts).format(now.diff(target, 'days') > 0 ? 'MM/DD' : 'HH:mm');
 }
 
 const Item = React.memo(({ item: { id, title, description, createdAt }, onPress }) => {
@@ -59,7 +56,7 @@ const Item = React.memo(({ item: { id, title, description, createdAt }, onPress 
                 <ItemTitle>{title}</ItemTitle>
                 <ItemDescription>{description}</ItemDescription>
             </ItemTextContainer>
-            <ItemTime>{createdAt}</ItemTime>
+            <ItemTime>{getDateOrTime(createdAt)}</ItemTime>
             <MaterialIcons
                 name="keyboard-arrow-right"
                 size={24}

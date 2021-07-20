@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Text, Button } from 'react-native';
 
 const Container = styled.View`
-    flex: 1,
+    flex: 1;
     background-color: ${({ theme }) => theme.background};
 `;
 

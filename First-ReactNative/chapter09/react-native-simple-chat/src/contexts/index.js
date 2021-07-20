@@ -1,3 +1,6 @@
 import { ProgressContext, ProgressProvider } from "./Progress";
 
-export { ProgressContext, ProgressProvider };
+export {
+    ProgressContext,
+    ProgressProvider
+};

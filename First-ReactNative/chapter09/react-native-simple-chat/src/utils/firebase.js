@@ -16,7 +16,7 @@ export const getCurrentUser = () => {
     const { uid, displayName, email, photoURL } = Auth.currentUser;
     return {
         uid,
-        name: displayName,
+        name: displayName ?? '',
         email,
         photoUrl: photoURL,
     };

@@ -73,6 +73,15 @@ export const createChannel = async ({ title, description }) => {
     return id;
 }
 
+export const createMessage = async ({ channelId, text }) => {
+    return await DB.collection('channels')
+        .doc(channelId)
+        .collection('messages')
+        .add({
+            text, createdAt: Date.now()
+        });
+}
+
 export const signup = async ({ email, password, name, photoUrl }) => {
     const { user } = await Auth.createUserWithEmailAndPassword(email, password);
     const storageUrl = photoUrl.startsWith('https')

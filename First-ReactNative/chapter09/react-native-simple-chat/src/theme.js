@@ -39,4 +39,9 @@ export const theme = {
 
     buttonLogout: colors.red,
 
+    listBorder: colors.grey0,
+    listTime: colors.grey1,
+    listDescription: colors.grey1,
+    listIcon: colors.black,
+
 }

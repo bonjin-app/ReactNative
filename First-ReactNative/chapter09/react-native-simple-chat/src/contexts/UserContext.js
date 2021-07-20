@@ -5,7 +5,7 @@ const UserContext = React.createContext({
     dispatch: () => { },
 });
 
-const UserPovider = ({ children }) => {
+const UserProvider = ({ children }) => {
     const [user, setUser] = useState({});
     const dispatch = ({ email, uid }) => {
         setUser({ email, uid });
@@ -18,4 +18,4 @@ const UserPovider = ({ children }) => {
     )
 }
 
-export { UserContext, UserPovider };
+export { UserContext, UserProvider };

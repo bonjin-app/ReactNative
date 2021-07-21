@@ -1,14 +1,13 @@
 import React from 'react'
-import { SafeAreaView, StyleSheet, Text, View, Image, FlatList, ScrollView } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View, Image, FlatList, ScrollView, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 import colors from '../../assets/colors/colors';
 import categoriesData from '../../assets/data/categoriesData';
 import popularData from '../../assets/data/popularData';
 
 Icon.loadFont();
 
-export default function Home() {
+export default function Home({ navigation }) {
 
     const _renderCategoriItem = ({ item }) => {
         return (
@@ -16,7 +15,7 @@ export default function Home() {
                 styles.categoryItemWrapper,
                 {
                     backgroundColor: item.selected ? colors.primary : colors.white,
-                    marginLeft: item.id === 1 ? 20 : 0,
+                    marginLeft: item.id == 1 ? 20 : 0,
                 },
             ]}>
                 <Image style={styles.categoryItemImage} source={item.image} />
@@ -51,7 +50,7 @@ export default function Home() {
                         <Image
                             source={require('../../assets/images/profile.png')}
                             style={styles.profileImage} />
-                        <Icon name="menu" size={24} color={Colors.textDark} />
+                        <Icon name="menu" size={24} color={colors.textDark} />
                     </View>
                 </SafeAreaView>
 
@@ -86,44 +85,49 @@ export default function Home() {
                 <View style={styles.popularWrapper}>
                     <Text style={styles.popularTitle}>Popular</Text>
                     {popularData.map((item) => (
-                        <View key={item.id} style={[styles.popularCardWrapper, {
-                            marginTop: item.id === 1 ? 10 : 20,
-                        }]}>
-                            <View>
+                        <TouchableOpacity
+                            key={item.id}
+                            onPress={() => navigation.navigate('Details', { item: item })}
+                        >
+                            <View style={[styles.popularCardWrapper, {
+                                marginTop: item.id == 1 ? 10 : 20,
+                            }]}>
                                 <View>
-                                    <View style={styles.popularTopWrapper}>
-                                        <Icon
-                                            name="ribbon"
-                                            size={12}
-                                            color={colors.primary} />
-                                        <Text style={styles.popularTopText}>top of the week</Text>
+                                    <View>
+                                        <View style={styles.popularTopWrapper}>
+                                            <Icon
+                                                name="ribbon"
+                                                size={12}
+                                                color={colors.primary} />
+                                            <Text style={styles.popularTopText}>top of the week</Text>
+                                        </View>
+                                        <View style={styles.popularTitlesWrapper}>
+                                            <Text style={styles.popularTitlesTitle}>{item.title}</Text>
+                                            <Text style={styles.popularTitlesWeight}>Weight {item.weight}</Text>
+                                        </View>
                                     </View>
-                                    <View style={styles.popularTitlesWrapper}>
-                                        <Text style={styles.popularTitlesTitle}>{item.title}</Text>
-                                        <Text style={styles.popularTitlesWeight}>Weight {item.weight}</Text>
+                                    <View style={styles.popularCardBottom}>
+                                        <View style={styles.popularAddButton}>
+                                            <Icon
+                                                name="add-sharp"
+                                                size={10}
+                                                color={colors.textDark} />
+                                        </View>
+                                        <View style={styles.ratingWrapper}>
+                                            <Icon
+                                                name="star"
+                                                size={10}
+                                                color={colors.textDark} />
+                                            <Text style={styles.popularRating}>{item.rating}</Text>
+                                        </View>
                                     </View>
                                 </View>
-                                <View style={styles.popularCardBottom}>
-                                    <View style={styles.popularAddButton}>
-                                        <Icon
-                                            name="add-sharp"
-                                            size={10}
-                                            color={colors.textDark} />
-                                    </View>
-                                    <View style={styles.ratingWrapper}>
-                                        <Icon
-                                            name="star"
-                                            size={10}
-                                            color={colors.textDark} />
-                                        <Text style={styles.popularRating}>{item.rating}</Text>
-                                    </View>
-                                </View>
-                            </View>
 
-                            <View style={styles.popularCardRight}>
-                                <Image source={item.image} style={styles.popularCardImage} />
+                                <View style={styles.popularCardRight}>
+                                    <Image source={item.image} style={styles.popularCardImage} />
+                                </View>
                             </View>
-                        </View>
+                        </TouchableOpacity>
                     ))}
                 </View>
             </ScrollView>

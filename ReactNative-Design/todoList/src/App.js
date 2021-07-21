@@ -12,6 +12,12 @@ const App = () => {
     setTask(null);
   }
 
+  const _completeTask = (index) => {
+    let itemsCopy = [...taskItems];
+    itemsCopy.splice(index, 1);
+    setTaskItems(itemsCopy);
+  }
+
   return (
     <View style={styles.container}>
       {/* Today's Tasks */}
@@ -24,7 +30,10 @@ const App = () => {
         <View style={styles.items}>
           {taskItems && taskItems.map((task, index) => {
             return (
-              <TouchableOpacity key={index}>
+              <TouchableOpacity
+                key={index}
+                onPress={() => _completeTask(index)}
+              >
                 <Task text={task} />
               </TouchableOpacity>
             )

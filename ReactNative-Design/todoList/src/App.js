@@ -1,5 +1,6 @@
 import React from 'react'
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import Task from './components/Task'
 
 const App = () => {
   return (
@@ -10,9 +11,11 @@ const App = () => {
 
           <Text style={styles.sectionTitle}>Today's tasks</Text>
 
-
+          {/* Items */}
           <View style={styles.items}>
-
+            <Task text="Task 1" />
+            <Task text="Task 2" />
+            <Task text="Task 3" />
           </View>
         </View>
       </SafeAreaView>
@@ -36,6 +39,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   items: {
-
+    marginTop: 30,
   },
 })

@@ -9,6 +9,10 @@ https://www.youtube.com/watch?v=7_nsd_iNDtY
 https://mehrankhandev.medium.com/ultimate-guide-to-use-custom-fonts-in-react-native-77fcdf859cf4
 
 ```
+npx react-native init foodappui
+```
+
+```
 npx react-native link
 ```
 
@@ -20,4 +24,9 @@ https://github.com/oblador/react-native-vector-icons
 
 ```
 npm install --save react-native-vector-icons
+```
+
+2. Todo
+```
+npx react-native init todoList
 ```

@@ -46,6 +46,17 @@ const Home = ({ navigation }) => {
         )
     }
 
+    const _renderLearnMoreItem = ({ item }) => {
+        return (
+            <ImageBackground
+                source={item.image}
+                style={[styles.learnItem, { marginLeft: item.id == 'learnMore-1' ? 20 : 0 }]}
+                imageStyle={styles.learnItemImage} >
+                <Text style={styles.learnItemTitle}>{item.title}</Text>
+            </ImageBackground>
+        )
+    }
+
     return (
         <View style={styles.container}>
             <ScrollView
@@ -92,6 +103,20 @@ const Home = ({ navigation }) => {
                         <FlatList
                             data={activitiesData}
                             renderItem={_renderActivityItem}
+                            keyExtractor={(item) => item.id}
+                            horizontal
+                            showsHorizontalScrollIndicator={false}
+                        />
+                    </View>
+                </View>
+
+                {/* Learn More */}
+                <View style={styles.learnMoreWrapper}>
+                    <Text style={styles.learnMoreTitle}>Learn More</Text>
+                    <View style={styles.learnMoreItemsWrapper}>
+                        <FlatList
+                            data={learnMoreData}
+                            renderItem={_renderLearnMoreItem}
                             keyExtractor={(item) => item.id}
                             horizontal
                             showsHorizontalScrollIndicator={false}
@@ -203,5 +228,34 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 14,
         color: colors.gray,
+    },
+
+    learnMoreWrapper: {
+        marginTop: 10,
+    },
+    learnMoreTitle: {
+        marginHorizontal: 20,
+        fontWeight: 'bold',
+        fontSize: 24,
+        color: colors.black,
+    },
+    learnMoreItemsWrapper: {
+        paddingVertical: 20,
+    },
+    learnItem: {
+        width: 170,
+        height: 180,
+        justifyContent: 'flex-end',
+        marginRight: 20,
+    },
+    learnItemImage: {
+        borderRadius: 20,
+    },
+    learnItemTitle: {
+        fontWeight: 'bold',
+        fontSize: 18,
+        color: colors.white,
+        marginHorizontal: 10,
+        marginVertical: 20,
     },
 })

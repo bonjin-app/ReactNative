@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native'
 const Liked = () => {
     return (
         <View>
-            <Text></Text>
+            <Text>Liked</Text>
         </View>
     )
 }

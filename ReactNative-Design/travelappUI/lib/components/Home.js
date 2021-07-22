@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, FlatList, Image, ImageBackground, SafeAreaView, ScrollView, StyleSheet, Text, Pressable, View } from 'react-native'
 import colors from '../../assets/colors/colors'
 import Icon from 'react-native-vector-icons/Feather'
-import activitesData from '../../assets/data/activitiesData'
+import activitiesData from '../../assets/data/activitiesData'
 import discoverCategoriesData from '../../assets/data/discoverCategoriesData'
 import discoverData from '../../assets/data/discoverData'
 import learnMoreData from '../../assets/data/learnMoreData'
@@ -21,8 +21,7 @@ const Home = ({ navigation }) => {
                 <ImageBackground
                     source={item.image}
                     style={[styles.discoverItem, { marginLeft: item.id == 'discover-1' ? 20 : 0 }]}
-                    imageStyle={styles.discoverItemImage}
-                >
+                    imageStyle={styles.discoverItemImage} >
                     <Text style={styles.discoverItemTitle}>{item.title}</Text>
                     <View style={styles.discoverItemLocationWrapper}>
                         <Icon
@@ -36,9 +35,23 @@ const Home = ({ navigation }) => {
         )
     }
 
+    const _renderActivityItem = ({ item }) => {
+        return (
+            <View style={[styles.activityItemWrapper, {
+                marginLeft: item.id == 'activities-1' ? 20 : 0,
+            }]}>
+                <Image source={item.image} style={styles.activityItemImage} />
+                <Text style={styles.activityItemText}>{item.title}</Text>
+            </View>
+        )
+    }
+
     return (
         <View style={styles.container}>
-            <ScrollView>
+            <ScrollView
+                contentInsetAdjustmentBehavior="automatic"
+                showsVerticalScrollIndicator={false}
+            >
                 {/* Header */}
                 <SafeAreaView>
                     <View style={styles.menuWrapper}>
@@ -65,6 +78,20 @@ const Home = ({ navigation }) => {
                         <FlatList
                             data={discoverData}
                             renderItem={_renderDiscoverItem}
+                            keyExtractor={(item) => item.id}
+                            horizontal
+                            showsHorizontalScrollIndicator={false}
+                        />
+                    </View>
+                </View>
+
+                {/* Activities */}
+                <View style={styles.activitiesWrapper}>
+                    <Text style={styles.activitiesTitle}>Activities</Text>
+                    <View style={styles.activitiesItemsWrapper}>
+                        <FlatList
+                            data={activitiesData}
+                            renderItem={_renderActivityItem}
                             keyExtractor={(item) => item.id}
                             horizontal
                             showsHorizontalScrollIndicator={false}
@@ -149,5 +176,32 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 14,
         color: colors.white,
+    },
+
+    activitiesWrapper: {
+        marginTop: 10,
+    },
+    activitiesTitle: {
+        marginHorizontal: 20,
+        fontWeight: 'bold',
+        fontSize: 24,
+        color: colors.black,
+    },
+    activitiesItemsWrapper: {
+        paddingVertical: 20,
+    },
+    activityItemWrapper: {
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        marginRight: 20,
+    },
+    activityItemImage: {
+        width: 36,
+    },
+    activityItemText: {
+        marginTop: 5,
+        fontWeight: 'bold',
+        fontSize: 14,
+        color: colors.gray,
     },
 })

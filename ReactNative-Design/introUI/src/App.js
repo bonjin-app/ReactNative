@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Text, View } from 'react-native'
+import Intro from './components/Intro'
 
 const App = () => {
     return (
-        <View>
-            <Text>Hello</Text>
-        </View>
+        <Fragment>
+            <Intro />
+        </Fragment>
     )
 }
 
-export default App
+export default App;

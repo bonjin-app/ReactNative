@@ -4,7 +4,7 @@ import Liked from './components/Liked'
 import Profile from './components/Profile'
 import Detail from './components/Detail'
 import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
+import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import colors from '../assets/colors/colors'
 import Entypo from 'react-native-vector-icons/Entypo'
@@ -24,6 +24,7 @@ const TabNavigator = () => {
                     backgroundColor: colors.white,
                     borderTopLeftRadius: 20,
                     borderTopRightRadius: 20,
+                    elevation: 0,
                 },
                 showLabel: false,
                 activeTintColor: colors.orange,
@@ -54,9 +55,33 @@ const TabNavigator = () => {
 const App = () => {
     return (
         <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen name="Tab" component={TabNavigator}
+            <Stack.Navigator
+                screenOptions={{
+                    gestureEnabled: true,
+                    gestureDirection: 'horizontal',
+                    cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+                    // transitionSpec: {
+                    //     open: config,
+                    //     close: closeConfig,
+                    // }
+                    headerTitleAlign: 'center',
+                }}
+            >
+                <Stack.Screen
+                    name="Tab"
+                    component={TabNavigator}
                     options={{
+                        headerShown: false,
+                        headerStyle: {
+                            elevation: 0,
+                        }
+                    }}
+                />
+                <Stack.Screen
+                    name="Detail"
+                    component={Detail}
+                    options={{
+                        headerShown: false,
                         headerStyle: {
                             elevation: 0,
                         }

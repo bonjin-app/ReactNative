@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, Image, View, StatusBar } from 'react-native'
 import AppIntroSlider from 'react-native-app-intro-slider';
 import colors from '../../assets/colors/colors';
+import LinearGradient from 'react-native-linear-gradient';
 
 const data = [
     {
@@ -39,9 +40,15 @@ const Intro = (props) => {
 
     const _renderDoneButton = () => {
         return (
-            <View style={styles.rightTextWrapper}>
-                <Text style={styles.rightText}>Done</Text>
-            </View>
+            <LinearGradient
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                colors={[
+                    '#A5C8FF',
+                    '#232868'
+                ]} style={styles.doneButtonWrapper}>
+                <Text style={styles.doneButtonText}>Done</Text>
+            </LinearGradient>
         )
     }
 
@@ -140,4 +147,19 @@ const styles = StyleSheet.create({
     activeDotStyle: {
         backgroundColor: colors.blue,
     },
+
+    doneButtonWrapper: {
+        flex: 1,
+        paddingLeft: 32,
+        paddingRight: 50,
+        borderRadius: 25,
+        marginRight: -40,
+    },
+    doneButtonText: {
+        fontSize: 14,
+        textAlign: 'center',
+        margin: 10,
+        color: colors.white,
+        backgroundColor: 'transparent',
+    }
 })

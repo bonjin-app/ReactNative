@@ -13,9 +13,6 @@
 #import <FlipperKitReactPlugin/FlipperKitReactPlugin.h>
 
 // CodePush
-#import <AppCenterReactNative.h>
-#import <AppCenterReactNativeAnalytics.h>
-#import <AppCenterReactNativeCrashes.h>
 #import <CodePush/CodePush.h>
 
 static void InitializeFlipper(UIApplication *application) {
@@ -41,10 +38,6 @@ static void InitializeFlipper(UIApplication *application) {
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
                                                    moduleName:@"CodePush"
                                             initialProperties:nil];
-  
-  [AppCenterReactNative register];
-  [AppCenterReactNativeAnalytics registerWithInitiallyEnabled:true];
-  [AppCenterReactNativeCrashes registerWithAutomaticProcessing];
 
   if (@available(iOS 13.0, *)) {
       rootView.backgroundColor = [UIColor systemBackgroundColor];
@@ -65,7 +58,6 @@ static void InitializeFlipper(UIApplication *application) {
 #if DEBUG
   return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
 #else
-//   return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
   return [CodePush bundleURL];
 #endif
 }

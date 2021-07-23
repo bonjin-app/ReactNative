@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
-import { View, Text, AppState, Button } from 'react-native'
-import CodePush from 'react-native-code-push'
+import React from 'react'
+import { View, Text, Button } from 'react-native'
+import codePush from 'react-native-code-push'
 
 const App = () => {
     return (
@@ -15,9 +15,9 @@ const App = () => {
     )
 }
 
-const _codePushOptions = {
-    checkFrequency: CodePush.CheckFrequency.ON_APP_START,
-    installMode: CodePush.InstallMode.IMMEDIATE,
+const codePushOptions = {
+    checkFrequency: codePush.CheckFrequency.ON_APP_START,
+    installMode: codePush.InstallMode.IMMEDIATE,
 }
 
-export default CodePush(_codePushOptions)(App)
+export default CodePush(codePushOptions)(App)

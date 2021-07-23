@@ -9,8 +9,7 @@ const App = () => {
             justifyContent: 'center',
             alignItems: 'center',
         }}>
-            <Text>CodePush</Text>
-            <Button onPress={() => alert('CodePush Success')} title="Click"/>
+            <Text>CodePush !!!</Text>
         </View>
     )
 }

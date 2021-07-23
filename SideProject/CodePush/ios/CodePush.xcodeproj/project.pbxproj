@@ -11,6 +11,7 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		3E90FCF226AA780900C10012 /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E90FCF126AA780900C10012 /* AppCenter-Config.plist */; };
 		3F4215F66F63BC386DE2EE68 /* libPods-CodePush-CodePushTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 166550E2B841346BB3407924 /* libPods-CodePush-CodePushTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		B5F971C334D986C944841F0B /* libPods-CodePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5391ED9DC4745A0F11D28FFD /* libPods-CodePush.a */; };
@@ -39,6 +40,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = CodePush/main.m; sourceTree = "<group>"; };
 		166550E2B841346BB3407924 /* libPods-CodePush-CodePushTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CodePush-CodePushTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E9DCC898A4DE9B50436B530 /* Pods-CodePush-CodePushTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodePush-CodePushTests.release.xcconfig"; path = "Target Support Files/Pods-CodePush-CodePushTests/Pods-CodePush-CodePushTests.release.xcconfig"; sourceTree = "<group>"; };
+		3E90FCF126AA780900C10012 /* AppCenter-Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "AppCenter-Config.plist"; path = "CodePush/AppCenter-Config.plist"; sourceTree = "<group>"; };
 		5391ED9DC4745A0F11D28FFD /* libPods-CodePush.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CodePush.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = CodePush/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D9CF0B258BAB1C0D83A3C4AF /* Pods-CodePush.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodePush.release.xcconfig"; path = "Target Support Files/Pods-CodePush/Pods-CodePush.release.xcconfig"; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 		13B07FAE1A68108700A75B9A /* CodePush */ = {
 			isa = PBXGroup;
 			children = (
+				3E90FCF126AA780900C10012 /* AppCenter-Config.plist */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -145,7 +148,6 @@
 				F6B358DDCF768445F65F2A39 /* Pods-CodePush-CodePushTests.debug.xcconfig */,
 				2E9DCC898A4DE9B50436B530 /* Pods-CodePush-CodePushTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -245,6 +247,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				3E90FCF226AA780900C10012 /* AppCenter-Config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +488,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N99FMBQ662;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = CodePush/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -496,7 +500,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.bonjin.reactnative.CodePush;
 				PRODUCT_NAME = CodePush;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -511,6 +515,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N99FMBQ662;
 				INFOPLIST_FILE = CodePush/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -521,7 +526,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.bonjin.reactnative.CodePush;
 				PRODUCT_NAME = CodePush;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

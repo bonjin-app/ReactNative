@@ -9,8 +9,8 @@ const App = () => {
             justifyContent: 'center',
             alignItems: 'center',
         }}>
-            <Text>진승오 바보</Text>
-            <Button onPress={() => alert('승오 바보다!')} title="Click"/>
+            <Text>CodePush</Text>
+            <Button onPress={() => alert('CodePush Success')} title="Click"/>
         </View>
     )
 }
@@ -20,4 +20,4 @@ const codePushOptions = {
     installMode: codePush.InstallMode.IMMEDIATE,
 }
 
-export default CodePush(codePushOptions)(App)
+export default codePush(codePushOptions)(App)

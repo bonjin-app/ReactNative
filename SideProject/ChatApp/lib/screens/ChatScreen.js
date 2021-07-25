@@ -1,12 +1,14 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 
 const ChatScreen = () => {
     return (
-        <View>
-            <Text></Text>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text>ChatScreen</Text>
         </View>
     )
 }
 
 export default ChatScreen
+
+const styles = StyleSheet.create({})

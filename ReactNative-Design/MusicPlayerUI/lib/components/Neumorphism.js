@@ -10,7 +10,7 @@ const Neumorphism = ({ children, size, style }) => {
                     height: size || 40,
                     borderRadius: size / 2 || 40 / 2,
                 }]}>
-                    
+                    {children}
                 </View>
             </View>
         </View>

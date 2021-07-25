@@ -5,11 +5,16 @@ const Neumorphism = ({ children, size, style }) => {
     return (
         <View style={styles.topShadow}>
             <View style={styles.bottomShadow}>
-                <View style={[styles.inner, {
-                    width: size || 40,
-                    height: size || 40,
-                    borderRadius: size / 2 || 40 / 2,
-                }]}>
+                <View style={
+                    [
+                        styles.inner,
+                        {
+                            width: size || 40,
+                            height: size || 40,
+                            borderRadius: size / 2 || 40 / 2,
+                        },
+                        style
+                    ]}>
                     {children}
                 </View>
             </View>

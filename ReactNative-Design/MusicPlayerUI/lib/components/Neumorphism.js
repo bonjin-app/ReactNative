@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
         shadowOpacity: 1,
         shadowRadius: 6,
         shadowColor: '#FBFFFF',
-        elevation: 3,
     },
     bottomShadow: {
         shadowOffset: {
@@ -43,7 +42,6 @@ const styles = StyleSheet.create({
         shadowOpacity: 1,
         shadowRadius: 6,
         shadowColor: '#B7C4DD',
-        elevation: 3,
     },
     inner: {
         backgroundColor: '#DEE9F7',
@@ -51,5 +49,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderColor: '#E2ECFD',
         borderWidth: 1,
+        elevation: 6,
     },
 })

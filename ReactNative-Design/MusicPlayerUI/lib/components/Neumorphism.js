@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 1,
         shadowRadius: 6,
-        shadowColor: '#FBFFFF'
+        shadowColor: '#FBFFFF',
+        elevation: 3,
     },
     bottomShadow: {
         shadowOffset: {
@@ -42,6 +43,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 1,
         shadowRadius: 6,
         shadowColor: '#B7C4DD',
+        elevation: 3,
     },
     inner: {
         backgroundColor: '#DEE9F7',

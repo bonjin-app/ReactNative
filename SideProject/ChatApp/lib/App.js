@@ -7,11 +7,12 @@ import ChatScreen from './screens/ChatScreen';
 
 const Stack = createStackNavigator();
 
-const App = () => {
+const App = (props, {navigation}) => {
     return (
         <NavigationContainer>
             <Stack.Navigator
                 initialRouteName="Login"
+                headerMode="none"
             >
                 <Stack.Screen name="Login" component={LoginScreen} />
                 <Stack.Screen name="Chat" component={ChatScreen} />

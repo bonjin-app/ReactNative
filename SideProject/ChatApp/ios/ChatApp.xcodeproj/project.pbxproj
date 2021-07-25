@@ -145,7 +145,6 @@
 				133B55920112254C4A0D3581 /* Pods-ChatApp-ChatAppTests.debug.xcconfig */,
 				59E91CF0BB2F7082DBE02B5D /* Pods-ChatApp-ChatAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

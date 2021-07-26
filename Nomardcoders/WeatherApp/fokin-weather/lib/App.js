@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Alert, Platform } from 'react-native';
 import Loading from './screens/Loading';
 import * as Location from 'expo-location';
+import Constants from './utils/Constants';
 
 export default function App() {
 

@@ -219,9 +219,6 @@ const Onboarding = () => {
                 renderItem={_renderFlatlistItem}
 
                 onViewableItemsChanged={handleViewableItemsChanged.current}
-                viewabilityConfig={{
-                    viewAreaConveragePercentThreshold: 100,
-                }}
             />
             
 

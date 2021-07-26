@@ -43,6 +43,35 @@ const Onboarding = () => {
 
     }, [viewableItems])
 
+    const _handleNext = () => {
+        if (currentPage === data.length - 1) {
+            return;
+        }
+
+        flatlistRef.current.scrollToIndex({
+            animated: true,
+            index: currentPage+1
+        })
+    }
+
+    const _handleBack = () => {
+        if (currentPage === 0) {
+            return;
+        }
+
+        flatlistRef.current.scrollToIndex({
+            animated: true,
+            index: currentPage-1,
+        })
+    }
+
+    const _handleSkipToEnd = () => {
+        flatlistRef.current.scrollToIndex({
+            animated: true,
+            index: data.length-1,
+        })
+    }
+
     const _renderTopSection = () => {
         return (
             <SafeAreaView>
@@ -53,7 +82,9 @@ const Onboarding = () => {
                     paddingHorizontal: sizes.base * 2,
                 }}>
                     {/* Back Button */}
-                    <Pressable style={{
+                    <Pressable
+                        onPress={_handleBack}
+                        style={{
                         padding: sizes.base,
                     }}>
                         <AndDesignIcon
@@ -61,19 +92,21 @@ const Onboarding = () => {
                             style={{
                                 fontSize: 24,
                                 color: colors.black,
-                                opacity: 1,
+                                opacity: currentPage === 0 ? 0 : 1,
                             }}
                         />
                     </Pressable>
 
                     {/* Skip Button */}
-                    <Pressable style={{
+                    <Pressable
+                        onPress={_handleSkipToEnd}
+                        style={{
                         padding: sizes.base,
                     }}>
                         <Text style={{
                             fontSize: 18,
                             color: colors.black,
-                            opacity: 1,
+                            opacity: currentPage === data .length-1 ? 0 : 1,
                         }}>Skip</Text>
                     </Pressable>
                 </View>
@@ -104,7 +137,10 @@ const Onboarding = () => {
                                     width: 10,
                                     height: 10,
                                     borderRadius: 5,
-                                    backgroundColor: colors.primary,
+                                    backgroundColor:  (i == currentPage
+                                        ? colors.primary
+                                        : colors.primary + '20'
+                                    ),
                                     marginRight: 8,
                                 }}>
                                 </View>
@@ -113,35 +149,81 @@ const Onboarding = () => {
                     </View>
 
                     {/* Next Button */}
-                    <TouchableOpacity style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: 60,
-                        height: 60,
-                        borderRadius: 30,
-                        backgroundColor: colors.primary,
-                    }}
-                        activeOpacity={0.8}
-                    >
-                        <AndDesignIcon
-                            name="right"
-                            style={{
-                                fontSize: 18,
-                                color: colors.white,
-                                opacity: 0.3
+                    {currentPage != data.length - 1
+                        ? (
+                            <TouchableOpacity
+                                onPress={_handleNext}
+                                style={{
+                                flexDirection: 'row',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                width: 60,
+                                height: 60,
+                                borderRadius: 30,
+                                backgroundColor: colors.primary,
                             }}
-                        />
+                                activeOpacity={0.8}
+                            >
+                                <AndDesignIcon
+                                    name="right"
+                                    style={{
+                                        fontSize: 18,
+                                        color: colors.white,
+                                        opacity: 0.3
+                                    }}
+                                />
 
-                        <AndDesignIcon
-                            name="right"
-                            style={{
-                                fontSize: 25,
-                                color: colors.white,
-                                marginLeft: -15,
-                            }}
-                        />
-                    </TouchableOpacity>
+                                <AndDesignIcon
+                                    name="right"
+                                    style={{
+                                        fontSize: 25,
+                                        color: colors.white,
+                                        marginLeft: -15,
+                                    }}
+                                />
+                            </TouchableOpacity>
+                        )
+                        :
+                        (
+                            <TouchableOpacity
+                                style={{
+                                    paddingHorizontal: sizes.base * 2,
+                                    height: 60,
+                                    borderRadius: 30,
+                                    backgroundColor: colors.primary,
+                                    flexDirection: 'row',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                }}>
+                                <Text
+                                    style={{
+                                        color: colors.white,
+                                        fontSize: 18,
+                                        marginLeft: sizes.base
+                                    }}
+                                >Get Started</Text>
+
+                                <AndDesignIcon
+                                    name="right"
+                                    style={{
+                                        fontSize: 18,
+                                        color: colors.white,
+                                        opacity: 0.3,
+                                        marginLeft: sizes.base
+                                    }}
+                                />
+                                <AndDesignIcon
+                                    name="right"
+                                    style={{
+                                        fontSize: 25,
+                                        color: colors.white,
+                                        marginLeft: -15,
+                                    }}
+                                />
+                            </TouchableOpacity>
+                        )
+                    }
+                    
                 </View>
             </SafeAreaView>
         )
@@ -219,6 +301,9 @@ const Onboarding = () => {
                 renderItem={_renderFlatlistItem}
 
                 onViewableItemsChanged={handleViewableItemsChanged.current}
+                viewabilityConfig={{ itemVisiblePercentThreshold: 100 }}
+                initialNumToRender={1}
+                extraData={sizes.width}
             />
             
 

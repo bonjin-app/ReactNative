@@ -7,7 +7,7 @@ import {
     Text,
     View
 } from 'react-native'
-import songs from '../../assets/data/data';
+import songs from '../../assets/data/data.json';
 import Controller from '../components/Controller';
 
 const { width, height } = Dimensions.get('window');
@@ -47,11 +47,14 @@ const Player = () => {
                 }}
             >
                 <Animated.Image
-                    source={item.image}
+                    source={{
+                        uri: item.artwork,
+                    }}
                     style={{
                         width: 320,
                         height: 320,
                         borderRadius: 5,
+                        backgroundColor: '#EAEAEA'
                     }}
                 />
             </Animated.View>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { FlatList, ImageBackground, Pressable, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { colors, sizes } from '../constants'
 import AndDesignIcon from 'react-native-vector-icons/AntDesign'
@@ -26,6 +26,22 @@ const data = [
 ]
 
 const Onboarding = () => {
+
+    const flatlistRef = useRef(null);
+    const [currentPage, setCurrentPage] = useState(0);
+    const [viewableItems, setViewableItems] = useState([])
+
+    const handleViewableItemsChanged = useRef(({ viewableItems }) => {
+        setViewableItems(viewableItems)
+    })
+
+    useEffect(() => {
+        if (!viewableItems[0] || currentPage === viewableItems[0].index) {
+            return;
+        }
+        setCurrentPage(viewableItems[0].index)
+
+    }, [viewableItems])
 
     const _renderTopSection = () => {
         return (
@@ -194,12 +210,18 @@ const Onboarding = () => {
 
             {/* Flatlist */}
             <FlatList
+                ref={flatlistRef}
                 data={data}
                 pagingEnabled
                 horizontal
                 showsHorizontalScrollIndicator={false}
                 keyExtractor={(item) => item._id}
                 renderItem={_renderFlatlistItem}
+
+                onViewableItemsChanged={handleViewableItemsChanged.current}
+                viewabilityConfig={{
+                    viewAreaConveragePercentThreshold: 100,
+                }}
             />
             
 

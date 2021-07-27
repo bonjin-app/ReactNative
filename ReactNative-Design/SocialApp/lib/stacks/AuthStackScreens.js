@@ -8,7 +8,9 @@ const AuthStackScreens = () => {
     const AuthStack = createStackNavigator();
     
     return (
-        <AuthStack.Navigator>
+        <AuthStack.Navigator
+            headerMode="none"
+        >
             <AuthStack.Screen
                 name="SignIn"
                 component={SignInScreen}
@@ -22,3 +24,4 @@ const AuthStackScreens = () => {
 }
 
 export default AuthStackScreens
+

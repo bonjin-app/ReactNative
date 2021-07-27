@@ -19,7 +19,7 @@ const Text = styled.Text`
     ${({ title, large, medium, small, tiny }) => {
         switch (true) {
             case title:
-                return `font0size: 32px;`
+                return `font-size: 32px;`
             case large:
                 return `font-size: 24px;`
             case medium:

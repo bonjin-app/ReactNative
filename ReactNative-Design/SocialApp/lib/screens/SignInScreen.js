@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import Text from '../components/Text'
 
-const SignInScreen = () => {
+const SignInScreen = ({ navigation }) => {
+
+    const [loading, setLoading] = useState(false);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
     return (
         <Container>
             <Main>
@@ -21,6 +26,8 @@ const SignInScreen = () => {
                         autoCorrect={false}
                         autoFocus={true}
                         keyboardType="email-address"
+                        onChangeText={email => setEmail(email.trim())}
+                        value={email}
                     />
                 </AuthContainer>
 
@@ -30,21 +37,29 @@ const SignInScreen = () => {
                         autoCapitalize="none"
                         autoCompleteType="password"
                         autoCorrect={false}
-                        autoFocus={true}
                         secureTextEntry={true}
+                        onChangeText={password => setPassword(password.trim())}
+                        value={password}
                     />
                 </AuthContainer>
             </Auth>
 
-            <SignInContainer>
-                <Text
-                    bold
-                    center
-                    color="#FFF"
-                >Sign In</Text>
+            <SignInContainer disabled={loading}>
+                {loading ? (
+                    <Loading />
+                ) : (
+                    <Text
+                        bold
+                        center
+                        color="#FFF"
+                    >Sign In</Text>   
+                )}
+                
             </SignInContainer>
 
-            <SignUp>
+            <SignUp
+                onPress={() => navigation.navigate('SignUp')}
+            >
                 <Text
                     smail
                     center
@@ -99,6 +114,11 @@ const SignInContainer = styled.TouchableOpacity`
     background-color: #8022d9;
     border-radius: 6px;
 `;
+
+const Loading = styled.ActivityIndicator.attrs((props) => ({
+    color: '#FFF',
+    size: 'small',
+}))``;
 
 const SignUp = styled.TouchableOpacity`
     margin-top: 24px;

@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-const TextStyle = ({...props, children}) => {
+const TextStyle = ({...props}) => {
     return (
         <Text
             {...props}
-        >{children}</Text>
+        >{props.children}</Text>
     )
 }
 

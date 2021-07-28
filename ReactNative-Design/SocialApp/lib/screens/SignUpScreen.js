@@ -18,6 +18,12 @@ const SignUpScreen = ({ navigation }) => {
                     center>Sign up to get started.</Text>
             </Main>
 
+            <ProfilePhotoContainer>
+                <DefaultProfilePhoto>
+
+                </DefaultProfilePhoto>
+            </ProfilePhotoContainer>
+
             <Auth>
                 <AuthContainer>
                     <AuthTitle>Username</AuthTitle>
@@ -63,25 +69,25 @@ const SignUpScreen = ({ navigation }) => {
                         bold
                         center
                         color="#FFF"
-                    >Sign Up</Text>   
+                    >Sign Up</Text>
                 )}
-                
+
             </SignUpContainer>
 
             <SignIn
                 onPress={() => navigation.navigate('SignIn')}
             >
-                <Text
-                    smail
-                    center
-                >New to SocialApp? <Text bold color="#8022D9">Sign Up</Text></Text>
+                <Text smail center>
+                    New to SocialApp? {" "}
+                    <Text bold color="#8022D9">Sign Up</Text>
+                </Text>
             </SignIn>
 
             <HeaderGraphic>
                 <RightCircle />
                 <LeftCircle />
             </HeaderGraphic>
-            <StatusBar barStyle="light-content"/>
+            <StatusBar barStyle="light-content" />
         </Container>
     )
 }

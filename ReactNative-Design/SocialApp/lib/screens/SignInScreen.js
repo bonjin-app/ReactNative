@@ -52,25 +52,25 @@ const SignInScreen = ({ navigation }) => {
                         bold
                         center
                         color="#FFF"
-                    >Sign In</Text>   
+                    >Sign In</Text>
                 )}
-                
+
             </SignInContainer>
 
             <SignUp
                 onPress={() => navigation.navigate('SignUp')}
             >
-                <Text
-                    smail
-                    center
-                >New to SocialApp? <Text bold color="#8022D9">Sign Up</Text></Text>
+                <Text smail center>
+                    Already have an account? {" "}
+                    <Text bold color="#8022D9">Sign Up</Text>
+                </Text>
             </SignUp>
 
             <HeaderGraphic>
                 <RightCircle />
                 <LeftCircle />
             </HeaderGraphic>
-            <StatusBar barStyle="light-content"/>
+            <StatusBar barStyle="light-content" />
         </Container>
     )
 }

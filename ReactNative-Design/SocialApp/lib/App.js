@@ -6,7 +6,7 @@ import AppStackScreens from './stacks/AppStackScreens'
 const App = () => {
   return (
     <NavigationContainer>
-      <AppStackScreens/>
+      <AppStackScreens />
     </NavigationContainer>
   )
 }

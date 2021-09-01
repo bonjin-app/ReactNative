@@ -14,6 +14,7 @@
 		3E383FB126DF35E700976D73 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		3E383FF226DF36D200976D73 /* RCTCalendarModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E383FF126DF36D200976D73 /* RCTCalendarModule.m */; };
 		3E383FF326DF36D200976D73 /* RCTCalendarModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E383FF126DF36D200976D73 /* RCTCalendarModule.m */; };
+		3EF8E13226DF74AD004F3634 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF8E13126DF74A8004F3634 /* libsqlite3.0.tbd */; };
 		6826A958D32B62D08F715B63 /* libPods-ExampleCalendarModule-ExampleCalendarModuleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3101436ED1B6FD731A17536E /* libPods-ExampleCalendarModule-ExampleCalendarModuleTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		C81D32C4CFC1E82CAE8D8714 /* libPods-ExampleCalendarModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1532967CB6D610B6DB698C4 /* libPods-ExampleCalendarModule.a */; };
@@ -44,6 +45,7 @@
 		32F010722570050467CB1A73 /* Pods-ExampleCalendarModule-ExampleCalendarModuleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleCalendarModule-ExampleCalendarModuleTests.debug.xcconfig"; path = "Target Support Files/Pods-ExampleCalendarModule-ExampleCalendarModuleTests/Pods-ExampleCalendarModule-ExampleCalendarModuleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3E383FBE26DF366800976D73 /* RCTCalendarModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTCalendarModule.h; sourceTree = "<group>"; };
 		3E383FF126DF36D200976D73 /* RCTCalendarModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTCalendarModule.m; sourceTree = "<group>"; };
+		3EF8E13126DF74A8004F3634 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ExampleCalendarModule/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B0836EA60834485515D1CC7 /* Pods-ExampleCalendarModule-ExampleCalendarModuleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleCalendarModule-ExampleCalendarModuleTests.release.xcconfig"; path = "Target Support Files/Pods-ExampleCalendarModule-ExampleCalendarModuleTests/Pods-ExampleCalendarModule-ExampleCalendarModuleTests.release.xcconfig"; sourceTree = "<group>"; };
 		D1532967CB6D610B6DB698C4 /* libPods-ExampleCalendarModule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ExampleCalendarModule.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +67,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C81D32C4CFC1E82CAE8D8714 /* libPods-ExampleCalendarModule.a in Frameworks */,
+				3EF8E13226DF74AD004F3634 /* libsqlite3.0.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +109,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3EF8E13126DF74A8004F3634 /* libsqlite3.0.tbd */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				D1532967CB6D610B6DB698C4 /* libPods-ExampleCalendarModule.a */,
 				3101436ED1B6FD731A17536E /* libPods-ExampleCalendarModule-ExampleCalendarModuleTests.a */,
@@ -166,8 +170,8 @@
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				194CC0BC5386046EEB61AC43 /* [CP] Embed Pods Frameworks */,
 				C660A32F444E35DFA5124D17 /* [CP] Copy Pods Resources */,
+				C5838AFD1D934AF41222B88C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -189,8 +193,8 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				876CCBC887DACBAFA6404CD3 /* [CP] Embed Pods Frameworks */,
 				BA41A2338701DE185F41A970 /* [CP] Copy Pods Resources */,
+				73B87907C0D21CE38B09BEF5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -211,10 +215,11 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						LastSwiftMigration = 1240;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1240;
 					};
 				};
 			};
@@ -271,23 +276,6 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		194CC0BC5386046EEB61AC43 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ExampleCalendarModule-ExampleCalendarModuleTests/Pods-ExampleCalendarModule-ExampleCalendarModuleTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ExampleCalendarModule-ExampleCalendarModuleTests/Pods-ExampleCalendarModule-ExampleCalendarModuleTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ExampleCalendarModule-ExampleCalendarModuleTests/Pods-ExampleCalendarModule-ExampleCalendarModuleTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		222E29AE3E2DEDDA32437D19 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -308,6 +296,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		73B87907C0D21CE38B09BEF5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExampleCalendarModule/Pods-ExampleCalendarModule-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExampleCalendarModule/Pods-ExampleCalendarModule-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ExampleCalendarModule/Pods-ExampleCalendarModule-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		81714294146244E63E6244AA /* [CP] Check Pods Manifest.lock */ = {
@@ -332,23 +337,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		876CCBC887DACBAFA6404CD3 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ExampleCalendarModule/Pods-ExampleCalendarModule-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ExampleCalendarModule/Pods-ExampleCalendarModule-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ExampleCalendarModule/Pods-ExampleCalendarModule-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		BA41A2338701DE185F41A970 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -364,6 +352,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ExampleCalendarModule/Pods-ExampleCalendarModule-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5838AFD1D934AF41222B88C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExampleCalendarModule-ExampleCalendarModuleTests/Pods-ExampleCalendarModule-ExampleCalendarModuleTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExampleCalendarModule-ExampleCalendarModuleTests/Pods-ExampleCalendarModule-ExampleCalendarModuleTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ExampleCalendarModule-ExampleCalendarModuleTests/Pods-ExampleCalendarModule-ExampleCalendarModuleTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C660A32F444E35DFA5124D17 /* [CP] Copy Pods Resources */ = {
@@ -441,6 +446,7 @@
 			baseConfigurationReference = 32F010722570050467CB1A73 /* Pods-ExampleCalendarModule-ExampleCalendarModuleTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -456,6 +462,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/KeySharp",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -463,6 +473,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Module/ExampleCalendarModuleTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExampleCalendarModule.app/ExampleCalendarModule";
 			};
 			name = Debug;
@@ -472,6 +485,7 @@
 			baseConfigurationReference = 8B0836EA60834485515D1CC7 /* Pods-ExampleCalendarModule-ExampleCalendarModuleTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -484,6 +498,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/KeySharp",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -491,6 +509,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Module/ExampleCalendarModuleTests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExampleCalendarModule.app/ExampleCalendarModule";
 			};
 			name = Release;
@@ -502,6 +522,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LA2V4SY85C;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -512,6 +533,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/KeySharp",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -519,6 +544,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = ExampleCalendarModule;
+				SWIFT_OBJC_BRIDGING_HEADER = "Module/ExampleCalendarModule-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -532,6 +558,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LA2V4SY85C;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -541,6 +568,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/KeySharp",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -548,6 +579,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = ExampleCalendarModule;
+				SWIFT_OBJC_BRIDGING_HEADER = "Module/ExampleCalendarModule-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

@@ -11,6 +11,9 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		3E383FB126DF35E700976D73 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		3E383FF226DF36D200976D73 /* RCTCalendarModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E383FF126DF36D200976D73 /* RCTCalendarModule.m */; };
+		3E383FF326DF36D200976D73 /* RCTCalendarModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E383FF126DF36D200976D73 /* RCTCalendarModule.m */; };
 		6826A958D32B62D08F715B63 /* libPods-ExampleCalendarModule-ExampleCalendarModuleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3101436ED1B6FD731A17536E /* libPods-ExampleCalendarModule-ExampleCalendarModuleTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		C81D32C4CFC1E82CAE8D8714 /* libPods-ExampleCalendarModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1532967CB6D610B6DB698C4 /* libPods-ExampleCalendarModule.a */; };
@@ -39,6 +42,8 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ExampleCalendarModule/main.m; sourceTree = "<group>"; };
 		3101436ED1B6FD731A17536E /* libPods-ExampleCalendarModule-ExampleCalendarModuleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ExampleCalendarModule-ExampleCalendarModuleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32F010722570050467CB1A73 /* Pods-ExampleCalendarModule-ExampleCalendarModuleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleCalendarModule-ExampleCalendarModuleTests.debug.xcconfig"; path = "Target Support Files/Pods-ExampleCalendarModule-ExampleCalendarModuleTests/Pods-ExampleCalendarModule-ExampleCalendarModuleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3E383FBE26DF366800976D73 /* RCTCalendarModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTCalendarModule.h; sourceTree = "<group>"; };
+		3E383FF126DF36D200976D73 /* RCTCalendarModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTCalendarModule.m; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ExampleCalendarModule/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B0836EA60834485515D1CC7 /* Pods-ExampleCalendarModule-ExampleCalendarModuleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleCalendarModule-ExampleCalendarModuleTests.release.xcconfig"; path = "Target Support Files/Pods-ExampleCalendarModule-ExampleCalendarModuleTests/Pods-ExampleCalendarModule-ExampleCalendarModuleTests.release.xcconfig"; sourceTree = "<group>"; };
 		D1532967CB6D610B6DB698C4 /* libPods-ExampleCalendarModule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ExampleCalendarModule.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +97,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				3E383FBE26DF366800976D73 /* RCTCalendarModule.h */,
+				3E383FF126DF36D200976D73 /* RCTCalendarModule.m */,
 			);
 			name = ExampleCalendarModule;
 			sourceTree = "<group>";
@@ -114,7 +121,6 @@
 				32F010722570050467CB1A73 /* Pods-ExampleCalendarModule-ExampleCalendarModuleTests.debug.xcconfig */,
 				8B0836EA60834485515D1CC7 /* Pods-ExampleCalendarModule-ExampleCalendarModuleTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -403,6 +409,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E383FF326DF36D200976D73 /* RCTCalendarModule.m in Sources */,
+				3E383FB126DF35E700976D73 /* main.m in Sources */,
 				00E356F31AD99517003FC87E /* ExampleCalendarModuleTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,6 +419,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E383FF226DF36D200976D73 /* RCTCalendarModule.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
@@ -432,6 +441,10 @@
 			baseConfigurationReference = 32F010722570050467CB1A73 /* Pods-ExampleCalendarModule-ExampleCalendarModuleTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -460,6 +473,10 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ExampleCalendarModuleTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -486,6 +503,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ExampleCalendarModule/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -511,6 +532,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ExampleCalendarModule/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

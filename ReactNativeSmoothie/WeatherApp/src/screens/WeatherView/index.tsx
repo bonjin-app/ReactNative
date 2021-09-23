@@ -86,7 +86,10 @@ const WeatherView = ({ }: Props) => {
                     })
             },
             error => {
-                console.log(`errors : ${error}`);
+                setWeatherInfo({
+                    isLoading: false,
+                })
+                
                 showError('위치 정보를 가져오는데 실패하였다.');
             }
         )
@@ -99,7 +102,6 @@ const WeatherView = ({ }: Props) => {
     }
 
     useEffect(() => {
-        console.log('useEffect')
         getCurrentWeather();
 
     }, [])

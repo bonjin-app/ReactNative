@@ -145,7 +145,6 @@
 				0CF54C50E9A71702236FAE39 /* Pods-WeatherApp-WeatherAppTests.debug.xcconfig */,
 				A6D8E62B11034DAAF99EAF0A /* Pods-WeatherApp-WeatherAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

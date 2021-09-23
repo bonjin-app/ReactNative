@@ -22,7 +22,7 @@ interface Props {
 
 const Background = ({ onPress }: Props) => {
     return (
-        <Container>
+        <Container onPress={onPress}>
             <BlackBackground/>
         </Container>
     )

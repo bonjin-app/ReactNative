@@ -76,6 +76,43 @@ class Counter extends React.Component<Props, State> {
             </Container>
         )
     }
+
+    static getDerivedStateFromProps(nextProps: Props, prevState: State) {
+        console.log('getDerivedStateFromProps');
+
+        return null;
+    }
+
+    componentDidMount() {
+        console.log('componentDidMount');
+    }
+
+    getSnapshotBeforeUpdate(prevProps: Props, prevState: State) {
+        console.log('getSnapshotBeforeUpdate');
+
+        return {
+            testData: true,
+        }
+    }
+
+    componentDidUpdate(prevProps: Props, prevState: State, snapshot: ISnapshot) {
+        console.log('componentDidUpdate')
+    }
+
+    shouldComponentUpdate(prevProps: Props, prevState: State) {
+        console.log('shouldComponentUpdate')
+        return true;
+    }
+
+    componentWillUnmount() {
+        console.log('componentWillUnmount');
+    }
+
+    componentDidCatch(error: Error, info: React.ErrorInfo) {
+        this.setState({
+            error: true,
+        });
+    }
 }
 
 export default Counter

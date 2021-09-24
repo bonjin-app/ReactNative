@@ -35,17 +35,6 @@ const MovieNavigator = () => {
             <Stack.Screen
                 name="MovieHome"
                 component={MovieHome}
-                options={{
-                    title: 'MOVIEAPP',
-                    headerTintColor: '#E70915',
-                    headerStyle: {
-                        backgroundColor: '#141414',
-                        borderBottomWidth: 0,
-                    },
-                    headerTitleStyle: {
-                        fontWeight: 'bold',
-                    },
-                }}
             />
 
             <Stack.Screen
@@ -54,6 +43,7 @@ const MovieNavigator = () => {
                 options={{
                 title: 'MOVIEAPP',
                 headerTintColor: '#E70915',
+                headerTitleAlign: 'center',
                 headerStyle: {
                     backgroundColor: '#141414',
                     borderBottomWidth: 0,

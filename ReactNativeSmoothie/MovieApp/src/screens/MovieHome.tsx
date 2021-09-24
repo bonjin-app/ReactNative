@@ -1,11 +1,66 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import { StackNavigationProp } from '@react-navigation/stack';
+import React, { useContext, useEffect, useLayoutEffect } from 'react'
+import styled from 'styled-components/native';
+import { UserContext } from '~/contexts/User';
+import BigCatalogList from './BigCatalogList';
 
-const MovieHome = () => {
+const Container = styled.SafeAreaView`
+  flex: 1;
+  background-color: #141414;
+`;
+
+const StyleButton = styled.TouchableOpacity`
+    padding: 8px;
+`;
+
+const Icon = styled.Image``;
+
+type NavigationProp = StackNavigationProp<MovieNaviParamList, 'MovieHome'>;
+interface Props {
+  navigation: NavigationProp;
+}
+
+const MovieHome = ({ navigation }: Props) => {
+    
+    const { logout } = useContext<IUserContext>(UserContext);
+
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            title: "MOVIE APP",
+            headerTintColor: '#E70915',
+            headerTitleAlign: 'center',
+            headerStyle: {
+                backgroundColor: '#141414',
+                borderBottomWidth: 0,
+            },
+            headerTitleStyle: {
+                fontWeight: 'bold',
+            },
+            headerRight: () => (
+                <StyleButton
+                    onPress={() => {
+                        logout();
+                    }} >
+                    <Icon source={ require('~/assets/images/ic_logout.png')}/>
+                </StyleButton>
+            ),
+        })
+    }, [])
+
+    useEffect(() => {
+    }, [])
+
     return (
-        <View>
-            <Text>MovieHome</Text>
-        </View>
+        <Container>
+            <BigCatalogList
+                url="https://yts.lt/api/v2/list_movies.json?sort_by=like_count&order_by=desc&limit=5"
+                onPress={(id: number) => {
+                    navigation.navigate('MovieDetail', {
+                        id,
+                    });
+                }}
+            />
+        </Container>
     )
 }
 

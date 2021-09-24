@@ -18,6 +18,7 @@ const LoginNavigator = () => {
                     title: 'MOVIEAPP',
                     headerTransparent: true,
                     headerTintColor: '#E70915',
+                    headerTitleAlign: 'center',
                     headerTitleStyle: {
                         fontWeight: 'bold',
                     }

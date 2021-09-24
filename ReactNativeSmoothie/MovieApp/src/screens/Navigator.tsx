@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import MovieDetail from "./MovieDetail";
 import Login from "./Login";
 import MovieHome from "./MovieHome";
+import { NavigationContainer } from "@react-navigation/native";
+import { UserContext } from '~/contexts/User';
 
 const Stack = createStackNavigator();
 
@@ -61,5 +63,14 @@ const MovieNavigator = () => {
                 }}
             />
         </Stack.Navigator>
+    )
+}
+
+export default () => {
+    const { isLoading, userInfo } = useContext<IUserContext>(UserContext);
+    return (
+        <NavigationContainer>
+            <LoginNavigator/>
+        </NavigationContainer>
     )
 }

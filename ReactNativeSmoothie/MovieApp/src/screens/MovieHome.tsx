@@ -27,7 +27,7 @@ const MovieHome = ({ navigation }: Props) => {
 
     useLayoutEffect(() => {
         navigation.setOptions({
-            title: "MOVIE APP",
+            title: "MOVIEAPP",
             headerTintColor: '#E70915',
             headerTitleAlign: 'center',
             headerStyle: {

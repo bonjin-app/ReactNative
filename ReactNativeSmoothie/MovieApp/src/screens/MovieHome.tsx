@@ -3,8 +3,9 @@ import React, { useContext, useEffect, useLayoutEffect } from 'react'
 import styled from 'styled-components/native';
 import { UserContext } from '~/contexts/User';
 import BigCatalogList from './BigCatalogList';
+import SubCatalogList from './SubCatalogList';
 
-const Container = styled.SafeAreaView`
+const Container = styled.ScrollView`
   flex: 1;
   background-color: #141414;
 `;
@@ -60,6 +61,34 @@ const MovieHome = ({ navigation }: Props) => {
                     });
                 }}
             />
+
+            <SubCatalogList
+                title="최신 등록순"
+                url="https://yts.lt/api/v2/list_movies.json?sort_by=date_added&order_by=desc&limit=10"
+                onPress={(id: number) => {
+                    navigation.navigate('MovieDetail', {
+                        id,
+                    });
+                }}
+            />
+            <SubCatalogList
+                title="평점순"
+                url="https://yts.lt/api/v2/list_movies.json?sort_by=rating&order_by=desc&limit=10"
+                onPress={(id: number) => {
+                navigation.navigate('MovieDetail', {
+                    id,
+                });
+                }}
+            />
+            <SubCatalogList
+                title="다운로드순"
+                url="https://yts.lt/api/v2/list_movies.json?sort_by=download_count&order_by=desc&limit=10"
+                onPress={(id: number) => {
+                navigation.navigate('MovieDetail', {
+                    id,
+                });
+                }}
+            />    
         </Container>
     )
 }

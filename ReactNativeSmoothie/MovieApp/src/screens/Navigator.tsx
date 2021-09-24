@@ -5,6 +5,7 @@ import Login from "./Login";
 import MovieHome from "./MovieHome";
 import { NavigationContainer } from "@react-navigation/native";
 import { UserContext } from '~/contexts/User';
+import Loading from "./Loading";
 
 const Stack = createStackNavigator();
 
@@ -69,9 +70,14 @@ const MovieNavigator = () => {
 
 export default () => {
     const { isLoading, userInfo } = useContext<IUserContext>(UserContext);
+
+    if (!isLoading) {
+        return <Loading/>
+    }
+
     return (
         <NavigationContainer>
-            <LoginNavigator/>
+            {userInfo ? <MovieNavigator /> : <LoginNavigator />}
         </NavigationContainer>
     )
 }

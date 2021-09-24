@@ -1,17 +1,30 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React, { useContext } from 'react'
+import { View, Text, SafeAreaView } from 'react-native'
+import {UserContext} from '~/contexts/User';
+
+import Button from '~/components/Button'
 import Input from '~/components/Input'
 
 const Login = () => {
+
+    const { login } = useContext<IUserContext>(UserContext);
+    
     return (
-        <View>
+        <SafeAreaView>
             <Text>Login</Text>
             <Text>Login</Text>
             <Text>Login</Text>
             <Text>Login</Text>
             <Text>Login</Text>
-            <Input/>
-        </View>
+            <Input />
+            <Button
+                style={{ marginBottom: 24 }}
+                label="로그인"
+                onPress={() => {
+                    login('bonjin.app@gmail.com', 'password');
+                }}
+            />
+        </SafeAreaView>
     )
 }
 

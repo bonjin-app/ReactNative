@@ -57,6 +57,19 @@ const UserContextProvider = ({ children }: Props) => {
     useEffect(() => {
         getUserInfo();
     }, []);
+
+    return (
+        <UserContext.Provider
+            value={{
+                isLoading,
+                userInfo,
+                login,
+                getUserInfo,
+                logout,
+            }}>
+            {children}
+        </UserContext.Provider>
+    );
 }
 
 export { UserContextProvider, UserContext };

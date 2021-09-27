@@ -1,13 +1,11 @@
 import React from 'react'
-import { SafeAreaView, Text } from 'react-native'
-import * as D from './src/data'
-
-const person = D.createRandomPerson()
+import { SafeAreaView } from 'react-native'
+import ClassComponent from './src/screens/ClassComponent'
 
 const App = () => {
   return (
     <SafeAreaView>
-      <Text> {JSON.stringify(person, null, 2)}</Text>
+      <ClassComponent/>
     </SafeAreaView>
   )
 }

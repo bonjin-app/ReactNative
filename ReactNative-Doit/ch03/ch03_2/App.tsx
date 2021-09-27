@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   safeAreaView: {
     backgroundColor: Colors.blue500,
     flex: 1,
-    padding: 10,
+    paddingLeft: Platform.select({ios: 0, android: 20}),
   },
   text: {
     fontSize: 20,
@@ -37,7 +37,8 @@ const styles = StyleSheet.create({
   box: {
     height: 100,
     backgroundColor: Colors.lime500,
-    marginBottom: 10
+    marginBottom: 10,
+    marginLeft: Platform.select({ios: 20, android: 0}),
   },
   border: {
     borderWidth: 10,

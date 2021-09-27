@@ -1,18 +1,20 @@
 import React from 'react'
-import { SafeAreaView } from 'react-native'
-import ArrowComponent from './src/screens/ArrowComponent'
-import ClassComponent from './src/screens/ClassComponent'
+import { SafeAreaView, ScrollView } from 'react-native'
 import Person from './src/screens/Person'
 import * as D from './src/data'
 
-const person = D.createRandomPerson()
+const people = D.makeArray(100).map(D.createRandomPerson)
 
 const App = () => {
+  const children = people.map((person) => {
+    return <Person key={ person.id} person={ person}/>
+  })
+
   return (
     <SafeAreaView>
-      <ClassComponent />
-      <ArrowComponent />
-      <Person person={person} />
+      <ScrollView>
+        {children}
+      </ScrollView>
     </SafeAreaView>
   )
 }

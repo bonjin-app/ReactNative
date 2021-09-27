@@ -1,24 +1,20 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, View } from 'react-native'
 import { Colors } from 'react-native-paper'
 import * as D from '../data'
 
-const title = 'Content'
-const Content = () => {
-    return (
-        <View style={[styles.view]}>
-            <Text style={[styles.text]}>{title}</Text>
+const avatars = D.makeArray(200).map((notUsed) => D.randomAvatarUrl())
 
-            <View style={[{flex: 0, backgroundColor: Colors.red500}]}>
-                <Text>flex: 0</Text>
+const Content = () => {
+    const children = avatars.map((avatarUrl, index) => {
+        return (
+            <View key={index} style={styles.avatarView}>
+                <Image style={styles.avatar} source={{ uri: avatarUrl }}/>
             </View>
-            <View style={[{flex: 1, backgroundColor: Colors.green500}]}>
-                <Text>flex: 1</Text>
-            </View>
-            <View style={[{flex: 2, backgroundColor: Colors.purple500}]}>
-                <Text>flex: 2</Text>
-            </View>
-        </View>
+        )
+    })
+    return (
+        <View style={[styles.view]}>{children}</View>
     )
 }
 
@@ -27,11 +23,21 @@ export default Content
 const styles = StyleSheet.create({
     view: {
         flex: 1,
+        flexDirection: 'row',
+        // overflow: 'hidden',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
         padding: 5,
-        backgroundColor: Colors.blue900,
     },
     text: {
         fontSize: 20,
-        color: 'white',
+    },
+    avatarView: {
+        padding: 3,
+    },
+    avatar: {
+        width: 50,
+        height: 50,
+        borderRadius: 25,
     }
 })

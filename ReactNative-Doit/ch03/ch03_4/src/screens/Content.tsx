@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { Colors } from 'react-native-paper'
 import * as D from '../data'
 
@@ -14,7 +14,7 @@ const Content = () => {
         )
     })
     return (
-        <View style={[styles.view]}>{children}</View>
+        <ScrollView contentContainerStyle={[styles.view]}>{children}</ScrollView>
     )
 }
 
@@ -22,9 +22,7 @@ export default Content
 
 const styles = StyleSheet.create({
     view: {
-        flex: 1,
         flexDirection: 'row',
-        // overflow: 'hidden',
         flexWrap: 'wrap',
         justifyContent: 'center',
         padding: 5,

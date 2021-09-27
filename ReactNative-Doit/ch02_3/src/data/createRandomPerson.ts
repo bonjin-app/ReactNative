@@ -8,7 +8,7 @@ export const createRandomPerson = (): IPerson => {
     return {
         id: F.randomId(),
         createdDate: F.randomDate(),
-        modifiedDate: new Date(),
+        modifiedDate: new Date,
         name: name,
         email: F.randomEmail(),
         avatar: F.randomAvatarUrl(name),

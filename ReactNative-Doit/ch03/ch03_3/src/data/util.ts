@@ -11,5 +11,5 @@ export const unsplashUrl = (width: number, height: number): string => {
 }
 
 export const avatarUriByName = (name: string) => {
-    return `https://uri-avatars.com/api/?name=${name.split(' ').join('+')}`
+    return `https://ui-avatars.com/api/?name=${name.split(' ').join('+')}`
 }

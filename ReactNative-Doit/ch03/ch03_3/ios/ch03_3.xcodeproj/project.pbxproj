@@ -11,9 +11,13 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		1A7C18686CF14463858A5F35 /* DancingScript-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42E714035BEC431EB959F63E /* DancingScript-Regular.ttf */; };
+		2B35272539A540C88CB4317C /* DancingScript-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3442885FEA2144FAAE9E979A /* DancingScript-SemiBold.ttf */; };
+		2FA8A6D7D424489DAE4D8CC1 /* DancingScript-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F95641CAD6B498EB989986C /* DancingScript-Medium.ttf */; };
 		6172F2D35A4C3AA820D92908 /* libPods-ch03_3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423831EA8574132BED9D8CC /* libPods-ch03_3.a */; };
 		7EF68E3733C33B6898317E18 /* libPods-ch03_3-ch03_3Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFE59519B596E51CEFDCCC0 /* libPods-ch03_3-ch03_3Tests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		EE4F9B99CD144424BBB25256 /* DancingScript-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53CE7B4A03014115BFDA16A6 /* DancingScript-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,9 +41,13 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ch03_3/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ch03_3/main.m; sourceTree = "<group>"; };
 		1D0AE47A65C8663E3B452821 /* Pods-ch03_3-ch03_3Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ch03_3-ch03_3Tests.release.xcconfig"; path = "Target Support Files/Pods-ch03_3-ch03_3Tests/Pods-ch03_3-ch03_3Tests.release.xcconfig"; sourceTree = "<group>"; };
+		3442885FEA2144FAAE9E979A /* DancingScript-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "DancingScript-SemiBold.ttf"; path = "../src/assets/fonts/DancingScript-SemiBold.ttf"; sourceTree = "<group>"; };
+		42E714035BEC431EB959F63E /* DancingScript-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "DancingScript-Regular.ttf"; path = "../src/assets/fonts/DancingScript-Regular.ttf"; sourceTree = "<group>"; };
+		53CE7B4A03014115BFDA16A6 /* DancingScript-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "DancingScript-Bold.ttf"; path = "../src/assets/fonts/DancingScript-Bold.ttf"; sourceTree = "<group>"; };
 		6423831EA8574132BED9D8CC /* libPods-ch03_3.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ch03_3.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C97AB639B58BBB4B15BBE30 /* Pods-ch03_3-ch03_3Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ch03_3-ch03_3Tests.debug.xcconfig"; path = "Target Support Files/Pods-ch03_3-ch03_3Tests/Pods-ch03_3-ch03_3Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ch03_3/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9F95641CAD6B498EB989986C /* DancingScript-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "DancingScript-Medium.ttf"; path = "../src/assets/fonts/DancingScript-Medium.ttf"; sourceTree = "<group>"; };
 		ABFE59519B596E51CEFDCCC0 /* libPods-ch03_3-ch03_3Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ch03_3-ch03_3Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0A881CF5CF3F2B244570E2A /* Pods-ch03_3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ch03_3.debug.xcconfig"; path = "Target Support Files/Pods-ch03_3/Pods-ch03_3.debug.xcconfig"; sourceTree = "<group>"; };
 		D00AAFFCFCFDA5787532823F /* Pods-ch03_3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ch03_3.release.xcconfig"; path = "Target Support Files/Pods-ch03_3/Pods-ch03_3.release.xcconfig"; sourceTree = "<group>"; };
@@ -106,6 +114,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		509753E3145F44E093925EA6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				53CE7B4A03014115BFDA16A6 /* DancingScript-Bold.ttf */,
+				9F95641CAD6B498EB989986C /* DancingScript-Medium.ttf */,
+				42E714035BEC431EB959F63E /* DancingScript-Regular.ttf */,
+				3442885FEA2144FAAE9E979A /* DancingScript-SemiBold.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +141,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				E233CBF5F47BEE60B243DCF8 /* Pods */,
+				509753E3145F44E093925EA6 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -145,7 +165,6 @@
 				6C97AB639B58BBB4B15BBE30 /* Pods-ch03_3-ch03_3Tests.debug.xcconfig */,
 				1D0AE47A65C8663E3B452821 /* Pods-ch03_3-ch03_3Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -245,6 +264,10 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				EE4F9B99CD144424BBB25256 /* DancingScript-Bold.ttf in Resources */,
+				2FA8A6D7D424489DAE4D8CC1 /* DancingScript-Medium.ttf in Resources */,
+				1A7C18686CF14463858A5F35 /* DancingScript-Regular.ttf in Resources */,
+				2B35272539A540C88CB4317C /* DancingScript-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

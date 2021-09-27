@@ -1,11 +1,13 @@
 import React from 'react'
-import { Image, ImageBackground, Platform, SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import { Alert, Image, ImageBackground, Platform, SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import * as D from './src/data'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import { Colors } from 'react-native-paper';
 
 const avatarUrl = D.randomAvatarUrl();
 const avatarSize = 50
-
 const text = `Almost before we knew it, we had left the ground.`
+const onIconPressed = () => Alert.alert('icon pressed');
 
 const App = () => {
   return (
@@ -22,6 +24,13 @@ const App = () => {
           <Text style={[styles.text, styles.semiBold]}>{text} [semi bold]</Text>
           <Text style={[styles.text, styles.bold]}>{text} [bold]</Text>
         </View>
+
+        <Icon
+          name="home"
+          size={50}
+          color={Colors.lightBlue500}
+          onPress={onIconPressed}
+        />
       </ImageBackground>
     </SafeAreaView>
   )

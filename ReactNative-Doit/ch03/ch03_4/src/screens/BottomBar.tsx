@@ -6,7 +6,7 @@ import * as D from '../data'
 
 const iconSize = 30
 const iconColor = 'white'
-const icons = ['home', 'table-search', 'face=profile-woman', 'account-settings']
+const icons = ['home', 'table-search', 'face-profile-woman', 'account-settings']
 
 const BottomBar = () => {
     const children = icons.map((name) => {

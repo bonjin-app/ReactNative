@@ -1,14 +1,21 @@
-import React, { FC, useCallback } from 'react'
+import React, { Dispatch, FC, SetStateAction, useCallback } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { Colors } from 'react-native-paper'
 import * as D from '../data'
 
-export type TopBarProps = {}
+export type TopBarProps = {
+    setPeople: Dispatch<SetStateAction<D.IPerson[]>>
+}
 
-const TopBar: FC<TopBarProps> = ({ }) => {
+const TopBar: FC<TopBarProps> = ({ setPeople }) => {
 
-    const add = useCallback(() => { }, [])
-    const deleteAll = useCallback(() => { }, [])
+    const add = useCallback(() => {
+        setPeople((prevPeople) => [D.createRandomPerson(), ...prevPeople])
+    }, [])
+
+    const deleteAll = useCallback(() => {
+        setPeople((notUsed) => [])
+    }, [])
 
     return (
         <View style={[styles.topBar]}>

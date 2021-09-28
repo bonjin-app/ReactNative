@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from 'react'
+import React, { FC, useMemo, useState } from 'react'
 import { Dimensions, FlatList, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { Colors } from 'react-native-paper'
 
@@ -24,7 +24,7 @@ const personInfomations: PersonInformation[] = [
 const numberOfComponents = personInfomations.length
 
 const App = () => {
-  const people = useMemo(() => D.makeArray(10).map(D.createRandomPerson), [])
+  const [people, setPeople] = useState<D.IPerson[]>([])
   const children = useMemo(() =>
     personInfomations.map(({ title, Component }: PersonInformation) => {
       return (
@@ -39,11 +39,11 @@ const App = () => {
         </View>
       )
     })
-  , [])
+  , [people.length])
   
   return (
     <SafeAreaView style={styles.flex}>
-      <TopBar/>
+      <TopBar setPeople={ setPeople}/>
       <ScrollView
         horizontal
         pagingEnabled

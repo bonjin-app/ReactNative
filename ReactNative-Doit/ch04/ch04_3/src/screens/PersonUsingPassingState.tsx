@@ -1,4 +1,4 @@
-import React, {FC, useCallback} from 'react'
+import React, {FC, useCallback, useState} from 'react'
 import { Alert, Image, Text, View } from 'react-native'
 import * as D from '../data'
 import { styles } from './Person.style'
@@ -6,7 +6,7 @@ import moment from 'moment-with-locales-es6'
 import Avatar from '../components/Avatar'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { Colors } from 'react-native-paper'
-import IconText from '../components/IconText'
+import PersonIcons from './PersonIcons'
 
 moment.locale('ko')
 
@@ -15,7 +15,16 @@ export type PersonProps = {
 }
 
 
-const PersonUsingPassingState: FC<PersonProps> = ({ person }) => {
+const PersonUsingPassingState: FC<PersonProps> = ({ person: initialPerson }) => {
+    const [person, setPerson] = useState<D.IPerson>({
+        ...initialPerson,
+        counts: {
+            comment: 0,
+            retweet: 0,
+            heart: 0,
+        }
+    })
+
     const avatarPressed = useCallback(
         () => {
             Alert.alert('avatar pressed.')
@@ -25,12 +34,6 @@ const PersonUsingPassingState: FC<PersonProps> = ({ person }) => {
     const deletePressed = useCallback(
         () => {
             Alert.alert('delete pressed.')
-        },
-        [],
-    )
-    const countIconPressed = useCallback(
-        (name: string) => {
-            Alert.alert(`${name} pressed.`)
         },
         [],
     )
@@ -50,32 +53,7 @@ const PersonUsingPassingState: FC<PersonProps> = ({ person }) => {
 
                 <Text numberOfLines={3} ellipsizeMode="tail" style={[styles.text]}>{person.comments}</Text>
                 <Image style={[styles.image]} source={{ uri: person.image }} />
-                <View style={[styles.countsView]}>
-                    <IconText
-                        viewStyle={[styles.touchableIcon]}
-                        onPress={() => countIconPressed('comment')}
-                        name="comment"
-                        size={24}
-                        textStyle={[styles.iconText]}
-                        text={ person.counts.comment}
-                    />
-                    <IconText
-                        viewStyle={[styles.touchableIcon]}
-                        onPress={() => countIconPressed('retweet')}
-                        name="twitter-retweet"
-                        size={24}
-                        textStyle={[styles.iconText]}
-                        text={ person.counts.retweet}
-                    />
-                    <IconText
-                        viewStyle={[styles.touchableIcon]}
-                        onPress={() => countIconPressed('heart')}
-                        name="heart"
-                        size={24}
-                        textStyle={[styles.iconText]}
-                        text={ person.counts.heart}
-                    />
-                </View>
+                <PersonIcons person={person} setPerson={ setPerson}/>
             </View>
         </View>
     )

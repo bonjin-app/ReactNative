@@ -11,6 +11,9 @@ const Fetch = () => {
         setCountries([])
         resetError()
 
+        // Error
+        // await Promise.reject(new Error('some error occurs'));
+
         const countries = await D.getCountries()
         setCountries(countries)
     })

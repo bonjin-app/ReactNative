@@ -18,6 +18,7 @@
 		A7DEB875F22341BA989C3806 /* DancingScript-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3F3BD5B78FD47338366433C /* DancingScript-Medium.ttf */; };
 		2FA18DB8B68A46A0AB7637E2 /* DancingScript-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 177F5431D3D24FD4879FBDCE /* DancingScript-Regular.ttf */; };
 		88BA7810952D470B9269C641 /* DancingScript-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E012D7765F3343438BFDD8E5 /* DancingScript-SemiBold.ttf */; };
+		A0110B9438EC4805AA1AB546 /* MajorMonoDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DC8EF51FC2A42D4B1095E2B /* MajorMonoDisplay-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		C3F3BD5B78FD47338366433C /* DancingScript-Medium.ttf */ = {isa = PBXFileReference; name = "DancingScript-Medium.ttf"; path = "../src/assets/fonts/DancingScript-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		177F5431D3D24FD4879FBDCE /* DancingScript-Regular.ttf */ = {isa = PBXFileReference; name = "DancingScript-Regular.ttf"; path = "../src/assets/fonts/DancingScript-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		E012D7765F3343438BFDD8E5 /* DancingScript-SemiBold.ttf */ = {isa = PBXFileReference; name = "DancingScript-SemiBold.ttf"; path = "../src/assets/fonts/DancingScript-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9DC8EF51FC2A42D4B1095E2B /* MajorMonoDisplay-Regular.ttf */ = {isa = PBXFileReference; name = "MajorMonoDisplay-Regular.ttf"; path = "../src/assets/fonts/MajorMonoDisplay-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				C3F3BD5B78FD47338366433C /* DancingScript-Medium.ttf */,
 				177F5431D3D24FD4879FBDCE /* DancingScript-Regular.ttf */,
 				E012D7765F3343438BFDD8E5 /* DancingScript-SemiBold.ttf */,
+				9DC8EF51FC2A42D4B1095E2B /* MajorMonoDisplay-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				A7DEB875F22341BA989C3806 /* DancingScript-Medium.ttf in Resources */,
 				2FA18DB8B68A46A0AB7637E2 /* DancingScript-Regular.ttf in Resources */,
 				88BA7810952D470B9269C641 /* DancingScript-SemiBold.ttf in Resources */,
+				A0110B9438EC4805AA1AB546 /* MajorMonoDisplay-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

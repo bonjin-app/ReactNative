@@ -6,15 +6,19 @@ export const styles = StyleSheet.create({
     view: {
         backgroundColor: Colors.lime100,
         padding: 5,
+        flexDirection: 'row',
+    },
+    leftView: {
+        padding: 5
     },
     avatar: {
-        width: 50,
-        height: 50,
-        borderRadius: 25,
+        borderColor: color(Colors.blue500).lighten(0.5).string(),
+        borderWidth: 2
     },
-    nameEmailView: {
-        flexDirection: 'row',
-        alignItems: 'center',
+    rightView: {
+        flex: 1,
+        padding: 5,
+        marginRight: 10,
     },
     name: {
         marginRight: 5,
@@ -22,27 +26,40 @@ export const styles = StyleSheet.create({
         fontWeight: '500',
     },
     email: {
-
+        textDecorationLine: 'underline',
+        color: Colors.blue500,
+        textDecorationColor: Colors.blue500,
     },
     dateView: {
-
-    },
-    createdDate: {
-
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        padding: 3,
+        marginTop: 5,
+        alignItems: 'center'
     },
     text: {
-
+        fontSize: 16,
+    },
+    comments: {
+        marginTop: 10,
+        fontSize: 16,
     },
     image: {
-        width: '100%',
         height: 150,
+        marginTop: 15,
     },
     countsView: {
         flexDirection: 'row',
         padding: 3,
         justifyContent: 'space-around'
     },
-    counts: {
-
+    touchableIcon: {
+        flexDirection: 'row',
+        padding: 5,
+        alignItems: 'center',
+    },
+    iconText: {
+        color: Colors.deepPurple500,
+        marginLeft: 3
     }
 })

@@ -10,7 +10,10 @@ const numberOrComponents = 3
 const App = () => {
   return (
     <SafeAreaView>
-      <ScrollView horizontal contentContainerStyle={[styles.contentContainerStyle]}>
+      <ScrollView
+        horizontal
+        pagingEnabled
+        contentContainerStyle={[styles.contentContainerStyle]}>
         <Cache />
         <Memo />
         <Fibo />

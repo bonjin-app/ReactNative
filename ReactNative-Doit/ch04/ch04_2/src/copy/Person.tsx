@@ -1,4 +1,4 @@
-import React, {FC} from 'react'
+import React, {FC, useCallback} from 'react'
 import { Alert, Image, Text, View } from 'react-native'
 import * as D from '../data'
 import { styles } from './Person.style'
@@ -14,11 +14,27 @@ export type PersonProps = {
     person: D.IPerson
 }
 
-const avatarPressed = () => Alert.alert('avatar pressed.')
-const deletePressed = () => Alert.alert('avatar pressed.')
-const countIconPressed = (name: string) => Alert.alert(`${name} pressed.`)
 
-const Person: FC<PersonProps> = ({person}) => {
+const Person: FC<PersonProps> = ({ person }) => {
+    const avatarPressed = useCallback(
+        () => {
+            Alert.alert('avatar pressed.')
+        },
+        [],
+    )
+    const deletePressed = useCallback(
+        () => {
+            Alert.alert('delete pressed.')
+        },
+        [],
+    )
+    const countIconPressed = useCallback(
+        (name: string) => {
+            Alert.alert(`${name} pressed.`)
+        },
+        [],
+    )
+
     return (
         <View style={[styles.view]}>
             <View style={ styles.leftView}>
@@ -29,7 +45,7 @@ const Person: FC<PersonProps> = ({person}) => {
                 <Text style={[styles.email]}>{person.email}</Text>
                 <View style={[styles.dateView]}>
                     <Text style={[styles.text]}>{moment(person.createdDate).startOf('day').fromNow()}</Text>
-                    <Icon name="trash-can-outline" size={26} color={ Colors.lightBlue500} />
+                    <Icon name="trash-can-outline" size={26} color={Colors.lightBlue500} onPress={ deletePressed}/>
                 </View>
 
                 <Text numberOfLines={3} ellipsizeMode="tail" style={[styles.text]}>{person.comments}</Text>

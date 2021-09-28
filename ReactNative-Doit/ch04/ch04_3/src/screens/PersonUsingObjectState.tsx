@@ -1,4 +1,4 @@
-import React, {FC, useCallback} from 'react'
+import React, {FC, useCallback, useState} from 'react'
 import { Alert, Image, Text, View } from 'react-native'
 import * as D from '../data'
 import { styles } from './Person.style'
@@ -15,7 +15,7 @@ export type PersonProps = {
 }
 
 
-const PersonUsingObjectState: FC<PersonProps> = ({ person }) => {
+const PersonUsingObjectState: FC<PersonProps> = ({ person: initialPerson }) => {
     const avatarPressed = useCallback(
         () => {
             Alert.alert('avatar pressed.')
@@ -28,12 +28,46 @@ const PersonUsingObjectState: FC<PersonProps> = ({ person }) => {
         },
         [],
     )
-    const countIconPressed = useCallback(
-        (name: string) => {
-            Alert.alert(`${name} pressed.`)
-        },
-        [],
-    )
+
+
+    const [person, setPerson] = useState<D.IPerson>({
+        ...initialPerson,
+        counts: {
+            comment: 0,
+            retweet: 0,
+            heart: 0,
+        }
+    })
+
+    const commentIconPressed = useCallback(() => {
+        setPerson(person => ({
+            ...person,
+            counts: {
+                ...person.counts,
+                comment: person.counts.comment + 1
+            }
+        }))
+    }, [])
+
+    const retweetIconPressed = useCallback(() => {
+        setPerson(person => ({
+            ...person,
+            counts: {
+                ...person.counts,
+                retweet: person.counts.retweet + 1
+            }
+        }))
+    }, [])
+
+    const heartIconPressed = useCallback(() => {
+        setPerson(person => ({
+            ...person,
+            counts: {
+                ...person.counts,
+                heart: person.counts.heart + 1
+            }
+        }))
+    }, [])
 
     return (
         <View style={[styles.view]}>
@@ -53,7 +87,7 @@ const PersonUsingObjectState: FC<PersonProps> = ({ person }) => {
                 <View style={[styles.countsView]}>
                     <IconText
                         viewStyle={[styles.touchableIcon]}
-                        onPress={() => countIconPressed('comment')}
+                        onPress={commentIconPressed}
                         name="comment"
                         size={24}
                         textStyle={[styles.iconText]}
@@ -61,7 +95,7 @@ const PersonUsingObjectState: FC<PersonProps> = ({ person }) => {
                     />
                     <IconText
                         viewStyle={[styles.touchableIcon]}
-                        onPress={() => countIconPressed('retweet')}
+                        onPress={retweetIconPressed}
                         name="twitter-retweet"
                         size={24}
                         textStyle={[styles.iconText]}
@@ -69,7 +103,7 @@ const PersonUsingObjectState: FC<PersonProps> = ({ person }) => {
                     />
                     <IconText
                         viewStyle={[styles.touchableIcon]}
-                        onPress={() => countIconPressed('heart')}
+                        onPress={heartIconPressed}
                         name="heart"
                         size={24}
                         textStyle={[styles.iconText]}

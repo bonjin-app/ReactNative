@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { Colors } from 'react-native-paper'
 import * as D from '../data'
 
-const title = 'Country'
-const Country = () => {
+export type CountryProps = {
+    country: D.ICountry
+}
+
+const Country: FC<CountryProps> = ({ country }) => {
+    
+    const {name, capital, population, subregion, region} = country
+
     return (
         <View style={[styles.view]}>
-            <Text style={[styles.text]}>{title}</Text>
+            <Text style={[styles.name]}>{name}</Text>
         </View>
     )
 }
@@ -16,12 +22,10 @@ export default Country
 
 const styles = StyleSheet.create({
     view: {
-        flex: 1,
         padding: 5,
-        backgroundColor: Colors.blue900,
     },
-    text: {
-        fontSize: 20,
-        color: 'white',
+    name: {
+        fontSize: 30,
+        fontWeight: '400',
     }
 })

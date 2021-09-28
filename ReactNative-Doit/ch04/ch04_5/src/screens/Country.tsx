@@ -12,8 +12,16 @@ const Country: FC<CountryProps> = ({ country }) => {
     const {name, capital, population, subregion, region} = country
 
     return (
-        <View style={[styles.view]}>
-            <Text style={[styles.name]}>{name}</Text>
+        <View style={styles.view}>
+            <View>
+                <Text style={styles.name}>{name}</Text>
+            </View>
+            <View>
+                <Text>capital: {capital}</Text>
+                <Text>population: {population}</Text>
+                <Text>subregion: {subregion}</Text>
+                <Text>region: {region}</Text>
+            </View>
         </View>
     )
 }

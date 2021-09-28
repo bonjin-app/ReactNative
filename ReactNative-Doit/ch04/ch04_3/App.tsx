@@ -6,6 +6,7 @@ import * as D from './src/data'
 import PersonUsingObjectState from './src/screens/PersonUsingObjectState'
 import PersonUsingPassingState from './src/screens/PersonUsingPassingState'
 import PersonUsingValueState from './src/screens/PersonUsingValueState'
+import TopBar from './src/screens/TopBar'
 
 const {width} = Dimensions.get('window')
 
@@ -41,7 +42,8 @@ const App = () => {
   , [])
   
   return (
-    <SafeAreaView style={ styles.flex}>
+    <SafeAreaView style={styles.flex}>
+      <TopBar/>
       <ScrollView
         horizontal
         pagingEnabled

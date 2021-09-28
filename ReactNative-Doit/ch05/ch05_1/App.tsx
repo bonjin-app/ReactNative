@@ -14,7 +14,7 @@ const App = () => {
 
   return (
     <AppearanceProvider>
-      <PaperProvider theme={DarkTheme}>
+      <PaperProvider theme={theme}>
         <ToggleThemeProvider toggleTheme={toggleTheme}>
           <SafeAreaView style={[styles.safeAreaView]}>
             <MainNavigator />

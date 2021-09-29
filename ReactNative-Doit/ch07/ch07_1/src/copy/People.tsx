@@ -1,9 +1,10 @@
-import React, {useState, useCallback, useEffect} from 'react'
-import {StyleSheet, View, Text, Switch, FlatList} from 'react-native'
-import {useTheme} from 'react-native-paper'
-import {useToggleTheme} from '../contexts'
-import {ScrollEnabledProvider, useScrollEnabled} from '../contexts'
+import React, { useState, useCallback, useEffect } from 'react'
+import { StyleSheet, View, Text, Switch, FlatList } from 'react-native'
+import { useTheme } from 'react-native-paper'
+import { useToggleTheme } from '../contexts'
+import { ScrollEnabledProvider, useScrollEnabled } from '../contexts'
 import * as D from '../data'
+import { SafeAreaView } from '../theme/navigation'
 import Person from './Person'
 
 export default function People() {
@@ -22,35 +23,41 @@ export default function People() {
       setPeople(people => people.filter(person => person.id != id)),
     []
   )
-  useEffect(addPerson, [])
+  // useEffect(addPerson, [])
+
+  useEffect(() => {
+    D.makeArray(5).forEach(addPerson)
+  }, [])
 
   return (
-    <ScrollEnabledProvider>
-      <View style={[styles.view, {backgroundColor: theme.colors.surface}]}>
-        <View style={[styles.topBar, {backgroundColor: theme.colors.accent}]}>
-          <Text onPress={addPerson} style={styles.text}>
-            add
-          </Text>
-          <Text onPress={removeAllPersons} style={styles.text}>
-            remove all
-          </Text>
-          <View style={{flex: 1}} />
-          <Switch value={theme.dark} onValueChange={toggleTheme} />
+    <SafeAreaView>
+      <ScrollEnabledProvider>
+        <View style={[styles.view, { backgroundColor: theme.colors.surface }]}>
+          <View style={[styles.topBar, { backgroundColor: theme.colors.accent }]}>
+            <Text onPress={addPerson} style={styles.text}>
+              add
+            </Text>
+            <Text onPress={removeAllPersons} style={styles.text}>
+              remove all
+            </Text>
+            <View style={{ flex: 1 }} />
+            <Switch value={theme.dark} onValueChange={toggleTheme} />
+          </View>
+          <FlatList
+            scrollEnabled={scrollEnabled}
+            data={people}
+            renderItem={({ item }) => (
+              <Person person={item} deletePressed={deletePerson(item.id)} />
+            )}
+            keyExtractor={item => item.id}
+          />
         </View>
-        <FlatList
-          scrollEnabled={scrollEnabled}
-          data={people}
-          renderItem={({item}) => (
-            <Person person={item} deletePressed={deletePerson(item.id)} />
-          )}
-          keyExtractor={item => item.id}
-        />
-      </View>
-    </ScrollEnabledProvider>
+      </ScrollEnabledProvider>
+    </SafeAreaView>
   )
 }
 const styles = StyleSheet.create({
-  view: {flex: 1},
-  topBar: {flexDirection: 'row', padding: 5},
-  text: {marginRight: 10, fontSize: 20}
+  view: { flex: 1 },
+  topBar: { flexDirection: 'row', padding: 5 },
+  text: { marginRight: 10, fontSize: 20 }
 })

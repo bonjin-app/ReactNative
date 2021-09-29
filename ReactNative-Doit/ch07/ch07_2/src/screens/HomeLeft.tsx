@@ -3,28 +3,25 @@ import { StyleSheet, View, Text } from 'react-native'
 import { SafeAreaView, TopBar, UnderlineText } from '../theme/navigation'
 import * as D from '../data'
 import { useNavigation } from '@react-navigation/core'
+import { NavigationHeader, MaterialCommunityIcon as Icon } from '../theme'
+import { LeftRightNavigation } from '../components'
 
 const title = 'HomeLeft'
 export default function HomeLeft() {
   // navigation
   const navigation = useNavigation()
-  const goBack = useCallback(() => {
-    navigation.canGoBack() && navigation.goBack()
-  }, [])
-  const goRight = useCallback(() => {
-    navigation.navigate('HomeRight', { id: D.randomId() })
-  }, [])
+  const goHome = useCallback(() => navigation.navigate('Home'), [])
 
   return (
     <SafeAreaView style={[styles.view]}>
       <View style={[styles.view]}>
-        <TopBar>
-          <UnderlineText onPress={goBack} style={styles.text}>go Back</UnderlineText>
-          <UnderlineText onPress={goRight} style={styles.text}>go Right</UnderlineText>
-        </TopBar>
-        <View style={[styles.content]}>
-          <Text style={[styles.text]}>{title}</Text>
-        </View>
+
+        <NavigationHeader Right={() => <Icon name="close" size={30} onPress={goHome} />} />
+        <LeftRightNavigation distance={40} onRightToLeft={goHome}>
+          <View style={[styles.content]}>
+            <Text style={[styles.text]}>{title}</Text>
+          </View>
+        </LeftRightNavigation>
       </View>
     </SafeAreaView>
   )

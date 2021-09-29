@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import React, { FC, ReactNode } from "react";
 import { StyleProp, StyleSheet, TextStyle, ViewStyle } from "react-native";
 import { Text, View } from "./navigation";
 

@@ -1,3 +1,4 @@
+import React from "react";
 import type { ComponentProps, FC } from "react";
 import { View as RNView } from 'react-native'
 import { useTheme } from "@react-navigation/native";

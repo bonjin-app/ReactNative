@@ -33,7 +33,6 @@ const KeyboardAvoid = () => {
                 <View style={[styles.textView]}>
                     <Text style={[styles.text, { color: colors.text }]}>email</Text>
                     <TextInput
-                        ref={textInputRef}
                         style={[styles.textInput, { color: colors.text, borderColor: colors.placeholder }]}
                         value={person.email}
                         placeholder='enter your email'

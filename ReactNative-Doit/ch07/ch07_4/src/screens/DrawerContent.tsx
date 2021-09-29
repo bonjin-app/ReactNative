@@ -61,7 +61,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
-  text: { fontSize: 20 }
 })
 
 export default DrawerContent

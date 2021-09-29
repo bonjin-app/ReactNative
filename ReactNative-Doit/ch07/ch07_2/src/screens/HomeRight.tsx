@@ -1,33 +1,43 @@
 import React, { useCallback } from 'react'
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View, Text, Alert } from 'react-native'
 import { SafeAreaView, TopBar, UnderlineText } from '../theme/navigation'
 import * as D from '../data'
 import { useNavigation, useRoute } from '@react-navigation/core'
+import { NavigationHeader, MaterialCommunityIcon as Icon } from '../theme'
+import { LeftRightNavigation } from '../components'
 
 const title = 'HomeRight'
 export default function HomeRight() {
   // navigation
   const navigation = useNavigation()
-  const goBack = useCallback(() => {
-    navigation.canGoBack() && navigation.goBack()
-  }, [])
-  const goRight = useCallback(() => {
-    navigation.navigate('HomeRight', { id: D.randomId() })
-  }, [])
-
   const route = useRoute()
+  const goBack = useCallback(() => navigation.canGoBack() && navigation.goBack(), [])
+  const goHome = useCallback(() => navigation.navigate('Home'), [])
 
   return (
     <SafeAreaView style={[styles.view]}>
       <View style={[styles.view]}>
+
+        <NavigationHeader
+          title={title}
+          Left={() => <Icon name="arrow-left-bold" size={50} onPress={goBack} />}
+          Right={() => <Icon name="shield-airplane" size={30} onPress={() => Alert.alert('menu pressed')} />}
+        />
         <TopBar>
-          <UnderlineText onPress={goBack} style={styles.text}>go Back</UnderlineText>
-          <UnderlineText onPress={goRight} style={styles.text}>go Right</UnderlineText>
+          <Text onPress={goBack}>go back</Text>
+          <Text onPress={goHome} style={{ marginLeft: 10 }}>go Home</Text>
         </TopBar>
-        <View style={[styles.content]}>
-          <Text style={[styles.text]}>{title}</Text>
-          <Text style={[styles.text]}>{JSON.stringify(route, null, 2)}</Text>
-        </View>
+
+        <LeftRightNavigation
+          distance={40}
+          onLeftToRight={goHome}
+        >
+          <View style={[styles.content]}>
+            <Text style={[styles.text]}>{title}</Text>
+            <Text style={[styles.text]}>route: {JSON.stringify(route, null, 2)}</Text>
+          </View>
+
+        </LeftRightNavigation>
       </View>
     </SafeAreaView>
   )

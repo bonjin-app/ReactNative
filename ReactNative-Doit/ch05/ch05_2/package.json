@@ -17,7 +17,7 @@
     "react": "17.0.2",
     "react-native": "0.65.1",
     "react-native-appearance": "^0.3.4",
-    "react-native-keyboard-aware-scroll-view": "^0.9.4",
+    "react-native-keyboard-aware-scroll-view": "APSL/react-native-keyboard-aware-scroll-view#pull/501/head",
     "react-native-localize": "^2.1.4",
     "react-native-paper": "^4.9.2",
     "react-native-vector-icons": "^8.1.0"

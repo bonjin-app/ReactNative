@@ -1,18 +1,20 @@
+import { createDrawerNavigator } from '@react-navigation/drawer'
 import React from 'react'
-import { StyleSheet, View, Text } from 'react-native'
-import { SafeAreaView, TopBar } from '../theme/navigation'
+import { StyleSheet } from 'react-native'
+import DrawerContent from './DrawerContent'
+import Login from './Login'
+import SignUp from './SignUp'
+import TabNavigator from './TabNavigator'
 
-const title = 'CopyMe'
-export default function CopyMe() {
+const Drawer = createDrawerNavigator()
+
+export default function MainNavigator() {
   return (
-    <SafeAreaView style={[styles.view]}>
-      <View style={[styles.view]}>
-        <TopBar />
-        <View style={[styles.content]}>
-          <Text style={[styles.text]}>{title}</Text>
-        </View>
-      </View>
-    </SafeAreaView>
+    <Drawer.Navigator drawerContent={(props) => <DrawerContent {...props} />}>
+      <Drawer.Screen name="Login" component={Login} />
+      <Drawer.Screen name="SignUp" component={SignUp} />
+      <Drawer.Screen name="TabNavigator" component={TabNavigator} options={{ title: 'home' }} />
+    </Drawer.Navigator>
   )
 }
 const styles = StyleSheet.create({

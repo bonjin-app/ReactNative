@@ -1,18 +1,20 @@
-import React from 'react'
+import React, { FC, useCallback } from 'react'
+import { DrawerContentComponentProps, DrawerContentScrollView } from '@react-navigation/drawer'
 import { StyleSheet, View, Text } from 'react-native'
-import { SafeAreaView, TopBar } from '../theme/navigation'
+import { TopBar } from '../theme/navigation'
 
-const title = 'CopyMe'
-export default function CopyMe() {
+const title = 'DrawerContent'
+const DrawerContent: FC<DrawerContentComponentProps> = (props) => {
+  const { navigation } = props
+  const go = useCallback(() => { }, [])
+
   return (
-    <SafeAreaView style={[styles.view]}>
-      <View style={[styles.view]}>
-        <TopBar />
-        <View style={[styles.content]}>
-          <Text style={[styles.text]}>{title}</Text>
-        </View>
+    <DrawerContentScrollView {...props} contentContainerStyle={[styles.view]}>
+      <TopBar />
+      <View style={[styles.content]}>
+        <Text style={[styles.text]}>{title}</Text>
       </View>
-    </SafeAreaView>
+    </DrawerContentScrollView>
   )
 }
 const styles = StyleSheet.create({
@@ -24,3 +26,5 @@ const styles = StyleSheet.create({
   },
   text: { fontSize: 20 }
 })
+
+export default DrawerContent

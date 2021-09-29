@@ -2,10 +2,12 @@ import { useNavigation } from '@react-navigation/core'
 import React, { useState, useCallback, useEffect, useRef } from 'react'
 import { StyleSheet, View, Text, Switch, FlatList } from 'react-native'
 import { useTheme } from 'react-native-paper'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { LeftRightNavigation, LeftRightNavigationMethods } from '../components'
 import { useToggleTheme } from '../contexts'
 import { ScrollEnabledProvider, useScrollEnabled } from '../contexts'
 import * as D from '../data'
+import { NavigationHeader } from '../theme'
 import { SafeAreaView, TopBar, UnderlineText } from '../theme/navigation'
 import Person from './Person'
 
@@ -18,6 +20,9 @@ export default function Home() {
   }, [])
   const goRight = useCallback(() => {
     navigation.navigate('HomeRight', { id: 'Jack', age: 32 })
+  }, [])
+  const logout = useCallback(() => {
+    navigation.navigate('Login')
   }, [])
 
   // for people
@@ -49,6 +54,7 @@ export default function Home() {
     <SafeAreaView>
       <ScrollEnabledProvider>
         <View style={[styles.view]}>
+          <NavigationHeader title="Home" Right={() => <Icon name="logout" size={30} onPress={logout} />} />
           <TopBar>
             <UnderlineText onPress={goLeft} style={styles.text}>go Left</UnderlineText>
             <UnderlineText onPress={goRight} style={styles.text}>go Right</UnderlineText>

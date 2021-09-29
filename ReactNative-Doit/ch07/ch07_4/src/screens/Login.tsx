@@ -14,10 +14,9 @@ export default function Login() {
   )
   const focus = useAutoFocus()
   const navigation = useNavigation()
-  const goHomeNavigator = useCallback(
-    () => navigation.navigate('HomeNavigator'),
-    []
-  )
+  const goTabNavigator = useCallback(() => {
+    navigation.navigate('TabNavigator')
+  }, [])
   const goSignUp = useCallback(() => navigation.navigate('SignUp'), [])
 
   return (
@@ -54,7 +53,7 @@ export default function Login() {
           <TouchableView
             notification
             style={[styles.touchableView]}
-            onPress={goHomeNavigator}>
+            onPress={goTabNavigator}>
             <Text style={[styles.text]}>Login</Text>
           </TouchableView>
           <UnderlineText

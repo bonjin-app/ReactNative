@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/core'
 import React, { useState, useCallback, useEffect, useRef } from 'react'
 import { StyleSheet, View, Text, Switch, FlatList } from 'react-native'
-import { useTheme } from 'react-native-paper'
+import { DrawerActions } from '@react-navigation/routers'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { LeftRightNavigation, LeftRightNavigationMethods } from '../components'
 import { useToggleTheme } from '../contexts'
@@ -20,6 +20,9 @@ export default function Home() {
   }, [])
   const goRight = useCallback(() => {
     navigation.navigate('HomeRight', { id: 'Jack', age: 32 })
+  }, [])
+  const open = useCallback(() => {
+    navigation.dispatch(DrawerActions.openDrawer())
   }, [])
   const logout = useCallback(() => {
     navigation.navigate('Login')
@@ -54,7 +57,11 @@ export default function Home() {
     <SafeAreaView>
       <ScrollEnabledProvider>
         <View style={[styles.view]}>
-          <NavigationHeader title="Home" Right={() => <Icon name="logout" size={30} onPress={logout} />} />
+          <NavigationHeader
+            title="Home"
+            Left={() => <Icon name="menu" size={30} onPress={open} />}
+            Right={() => <Icon name="logout" size={30} onPress={logout} />}
+          />
           <TopBar>
             <UnderlineText onPress={goLeft} style={styles.text}>go Left</UnderlineText>
             <UnderlineText onPress={goRight} style={styles.text}>go Right</UnderlineText>

@@ -14,7 +14,9 @@ export default function SignUp() {
   const focus = useAutoFocus()
   const navigation = useNavigation()
   const goHomeNavigator = useCallback(() => {
-    if (password === confirmPassword) navigation.navigate('HomeNavigator')
+    if (password === confirmPassword) {
+      navigation.navigate('TabNavigator')
+    }
     else Alert.alert('password is invalid')
   }, [password, confirmPassword])
   const goLogin = useCallback(() => navigation.navigate('Login'), [])

@@ -96,6 +96,13 @@
 			name = ch07_1;
 			sourceTree = "<group>";
 		};
+		21C38D7E594E48ED99C0E14C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +129,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				E233CBF5F47BEE60B243DCF8 /* Pods */,
+				21C38D7E594E48ED99C0E14C /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -145,7 +153,6 @@
 				6C97AB639B58BBB4B15BBE30 /* Pods-ch07_1-ch07_1Tests.debug.xcconfig */,
 				1D0AE47A65C8663E3B452821 /* Pods-ch07_1-ch07_1Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

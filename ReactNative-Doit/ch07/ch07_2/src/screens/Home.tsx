@@ -1,7 +1,8 @@
 import { useNavigation } from '@react-navigation/core'
-import React, { useState, useCallback, useEffect } from 'react'
+import React, { useState, useCallback, useEffect, useRef } from 'react'
 import { StyleSheet, View, Text, Switch, FlatList } from 'react-native'
 import { useTheme } from 'react-native-paper'
+import { LeftRightNavigation, LeftRightNavigationMethods } from '../components'
 import { useToggleTheme } from '../contexts'
 import { ScrollEnabledProvider, useScrollEnabled } from '../contexts'
 import * as D from '../data'
@@ -22,20 +23,23 @@ export default function Home() {
   // for people
   const [scrollEnabled] = useScrollEnabled()
   const [people, setPeople] = useState<D.IPerson[]>([])
-  const theme = useTheme()
-  const toggleTheme = useToggleTheme()
+
+  const leftRef = useRef<LeftRightNavigationMethods | null>(null)
+
   const addPerson = useCallback(() => {
     setPeople(people => [D.createRandomPerson(), ...people])
   }, [])
   const removeAllPersons = useCallback(() => {
     setPeople(notUsed => [])
   }, [])
-  const deletePerson = useCallback(
-    (id: string) => () =>
-      setPeople(people => people.filter(person => person.id != id)),
-    []
-  )
+  const deletePerson = useCallback((id: string) => () => {
+    setPeople(people => people.filter(person => person.id != id)),
+      leftRef.current?.resetOffset(),
+      flatListRef.current?.scrollToOffset({ animated: true, offset: 0 })
+  }, [])
   // useEffect(addPerson, [])
+
+  const flatListRef = useRef<FlatList | null>(null)
 
   useEffect(() => {
     D.makeArray(5).forEach(addPerson)
@@ -44,7 +48,7 @@ export default function Home() {
   return (
     <SafeAreaView>
       <ScrollEnabledProvider>
-        <View style={[styles.view, { backgroundColor: theme.colors.surface }]}>
+        <View style={[styles.view]}>
           <TopBar>
             <UnderlineText onPress={goLeft} style={styles.text}>go Left</UnderlineText>
             <UnderlineText onPress={goRight} style={styles.text}>go Right</UnderlineText>
@@ -57,14 +61,23 @@ export default function Home() {
               remove all
             </UnderlineText>
           </TopBar>
-          <FlatList
-            scrollEnabled={scrollEnabled}
-            data={people}
-            renderItem={({ item }) => (
-              <Person person={item} deletePressed={deletePerson(item.id)} />
-            )}
-            keyExtractor={item => item.id}
-          />
+
+          <LeftRightNavigation
+            ref={leftRef} distance={40}
+            flatListRef={flatListRef}
+            onLeftToRight={goLeft}
+            onRightToLeft={goRight}
+          >
+            <FlatList
+              ref={flatListRef}
+              scrollEnabled={scrollEnabled}
+              data={people}
+              renderItem={({ item }) => (
+                <Person person={item} deletePressed={deletePerson(item.id)} />
+              )}
+              keyExtractor={item => item.id}
+            />
+          </LeftRightNavigation>
         </View>
       </ScrollEnabledProvider>
     </SafeAreaView>

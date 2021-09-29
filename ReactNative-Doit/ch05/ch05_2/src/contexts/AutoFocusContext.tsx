@@ -1,24 +1,51 @@
-import { ComponentProps, createContext, FC, useContext } from "react"
+import { ComponentProps, createContext, FC, useCallback, useContext, useRef } from "react"
+import { findNodeHandle, NativeSyntheticEvent, TextInputFocusEventData } from "react-native"
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view"
 
-export type FocusContextType = {}
-const defaultFocusContext = {}
-const AutoFocusContext = createContext<FocusContextType>(defaultFocusContext)
-export type AutoFocusProviderProps = ComponentProps<typeof KeyboardAwareScrollView>
+export type FocusEvent = NativeSyntheticEvent<TextInputFocusEventData>
+export type AutoFocusContextType = {
+    autoFocus: (event: FocusEvent) => void
+}
+
+const defaultAutoFocusContext = {
+    autoFocus: (event: FocusEvent) => { }
+}
+
+const AutoFocusContext = createContext<AutoFocusContextType>(
+    defaultAutoFocusContext
+)
+
+export type AutoFocusProviderProps = ComponentProps<
+    typeof KeyboardAwareScrollView
+>
 
 export const AutoFocusProvider: FC<AutoFocusProviderProps> = ({ children, ...props }) => {
-    const value = {
 
+    const scrollRef = useRef<KeyboardAwareScrollView | null>(null)
+    const scrollToInput = useCallback((reactNode: any) => {
+        scrollRef.current?.scrollToFocusedInput(reactNode)
+    }, [])
+    const autoFocus = useCallback((event: FocusEvent) => {
+        scrollToInput(findNodeHandle(event.target))
+    }, [])
+
+    const value = {
+        autoFocus
     }
 
     return (
         <AutoFocusContext.Provider value={value}>
-            {children}
+            <KeyboardAwareScrollView
+                ref={scrollRef}
+                {...props}
+                style={{ flex: 1, width: '100%' }}>
+                {children}
+            </KeyboardAwareScrollView>
         </AutoFocusContext.Provider>
     )
 }
 
 export const useAutoFocus = () => {
-    const value = useContext(AutoFocusContext)
-    return value
+    const { autoFocus } = useContext(AutoFocusContext)
+    return autoFocus
 }

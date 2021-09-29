@@ -68,8 +68,6 @@ const Person: FC<PersonProps> = ({ person: initialPerson, deletePressed }) => {
             <Icon name="heart" size={24} color={Colors.red500} />
             <Text>{person.counts.heart}</Text>
           </TouchableView>
-
-
         </View>
       </View>
     </View>

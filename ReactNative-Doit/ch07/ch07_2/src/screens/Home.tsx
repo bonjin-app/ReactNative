@@ -1,13 +1,25 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { useState, useCallback, useEffect } from 'react'
 import { StyleSheet, View, Text, Switch, FlatList } from 'react-native'
 import { useTheme } from 'react-native-paper'
 import { useToggleTheme } from '../contexts'
 import { ScrollEnabledProvider, useScrollEnabled } from '../contexts'
 import * as D from '../data'
-import { SafeAreaView } from '../theme/navigation'
+import { SafeAreaView, TopBar, UnderlineText } from '../theme/navigation'
 import Person from './Person'
 
 export default function Home() {
+
+  // navigation
+  const navigation = useNavigation()
+  const goLeft = useCallback(() => {
+    navigation.navigate("HomeLeft")
+  }, [])
+  const goRight = useCallback(() => {
+    navigation.navigate('HomeRight', { id: 'Jack', age: 32 })
+  }, [])
+
+  // for people
   const [scrollEnabled] = useScrollEnabled()
   const [people, setPeople] = useState<D.IPerson[]>([])
   const theme = useTheme()
@@ -33,16 +45,18 @@ export default function Home() {
     <SafeAreaView>
       <ScrollEnabledProvider>
         <View style={[styles.view, { backgroundColor: theme.colors.surface }]}>
-          <View style={[styles.topBar, { backgroundColor: theme.colors.accent }]}>
-            <Text onPress={addPerson} style={styles.text}>
+          <TopBar>
+            <UnderlineText onPress={goLeft} style={styles.text}>go Left</UnderlineText>
+            <UnderlineText onPress={goRight} style={styles.text}>go Right</UnderlineText>
+          </TopBar>
+          <TopBar noSwitch>
+            <UnderlineText onPress={addPerson} style={styles.text}>
               add
-            </Text>
-            <Text onPress={removeAllPersons} style={styles.text}>
+            </UnderlineText>
+            <UnderlineText onPress={removeAllPersons} style={styles.text}>
               remove all
-            </Text>
-            <View style={{ flex: 1 }} />
-            <Switch value={theme.dark} onValueChange={toggleTheme} />
-          </View>
+            </UnderlineText>
+          </TopBar>
           <FlatList
             scrollEnabled={scrollEnabled}
             data={people}
@@ -58,6 +72,5 @@ export default function Home() {
 }
 const styles = StyleSheet.create({
   view: { flex: 1 },
-  topBar: { flexDirection: 'row', padding: 5 },
   text: { marginRight: 10, fontSize: 20 }
 })

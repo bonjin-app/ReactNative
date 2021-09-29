@@ -9,6 +9,7 @@ import SignUp from './SignUp'
 import HomeNavigator from './HomeNavigator'
 
 import type { RouteProp, ParamListBase } from '@react-navigation/native'
+import { Colors } from 'react-native-paper'
 
 type TabBarIconProps = {
     focused: boolean
@@ -16,17 +17,20 @@ type TabBarIconProps = {
     size: number
 }
 
+const icons: Record<string, string[]> = {
+    HomeNavigator: ['home-circle', 'home-circle-outline']
+}
+
 const screenOptions = ({ route }: { route: RouteProp<ParamListBase, string> }) => {
     return {
+        headerShown: false,
         tabBarIcon: ({ focused, color, size }: TabBarIconProps) => {
             const { name } = route
-            switch (name) {
-                case 'Login':
-                    return <AntIcon name="login" size={size} color={color} />
-                case 'SignUp':
-                    return <FontawesomeIcon name="sign-in" size={size} color={color} />
-            }
-            return <Icon name="home" size={size} color={color} />
+            const focusedSize = focused ? size + 6 : size
+            const focusedColor = focused ? Colors.lightBlue500 : color
+            const [icon, iconOutline] = icons[name]
+            const iconName = focused ? icon : iconOutline
+            return <Icon name={iconName} size={size} color={color} />
         }
     }
 }
@@ -36,9 +40,7 @@ const Tab = createBottomTabNavigator()
 export default function TabNavigator() {
     return (
         <Tab.Navigator screenOptions={screenOptions}>
-            <Tab.Screen name="Login" component={Login} />
-            <Tab.Screen name="SignUp" component={SignUp} />
-            <Tab.Screen name="HomeNavigator" component={HomeNavigator} options={{ tabBarLabel: 'Home' }} />
+            <Tab.Screen name="HomeNavigator" component={HomeNavigator} options={{ tabBarLabel: 'Home', tabBarBadge: 3 }} />
         </Tab.Navigator>
     )
 }

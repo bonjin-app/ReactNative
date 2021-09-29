@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 import { SafeAreaView, TopBar, UnderlineText } from '../theme/navigation'
 import * as D from '../data'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/core'
 
 const title = 'HomeLeft'
 export default function HomeLeft() {

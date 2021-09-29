@@ -1,15 +1,32 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
-import { SafeAreaView, TopBar } from '../theme/navigation'
+import { SafeAreaView, TopBar, UnderlineText } from '../theme/navigation'
+import * as D from '../data'
+import { useNavigation, useRoute } from '@react-navigation/core'
 
 const title = 'HomeRight'
 export default function HomeRight() {
+  // navigation
+  const navigation = useNavigation()
+  const goBack = useCallback(() => {
+    navigation.canGoBack() && navigation.goBack()
+  }, [])
+  const goRight = useCallback(() => {
+    navigation.navigate('HomeRight', { id: D.randomId() })
+  }, [])
+
+  const route = useRoute()
+
   return (
     <SafeAreaView style={[styles.view]}>
       <View style={[styles.view]}>
-        <TopBar />
+        <TopBar>
+          <UnderlineText onPress={goBack} style={styles.text}>go Back</UnderlineText>
+          <UnderlineText onPress={goRight} style={styles.text}>go Right</UnderlineText>
+        </TopBar>
         <View style={[styles.content]}>
           <Text style={[styles.text]}>{title}</Text>
+          <Text style={[styles.text]}>{JSON.stringify(route, null, 2)}</Text>
         </View>
       </View>
     </SafeAreaView>

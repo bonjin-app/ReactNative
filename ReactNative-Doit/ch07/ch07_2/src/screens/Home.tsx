@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/core'
 import React, { useState, useCallback, useEffect } from 'react'
 import { StyleSheet, View, Text, Switch, FlatList } from 'react-native'
 import { useTheme } from 'react-native-paper'

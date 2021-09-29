@@ -1,36 +1,53 @@
-import React, { useMemo } from 'react'
-import Home from './Home'
-import HomeLeft from './HomeLeft'
-import HomeRight from './HomeRight'
-import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack'
-import { Colors } from 'react-native-paper'
-import { useNavigationHorizontalInterpolator } from '../hooks'
+import React from 'react'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { StyleSheet } from 'react-native'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import AntIcon from 'react-native-vector-icons/AntDesign'
+import FontawesomeIcon from 'react-native-vector-icons/FontAwesome'
+import Login from './Login'
+import SignUp from './SignUp'
+import HomeNavigator from './HomeNavigator'
 
-const Stack = createStackNavigator()
+import type { RouteProp, ParamListBase } from '@react-navigation/native'
 
-const MainNavigator = () => {
-    const interpolator = useNavigationHorizontalInterpolator()
-    const leftOptions = useMemo<StackNavigationOptions>(() => ({
-        gestureDirection: 'horizontal-inverted',
-        cardStyleInterpolator: interpolator
-    }), [])
-
-    const rightOptions = useMemo<StackNavigationOptions>(() => ({
-        gestureDirection: 'horizontal',
-        cardStyleInterpolator: interpolator
-    }), [])
-
-    return (
-        <Stack.Navigator
-            screenOptions={{
-                headerShown: false
-            }}
-        >
-            <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen name="HomeLeft" component={HomeLeft} options={leftOptions} />
-            <Stack.Screen name="HomeRight" component={HomeRight} options={rightOptions} />
-        </Stack.Navigator>
-    )
+type TabBarIconProps = {
+    focused: boolean
+    color: string
+    size: number
 }
 
-export default MainNavigator
+const screenOptions = ({ route }: { route: RouteProp<ParamListBase, string> }) => {
+    return {
+        tabBarIcon: ({ focused, color, size }: TabBarIconProps) => {
+            const { name } = route
+            switch (name) {
+                case 'Login':
+                    return <AntIcon name="login" size={size} color={color} />
+                case 'SignUp':
+                    return <FontawesomeIcon name="sign-in" size={size} color={color} />
+            }
+            return <Icon name="home" size={size} color={color} />
+        }
+    }
+}
+
+const Tab = createBottomTabNavigator()
+
+export default function CopyMe() {
+    return (
+        <Tab.Navigator screenOptions={screenOptions}>
+            <Tab.Screen name="Login" component={Login} />
+            <Tab.Screen name="SignUp" component={SignUp} />
+            <Tab.Screen name="HomeNavigator" component={HomeNavigator} options={{ tabBarLabel: 'Home' }} />
+        </Tab.Navigator>
+    )
+}
+const styles = StyleSheet.create({
+    view: { flex: 1, padding: 5 },
+    content: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    text: { fontSize: 20 }
+})

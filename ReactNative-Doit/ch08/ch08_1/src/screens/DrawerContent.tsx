@@ -11,7 +11,6 @@ import { AppState, User } from '../store'
 
 const loginUser = D.createRandomPerson()
 
-const title = 'DrawerContent'
 const DrawerContent: FC<DrawerContentComponentProps> = (props) => {
 
   const loggedIn = useSelector<AppState, boolean>((state) => state.loggedIn)
@@ -47,45 +46,31 @@ const DrawerContent: FC<DrawerContentComponentProps> = (props) => {
       />
       <View style={[styles.content]}>
         <View style={[styles.row]}>
-          <Avatar uri={D.avatarUriByName(name)} size={40} />
+          <Avatar uri={loginUser.avatar} size={40} />
           <Text style={[styles.text, styles.m]}>{name}</Text>
         </View>
         <View style={[styles.row]}>
           <UnderlineText
-            style={[styles.text, styles.m]}
             numberOfLines={1}
-            ellipsizeMode="tail">{email}</UnderlineText>
+            ellipsizeMode="tail"
+            style={[styles.text, styles.m]}>
+            {email}
+          </UnderlineText>
         </View>
-        <View style={[styles.row, { marginTop: 20 }]}>
+        <View style={[styles.row, {marginTop: 20}]}>
           <Switch />
         </View>
-      </View>
-
-      <View style={[styles.content]}>
-        <Text style={[styles.text]}>{title}</Text>
       </View>
     </DrawerContentScrollView>
   )
 }
 
 const styles = StyleSheet.create({
-  view: { flex: 1, padding: 5 },
-  row: {
-    flexDirection: 'row',
-    padding: 5,
-    alignItems: 'center'
-  },
-  m: {
-    marginLeft: 5
-  },
-  text: {
-    fontSize: 20
-  },
-  content: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
+  view: {flex: 1, padding: 5},
+  row: {flexDirection: 'row', padding: 5, alignItems: 'center'},
+  m: {marginLeft: 5},
+  text: {fontSize: 20},
+  content: {flex: 1, padding: 5}
 })
 
 export default DrawerContent

@@ -6,15 +6,19 @@ import { SafeAreaView, View, Text, TextInput, TouchableView, UnderlineText }
   from '../theme'
 import * as D from '../data'
 import { useAutoFocus, AutoFocusProvider } from '../contexts'
+import { useDispatch } from 'react-redux'
+import { loginAction } from '../store'
 
 export default function Login() {
-  const [person, setPerson] = useState<D.IPerson>(D.createRandomPerson())
-  const [password, setPassword] = useState<string>(
-    D.random(10000, 1000000).toString()
-  )
+  const [email, setEmail] = useState<string>(D.randomEmail())
+  const [name, setName] = useState<string>(D.randomName())
+  const [password, setPassword] = useState<string>(D.random(10000, 100000).toString())
+
   const focus = useAutoFocus()
   const navigation = useNavigation()
+  const dispatch = useDispatch()
   const goTabNavigator = useCallback(() => {
+    dispatch(loginAction({email, name, password}))
     navigation.navigate('TabNavigator')
   }, [])
   const goSignUp = useCallback(() => navigation.navigate('SignUp'), [])
@@ -29,10 +33,8 @@ export default function Login() {
               <TextInput
                 onFocus={focus}
                 style={[styles.textInput]}
-                value={person.email}
-                onChangeText={email =>
-                  setPerson(person => ({ ...person, email }))
-                }
+                value={email}
+                onChangeText={setEmail}
                 placeholder="enter your email"
               />
             </View>

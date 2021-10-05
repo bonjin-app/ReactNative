@@ -10,7 +10,7 @@ export default function MainNavigator() {
   const [routes] = useState([
     {key: 'transform', title: 'Transform', icon: 'arrow-collapse-right'},
     {key: 'layout', title: 'InsideLayout', icon: 'animation-play-outline'},
-    {key: 'arithmetic', title: 'Arithmetic', icon: 'format-annotaion-plus'},
+    {key: 'arithmetic', title: 'Arithmetic', icon: 'format-annotation-plus'},
     {key: 'carousel', title: 'Carousel', icon: 'border-vertical'},
   ])
   const renderScene = BottomNavigation.SceneMap({

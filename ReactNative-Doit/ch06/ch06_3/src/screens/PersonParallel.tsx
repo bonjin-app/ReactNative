@@ -22,11 +22,9 @@ const PersonParallel: FC<PersonProps> = ({ person, deletePressed }) => {
   const animValues = useAnimatedValues(3)
   const animations = useMemo(() => (
     animValues.map((animValue) => (
-      Animated.timing(animValue, {
+      Animated.spring(animValue, {
         useNativeDriver: true,
         toValue: !started ? 1 : 0,
-        duration: 700,
-        easing: Easing.bounce
       })
     ) )
   ), [started])

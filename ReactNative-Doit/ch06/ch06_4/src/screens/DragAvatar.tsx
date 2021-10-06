@@ -1,4 +1,4 @@
-import { FC, useMemo } from "react";
+import React, { FC, useMemo } from "react";
 import { Animated, GestureResponderEvent, PanResponderGestureState, Platform } from "react-native";
 import { useScrollEnabled } from "../contexts";
 import { useAnimatedValueXY, useMonitorAnimatedValueXY, usePanResponder, useStyle, useTransformStyle } from "../hooks";
@@ -62,3 +62,5 @@ const DragAvatar: FC<DragAvatarProps> = ({ size, backgroundColor }) => {
         </View>
     )
 }
+
+export default DragAvatar

@@ -3,7 +3,7 @@ import {StyleSheet, View, Text, Switch, FlatList} from 'react-native'
 import {useTheme} from 'react-native-paper'
 import {ScrollEnabledProvider, useScrollEnabled, useToggleTheme} from '../contexts'
 import * as D from '../data'
-import Person from './Person'
+import Person from './PersonDrag'
 
 export default function Drag() {
   const [scrollEnabled] = useScrollEnabled()

@@ -1,17 +1,54 @@
-import React from 'react'
-import {StyleSheet, View, Text} from 'react-native'
-import {Colors} from 'react-native-paper'
+import React, {useState, useCallback, useEffect} from 'react'
+import {StyleSheet, View, Text, Switch, FlatList} from 'react-native'
+import {useTheme} from 'react-native-paper'
+import {ScrollEnabledProvider, useScrollEnabled, useToggleTheme} from '../contexts'
 import * as D from '../data'
+import Person from './Person'
 
-const title = 'LeftSwipe'
 export default function LeftSwipe() {
+  const [scrollEnabled] = useScrollEnabled()
+
+  const [people, setPeople] = useState<D.IPerson[]>([D.createRandomPerson()])
+  const theme = useTheme()
+  const toggleTheme = useToggleTheme()
+  const addPerson = useCallback(() => {
+    setPeople(people => [...people, D.createRandomPerson()])
+  }, [])
+  const removeAll = useCallback(() => {
+    setPeople(notUsed => [])
+  }, [])
+  const deletePerson = useCallback((id: string) => {
+    setPeople((people) => people.filter((person) => person.id != id))
+  }, [])
+
+  useEffect(() => {
+    addPerson()
+
+  }, [])
+
   return (
-    <View style={[styles.view]}>
-      <Text style={[styles.text]}>{title}</Text>
+    <View style={[styles.view, {backgroundColor: theme.colors.surface}]}>
+      <View style={[styles.topBar, {backgroundColor: theme.colors.accent}]}>
+        <Text onPress={addPerson} style={styles.text}>
+          add
+        </Text>
+        <Text onPress={removeAll} style={styles.text}>
+          remove all
+        </Text>
+        <View style={{flex: 1}} />
+        <Switch value={theme.dark} onValueChange={toggleTheme} />
+      </View>
+      <FlatList
+        scrollEnabled={scrollEnabled}
+        data={people}
+        renderItem={({item}) => <Person person={item} deletePressed={() => deletePerson(item.id)} />}
+        keyExtractor={item => item.id}
+      />
     </View>
   )
 }
 const styles = StyleSheet.create({
-  view: {flex: 1, padding: 5, backgroundColor: Colors.blue900},
-  text: {fontSize: 20, color: 'white'}
+  view: {flex: 1},
+  topBar: {flexDirection: 'row', padding: 5},
+  text: {marginRight: 10, fontSize: 20}
 })

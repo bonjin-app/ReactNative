@@ -1,11 +1,13 @@
 import React, {useState, useCallback, useEffect} from 'react'
 import {StyleSheet, View, Text, Switch, FlatList} from 'react-native'
 import {useTheme} from 'react-native-paper'
-import {useToggleTheme} from '../contexts'
+import {ScrollEnabledProvider, useScrollEnabled, useToggleTheme} from '../contexts'
 import * as D from '../data'
 import Person from './Person'
 
 export default function People() {
+  const [scrollEnabled] = useScrollEnabled()
+
   const [people, setPeople] = useState<D.IPerson[]>([D.createRandomPerson()])
   const theme = useTheme()
   const toggleTheme = useToggleTheme()
@@ -37,6 +39,7 @@ export default function People() {
         <Switch value={theme.dark} onValueChange={toggleTheme} />
       </View>
       <FlatList
+        scrollEnabled={scrollEnabled}
         data={people}
         renderItem={({item}) => <Person person={item} deletePressed={() => deletePerson(item.id)} />}
         keyExtractor={item => item.id}

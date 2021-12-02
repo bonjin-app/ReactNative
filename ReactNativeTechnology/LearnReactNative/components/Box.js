@@ -1,14 +1,14 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-const Box = props => {
+const Box = ({rounded, size, color}) => {
   return (
     <View
       style={[
         styles.box,
-        props.rounded && styles.rounded,
-        sizes[props.size],
-        {backgroundColor: props.color},
+        rounded && styles.rounded,
+        sizes[size],
+        {backgroundColor: color},
       ]}
     />
   );

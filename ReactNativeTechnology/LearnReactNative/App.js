@@ -11,7 +11,7 @@ const App = () => {
   return (
     <SafeAreaView>
       <Button title="토글" onPress={onPress} />
-      <Box rounded size="large" color="blue" />
+      {visible && <Box rounded size="large" color="blue" />}
     </SafeAreaView>
   );
 };

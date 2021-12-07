@@ -1,30 +1,23 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import MainScreen from './screens/MainScreen';
+import DetailScreen from './screens/DetailScreen';
 
-const Tab = createBottomTabNavigator();
-function HomeScreen() {
-  return <Text>HomeScreen</Text>;
-}
-function SearchScreen() {
-  return <Text>SearchScreen</Text>;
-}
-function NotificationScreen() {
-  return <Text>NotificationScreen</Text>;
-}
-function MessageScreen() {
-  return <Text>MessageScreen</Text>;
-}
+const Stack = createNativeStackNavigator();
+
 const App = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator initialRouteName="Home">
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Search" component={SearchScreen} />
-        <Tab.Screen name="Notification" component={NotificationScreen} />
-        <Tab.Screen name="Message" component={MessageScreen} />
-      </Tab.Navigator>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Main"
+          component={MainScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen name="Detail" component={DetailScreen} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 };

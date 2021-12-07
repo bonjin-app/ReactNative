@@ -62,7 +62,7 @@ const MainScreen = () => {
         }}
       />
       <Tab.Screen
-        name="Notification"
+        name="Notificaitons"
         component={NotificationScreen}
         options={{
           title: '알림',

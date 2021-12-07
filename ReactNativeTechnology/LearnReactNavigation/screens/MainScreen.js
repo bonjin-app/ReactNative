@@ -4,21 +4,29 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {useNavigation} from '@react-navigation/core';
 
 // const Tab = createBottomTabNavigator();
 // const Tab = createMaterialTopTabNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
+function OpenDetailButton() {
+  const navigation = useNavigation();
+  return (
+    <Button
+      title="Detail 1 열기"
+      onPress={() => {
+        navigation.push('Detail', {id: 1});
+      }}
+    />
+  );
+}
+
 function HomeScreen({navigation}) {
   return (
     <View>
       <Text>HomeScreen</Text>
-      <Button
-        title="Detail 1 열기"
-        onPress={() => {
-          navigation.push('Detail');
-        }}
-      />
+      <OpenDetailButton />
     </View>
   );
 }

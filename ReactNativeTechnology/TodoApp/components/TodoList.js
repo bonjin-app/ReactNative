@@ -2,14 +2,19 @@ import React from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import TodoItem from './TodoItem';
 
-const TodoList = ({todos}) => {
+const TodoList = ({todos, onToggle}) => {
   return (
     <FlatList
       style={styles.list}
       data={todos}
       ItemSeparatorComponent={() => <View style={styles.separator}></View>}
       renderItem={({item}) => (
-        <TodoItem id={item.id} text={item.text} done={item.done} />
+        <TodoItem
+          id={item.id}
+          text={item.text}
+          done={item.done}
+          onToggle={onToggle}
+        />
       )}
       keyExtractor={item => item.id.toString()}
     />

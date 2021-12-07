@@ -1,66 +1,41 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {Text, View, Button} from 'react-native';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
-import HomeScreen from './screens/HomeScreen';
-import DetailScreen from './screens/DetailScreen';
-import HeaderlessScreen from './screens/HeaderlessScreen';
 
-const Stack = createNativeStackNavigator();
-const App = () => {
+const Drawer = createDrawerNavigator();
+
+function HomeScreen({navigation}) {
+  return (
+    <View>
+      <Text>HomeScreen</Text>
+      <Button title="Drawer 열기" onPress={() => navigation.openDrawer()} />
+      <Button
+        title="SettingScreen 열기"
+        onPress={() => navigation.navigate('Setting')}
+      />
+    </View>
+  );
+}
+
+function SettingScreen({navigation}) {
+  return (
+    <View>
+      <Text>SettingScreen</Text>
+      <Button title="뒤로가기" onPress={() => navigation.goBack()} />
+    </View>
+  );
+}
+
+function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{
-            title: '홈',
-            headerStyle: {
-              backgroundColor: '#29b6f6',
-            },
-            headerTintColor: '#FFF',
-            headerTitleStyle: {
-              fontWeight: 'bold',
-              fontSize: 20,
-            },
-          }}
-        />
-        <Stack.Screen
-          name="Detail"
-          component={DetailScreen}
-          // options={({route}) => ({
-          //   title: `상세 정보 - ${route.params.id}`,
-          // })}
-          options={{
-            headerBackVisible: false,
-            headerLeft: ({onPress}) => (
-              <TouchableOpacity onPress={onPress}>
-                <Text>Left</Text>
-              </TouchableOpacity>
-            ),
-            headerTitle: ({children}) => (
-              <View>
-                <Text>{children}</Text>
-              </View>
-            ),
-            headerRight: () => {
-              <View>
-                <Text>Right</Text>
-              </View>;
-            },
-          }}
-        />
-        <Stack.Screen
-          name="Headerless"
-          component={HeaderlessScreen}
-          options={{headerShown: false}}
-        />
-      </Stack.Navigator>
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Home" component={HomeScreen} />
+        <Drawer.Screen name="Setting" component={SettingScreen} />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
-};
+}
 
 export default App;
-
-const styles = StyleSheet.create({});

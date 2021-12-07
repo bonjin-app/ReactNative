@@ -1,8 +1,12 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TextInput, View} from 'react-native';
 
 const AddTodo = () => {
-  return <View style={styles.block}></View>;
+  return (
+    <View style={styles.block}>
+      <TextInput placeholder="할일을 입력하세요." style={styles.input} />
+    </View>
+  );
 };
 
 export default AddTodo;
@@ -10,6 +14,14 @@ export default AddTodo;
 const styles = StyleSheet.create({
   block: {
     height: 64,
-    backgroundColor: 'red',
+    paddingHorizontal: 16,
+    borderColor: '#bdbdbd',
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    justifyContent: 'center',
+  },
+  input: {
+    fontSize: 16,
+    paddingVertical: 8,
   },
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
 import HomeScreen from './screens/HomeScreen';
@@ -31,6 +31,24 @@ const App = () => {
           // options={({route}) => ({
           //   title: `상세 정보 - ${route.params.id}`,
           // })}
+          options={{
+            headerBackVisible: false,
+            headerLeft: ({onPress}) => (
+              <TouchableOpacity onPress={onPress}>
+                <Text>Left</Text>
+              </TouchableOpacity>
+            ),
+            headerTitle: ({children}) => (
+              <View>
+                <Text>{children}</Text>
+              </View>
+            ),
+            headerRight: () => {
+              <View>
+                <Text>Right</Text>
+              </View>;
+            },
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

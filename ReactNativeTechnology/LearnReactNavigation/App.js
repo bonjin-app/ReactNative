@@ -11,7 +11,13 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Detail" component={DetailScreen} />
+        <Stack.Screen
+          name="Detail"
+          component={DetailScreen}
+          // options={({route}) => ({
+          //   title: `상세 정보 - ${route.params.id}`,
+          // })}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,7 +1,8 @@
-import React from 'react';
-import {StyleSheet, Text, TextInput, View} from 'react-native';
+import React, {useRef} from 'react';
+import {StyleSheet, TextInput, View} from 'react-native';
 
 const WriteEditor = ({title, body, onChangeTitle, onChangeBody}) => {
+  const bodyRef = useRef();
   return (
     <View style={styles.block}>
       <TextInput
@@ -9,6 +10,9 @@ const WriteEditor = ({title, body, onChangeTitle, onChangeBody}) => {
         style={styles.titleInput}
         returnKeyType="next"
         onChangeText={onChangeTitle}
+        onSubmitEditing={() => {
+          bodyRef.current.focus();
+        }}
         value={title}
       />
       <TextInput
@@ -18,6 +22,7 @@ const WriteEditor = ({title, body, onChangeTitle, onChangeBody}) => {
         textAlignVertical="top"
         onChangeText={onChangeBody}
         value={body}
+        ref={bodyRef}
       />
     </View>
   );

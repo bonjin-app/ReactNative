@@ -122,6 +122,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				FFB3F6B02730C6442B454808 /* Pods */,
+				A3D5026E3DDA47C5B01FDF7C /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -137,6 +138,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		A3D5026E3DDA47C5B01FDF7C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		FFB3F6B02730C6442B454808 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,7 +153,6 @@
 				A9FB0C1B38D12D253671670C /* Pods-DayLog-DayLogTests.debug.xcconfig */,
 				3C48A77120A380171C136D2B /* Pods-DayLog-DayLogTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

@@ -23,6 +23,11 @@ export function LogContextProvider({children}) {
     setLogs(nextLogs);
   };
 
+  const onRemove = id => {
+    const nextLogs = logs.filter(f => f.id !== id);
+    setLogs(nextLogs);
+  };
+
   const onCreate = ({title, body, date}) => {
     const log = {
       id: uuidv4(),
@@ -34,7 +39,7 @@ export function LogContextProvider({children}) {
   };
 
   return (
-    <LogContext.Provider value={{logs, onCreate, onModify}}>
+    <LogContext.Provider value={{logs, onCreate, onModify, onRemove}}>
       {children}
     </LogContext.Provider>
   );

@@ -8,11 +8,11 @@ const SignInScreen = () => {
     <SafeAreaView style={styles.fullscreen}>
       <Text style={styles.text}>PublicGallery</Text>
       <View style={styles.form}>
-        <BorderedInput hasMarginBottom />
-        <BorderedInput />
+        <BorderedInput placeholder="이메일" hasMarginBottom />
+        <BorderedInput placeholder="비밀번호" />
         <View style={styles.buttons}>
           <CustomButton title="로그인" hasMarginBottom />
-          <CustomButton title="회원가입" />
+          <CustomButton title="회원가입" theme="secondary" />
         </View>
       </View>
     </SafeAreaView>

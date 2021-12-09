@@ -1,5 +1,5 @@
 import {format} from 'date-fns';
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useMemo, useRef, useState} from 'react';
 import {Animated, Button, StyleSheet, Text, View} from 'react-native';
 import CalendarView from '../components/CalendarView';
 import FeedList from '../components/FeedList';
@@ -10,11 +10,24 @@ const CalendarScreen = () => {
   const [selectedDate, setSelectedDate] = useState(
     format(new Date(), 'yyyy-MM-dd'),
   );
-  const markedDates = logs.reduce((acc, current) => {
-    const formattedDate = format(new Date(current.date), 'yyyy-MM-dd');
-    acc[formattedDate] = {marked: true};
-    return acc;
-  });
+
+  const markedDates = useMemo(
+    () =>
+      logs.reduce((acc, current) => {
+        console.log('markedDated load');
+        const formattedDate = format(new Date(current.date), 'yyyy-MM-dd');
+        acc[formattedDate] = {marked: true};
+        return acc;
+      }, {}),
+    [logs],
+  );
+
+  // const markedDates = logs.reduce((acc, current) => {
+  //   console.log('markedDated load');
+  //   const formattedDate = format(new Date(current.date), 'yyyy-MM-dd');
+  //   acc[formattedDate] = {marked: true};
+  //   return acc;
+  // }, {});
 
   const filteredLogs = logs.filter(
     f => format(new Date(f.date), 'yyyy-MM-dd') === selectedDate,

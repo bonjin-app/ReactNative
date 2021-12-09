@@ -4,11 +4,17 @@ import FeedListItem from './FeedListItem';
 
 const FeedList = ({logs, onScrolledToBottom}) => {
   const onScroll = e => {
+    if (!onScrolledToBottom) {
+      return;
+    }
+
     const {contentSize, layoutMeasurement, contentOffset} = e.nativeEvent;
     const distanceFromButtom =
       contentSize.height - layoutMeasurement.height - contentOffset.y;
-    console.log('distanceFromButtom', distanceFromButtom);
-    if (distanceFromButtom < 72) {
+    if (
+      contentSize.height > layoutMeasurement.height &&
+      distanceFromButtom < 72
+    ) {
       onScrolledToBottom(true);
     } else {
       onScrolledToBottom(false);

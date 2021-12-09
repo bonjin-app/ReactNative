@@ -1,53 +1,36 @@
-import React, {useEffect, useRef, useState} from 'react';
+import {format} from 'date-fns';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import {Animated, Button, StyleSheet, Text, View} from 'react-native';
-
-const SlideLeftAndRight = () => {
-  const animation = useRef(new Animated.Value(1)).current;
-  const [enable, setEnable] = useState(false);
-
-  useEffect(() => {
-    Animated.timing(animation, {
-      toValue: enable ? 1 : 0,
-      useNativeDriver: true,
-    }).start();
-  }, [enable, animation]);
-
-  return (
-    <View>
-      <Animated.View
-        style={[
-          styles.rectangle,
-          {
-            transform: [
-              {
-                translateX: animation.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [0, 150],
-                }),
-              },
-            ],
-            opacity: animation.interpolate({
-              inputRange: [0, 1],
-              outputRange: [1, 0],
-            }),
-          },
-        ]}
-      />
-      <Button
-        title="Toggle"
-        onPress={() => {
-          setEnable(!enable);
-        }}
-      />
-    </View>
-  );
-};
+import CalendarView from '../components/CalendarView';
+import FeedList from '../components/FeedList';
+import LogContext from '../contexts/LogContext';
 
 const CalendarScreen = () => {
+  const {logs} = useContext(LogContext);
+  const [selectedDate, setSelectedDate] = useState(
+    format(new Date(), 'yyyy-MM-dd'),
+  );
+  const markedDates = logs.reduce((acc, current) => {
+    const formattedDate = format(new Date(current.date), 'yyyy-MM-dd');
+    acc[formattedDate] = {marked: true};
+    return acc;
+  });
+
+  const filteredLogs = logs.filter(
+    f => format(new Date(f.date), 'yyyy-MM-dd') === selectedDate,
+  );
+
   return (
-    <View style={styles.block}>
-      <SlideLeftAndRight />
-    </View>
+    <FeedList
+      logs={filteredLogs}
+      ListHeaderComponent={
+        <CalendarView
+          markedDates={markedDates}
+          selectedDate={selectedDate}
+          onSelectDate={setSelectedDate}
+        />
+      }
+    />
   );
 };
 

@@ -1,4 +1,4 @@
-import {useNavigation} from '@react-navigation/core';
+import {useNavigation, useRoute} from '@react-navigation/core';
 import React, {useContext, useState} from 'react';
 import {
   KeyboardAvoidingView,
@@ -11,8 +11,10 @@ import WriteHeader from '../components/WriteHeader';
 import LogContext from '../contexts/LogContext';
 
 const WriteScreen = () => {
-  const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
+  const route = useRoute();
+  const log = route.params?.log;
+  const [title, setTitle] = useState(log?.title ?? '');
+  const [body, setBody] = useState(log?.body ?? '');
   const navigation = useNavigation();
 
   const {onCreate} = useContext(LogContext);

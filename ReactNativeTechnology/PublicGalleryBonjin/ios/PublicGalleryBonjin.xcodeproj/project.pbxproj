@@ -96,6 +96,13 @@
 			name = PublicGalleryBonjin;
 			sourceTree = "<group>";
 		};
+		19AC9B61454D418DB4871EFD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,7 +121,6 @@
 				684C8B21660358B39E72A3E5 /* Pods-PublicGalleryBonjin-PublicGalleryBonjinTests.debug.xcconfig */,
 				1D24B889B8B39E11FAF6C755 /* Pods-PublicGalleryBonjin-PublicGalleryBonjinTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -134,6 +140,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				5C7635F9A412F9E60264DC10 /* Pods */,
+				19AC9B61454D418DB4871EFD /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";

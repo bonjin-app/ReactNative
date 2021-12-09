@@ -1,16 +1,16 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {Animated, Button, StyleSheet, Text, View} from 'react-native';
 
-const FadeInAndOut = () => {
+const SlideLeftAndRight = () => {
   const animation = useRef(new Animated.Value(1)).current;
-  const [hidden, setHidden] = useState(false);
+  const [enable, setEnable] = useState(false);
 
   useEffect(() => {
     Animated.timing(animation, {
-      toValue: hidden ? 0 : 1,
+      toValue: enable ? 150 : 0,
       useNativeDriver: true,
     }).start();
-  }, [hidden, animation]);
+  }, [enable, animation]);
 
   return (
     <View>
@@ -18,14 +18,14 @@ const FadeInAndOut = () => {
         style={[
           styles.rectangle,
           {
-            opacity: animation,
+            transform: [{translateX: animation}],
           },
         ]}
       />
       <Button
         title="Toggle"
         onPress={() => {
-          setHidden(!hidden);
+          setEnable(!enable);
         }}
       />
     </View>
@@ -35,7 +35,7 @@ const FadeInAndOut = () => {
 const CalendarScreen = () => {
   return (
     <View style={styles.block}>
-      <FadeInAndOut />
+      <SlideLeftAndRight />
     </View>
   );
 };

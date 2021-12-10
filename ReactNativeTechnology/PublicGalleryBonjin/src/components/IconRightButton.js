@@ -13,7 +13,8 @@ const IconRightButton = ({name, color, onPress}) => {
               opacity: 0.3,
             },
         ]}
-        android_ripple={{color: '#EEE'}}>
+        android_ripple={{color: '#EEE'}}
+        onPress={onPress}>
         <Icon name={name} color={color} size={24} />
       </Pressable>
     </View>

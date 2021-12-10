@@ -4,6 +4,7 @@ import {
   Animated,
   Image,
   Keyboard,
+  Platform,
   StyleSheet,
   Text,
   TextInput,
@@ -11,6 +12,10 @@ import {
   View,
 } from 'react-native';
 import IconRightButton from '../components/IconRightButton';
+import {useUserContext} from '../contexts/UserContext';
+import {v4} from 'uuid';
+import storage from '@react-native-firebase/storage';
+import {createPost} from '../lib/posts';
 
 const UploadScreen = () => {
   const route = useRoute();
@@ -20,7 +25,24 @@ const UploadScreen = () => {
   const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
   const [description, setDescription] = useState('');
   const navigation = useNavigation();
-  const onSubmit = useCallback(() => {}, []);
+  const {user} = useUserContext();
+
+  const onSubmit = useCallback(async () => {
+    navigation.pop();
+    const asset = res.assets[0];
+
+    const extension = asset.fileName.split('.').pop();
+    const reference = storage().ref(`/photo/${user.id}/${v4()}.${extension}`);
+    if (Platform.OS === 'android') {
+      await reference.putString(asset.base64, 'base64', {
+        contentType: asset.type,
+      });
+    } else {
+      await reference.putFile(asset.uri);
+    }
+    const photoURL = await reference.getDownloadURL();
+    await createPost({description, photoURL, user});
+  }, [navigation, res, user, description]);
 
   useEffect(() => {
     const didShow = Keyboard.addListener('keyboardDidShow', () => {

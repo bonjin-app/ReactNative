@@ -1,28 +1,90 @@
-import React from 'react';
-import {Platform, Pressable, StyleSheet, Text, View} from 'react-native';
+import React, {useState} from 'react';
+import {
+  ActionSheetIOS,
+  Platform,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import UploadModeModal from './UploadModeModal';
 
 const TABBAR_HEIGHT = 49;
 
+const imagePickerOption = {
+  mediaType: 'photo',
+  maxWidth: 768,
+  maxHeight: 768,
+  includeBase64: Platform.OS === 'android',
+};
+
 const CameraButton = () => {
   const insets = useSafeAreaInsets();
+  const [modalVisible, setModalVisible] = useState(false);
 
   const bottom = Platform.select({
     android: TABBAR_HEIGHT / 2,
     ios: TABBAR_HEIGHT / 2 + insets.bottom - 4,
   });
 
+  const onPickImage = res => {
+    if (res.didCancel || !res) {
+      return;
+    }
+    console.log(res);
+  };
+
+  const onLaunchCamera = () => {
+    launchCamera(imagePickerOption, onPickImage);
+  };
+
+  const onLaunchImageLibrary = () => {
+    launchImageLibrary(imagePickerOption, onPickImage);
+  };
+
+  const onPress = () => {
+    if (Platform.OS === 'android') {
+      setModalVisible(true);
+      return;
+    }
+
+    ActionSheetIOS.showActionSheetWithOptions(
+      {
+        options: ['카메라로 촬영하기', '사진 선택하기', '취소'],
+        cancelButtonIndex: 2,
+      },
+      buttonText => {
+        if (buttonText === 0) {
+          onLaunchCamera();
+        } else {
+          onLaunchImageLibrary();
+        }
+      },
+    );
+  };
+
   return (
-    <View style={[styles.wrapper, {bottom}]}>
-      <Pressable
-        android_ripple={{
-          color: '#FFF',
-        }}
-        style={styles.circle}>
-        <Icon name="camera-alt" color="white" size={24} />
-      </Pressable>
-    </View>
+    <>
+      <View style={[styles.wrapper, {bottom}]}>
+        <Pressable
+          android_ripple={{
+            color: '#FFF',
+          }}
+          style={styles.circle}
+          onPress={onPress}>
+          <Icon name="camera-alt" color="white" size={24} />
+        </Pressable>
+      </View>
+      <UploadModeModal
+        visible={modalVisible}
+        onLaunchCamera={onLaunchCamera}
+        onClose={() => setModalVisible(false)}
+        onLaunchImageLibrary={onLaunchImageLibrary}
+      />
+    </>
   );
 };
 

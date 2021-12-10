@@ -1,5 +1,5 @@
-import {useRoute} from '@react-navigation/core';
-import React, {useEffect, useRef, useState} from 'react';
+import {useNavigation, useRoute} from '@react-navigation/core';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {
   Animated,
   Image,
@@ -10,6 +10,7 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
+import IconRightButton from '../components/IconRightButton';
 
 const UploadScreen = () => {
   const route = useRoute();
@@ -18,6 +19,8 @@ const UploadScreen = () => {
   const animation = useRef(new Animated.Value(width)).current;
   const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
   const [description, setDescription] = useState('');
+  const navigation = useNavigation();
+  const onSubmit = useCallback(() => {}, []);
 
   useEffect(() => {
     const didShow = Keyboard.addListener('keyboardDidShow', () => {
@@ -40,6 +43,12 @@ const UploadScreen = () => {
       delay: 100,
     }).start();
   }, [isKeyboardOpen, width, animation]);
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => <IconRightButton onPress={onSubmit} name="send" />,
+    });
+  }, [navigation, onSubmit]);
 
   return (
     <View style={styles.block}>

@@ -10,7 +10,7 @@ export function createUser({id, displayName, photoURL}) {
   });
 }
 
-export async function getuser(id) {
+export async function getUser(id) {
   const doc = await usersCollection.doc(id).get();
   return doc.data();
 }

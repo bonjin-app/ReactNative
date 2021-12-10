@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Alert,
   Keyboard,
@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import SignInButtons from '../components/SignInButtons';
 import SignInForm from '../components/SignInForm';
+import {useUserContext} from '../contexts/UserContext';
 import {signIn, signUp} from '../lib/auth';
 import {getUser} from '../lib/users';
 
@@ -23,6 +24,13 @@ const SignInScreen = ({navigation, route}) => {
   });
 
   const [loading, setLoading] = useState(false);
+  const {setUser} = useUserContext();
+
+  useEffect(() => {
+    return () => {
+      setLoading(false);
+    };
+  }, []);
 
   const createChangeTextHandler = name => value => {
     setForm({...form, [name]: value});
@@ -46,6 +54,7 @@ const SignInScreen = ({navigation, route}) => {
       if (!profile) {
         navigation.navigate('Welcome', {uid: user.uid});
       } else {
+        setUser(profile);
       }
     } catch (e) {
       const message = {

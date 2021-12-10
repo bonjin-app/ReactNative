@@ -1,16 +1,18 @@
 import {useNavigation, useRoute} from '@react-navigation/core';
 import React, {useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Image, Platform, Pressable, StyleSheet, Text, View} from 'react-native';
 import BorderedInput from '../components/BorderedInput';
 import CustomButton from '../components/CustomButton';
 import {useUserContext} from '../contexts/UserContext';
 import {signOut} from '../lib/auth';
 import {createUser} from '../lib/users';
+import {launchImageLibrary} from 'react-native-image-picker';
 
 const SetupProfile = () => {
   const [displayName, setDisplayName] = useState('');
   const navigation = useNavigation();
   const {setUser} = useUserContext();
+  const [response, setResponse] = useState(null);
 
   const {params} = useRoute();
   const {uid} = params || {};
@@ -30,9 +32,33 @@ const SetupProfile = () => {
     navigation.goBack();
   };
 
+  const onSelectImage = () => {
+    launchImageLibrary(
+      {
+        mediaType: 'photo',
+        maxWidth: 512,
+        maxHeight: 512,
+        includeBase64: Platform.OS === 'android',
+      },
+      res => {
+        if (res.didCancel) {
+          return;
+        }
+        setResponse(res);
+      },
+    );
+  };
+
   return (
     <View style={styles.block}>
-      <View style={styles.circle}></View>
+      <Pressable style={styles.circle} onPress={onSelectImage}>
+        <Image
+          style={styles.circle}
+          source={{
+            uri: response?.assets[0]?.uri,
+          }}
+        />
+      </Pressable>
       <View style={styles.form}>
         <BorderedInput
           placeholder="닉네임"

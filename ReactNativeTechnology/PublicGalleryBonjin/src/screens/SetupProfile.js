@@ -1,6 +1,14 @@
 import {useNavigation, useRoute} from '@react-navigation/core';
 import React, {useState} from 'react';
-import {Image, Platform, Pressable, StyleSheet, Text, View} from 'react-native';
+import {
+  ActivityIndicator,
+  Image,
+  Platform,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import BorderedInput from '../components/BorderedInput';
 import CustomButton from '../components/CustomButton';
 import {useUserContext} from '../contexts/UserContext';
@@ -90,10 +98,14 @@ const SetupProfile = () => {
           onSumitEditing={onSubmit}
           returnKeyType="next"
         />
-        <View style={styles.buttons}>
-          <CustomButton title="다음" onPress={onSubmit} hasMarginBottom />
-          <CustomButton title="취소" onPress={onCancel} theme="secondary" />
-        </View>
+        {loading ? (
+          <ActivityIndicator size={32} color="#6200EE" style={styles.spinner} />
+        ) : (
+          <View style={styles.buttons}>
+            <CustomButton title="다음" onPress={onSubmit} hasMarginBottom />
+            <CustomButton title="취소" onPress={onCancel} theme="secondary" />
+          </View>
+        )}
       </View>
     </View>
   );
@@ -121,4 +133,5 @@ const styles = StyleSheet.create({
   buttons: {
     marginTop: 48,
   },
+  spinner: {},
 });

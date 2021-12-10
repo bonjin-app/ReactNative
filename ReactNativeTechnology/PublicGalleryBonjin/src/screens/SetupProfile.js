@@ -7,21 +7,42 @@ import {useUserContext} from '../contexts/UserContext';
 import {signOut} from '../lib/auth';
 import {createUser} from '../lib/users';
 import {launchImageLibrary} from 'react-native-image-picker';
+import storage from '@react-native-firebase/storage';
 
 const SetupProfile = () => {
   const [displayName, setDisplayName] = useState('');
   const navigation = useNavigation();
   const {setUser} = useUserContext();
   const [response, setResponse] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const {params} = useRoute();
   const {uid} = params || {};
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
+    setLoading(true);
+
+    let photoURL = null;
+
+    if (response) {
+      const asset = response.assets[0];
+      const extension = asset.fileName.split('.').pop(); // 확장자 추출
+      const reference = storage().ref(`/profile/${uid}.${extension}`);
+
+      if (Platform.OS === 'android') {
+        await reference.putString(asset.base64, 'base64', {
+          contentType: asset.type,
+        });
+      } else {
+        await reference.putFile(asset.uri);
+      }
+
+      photoURL = response ? await reference.getDownloadURL() : null;
+    }
     const user = {
       id: uid,
       displayName,
-      photoURL: null,
+      photoURL,
     };
     createUser(user);
     setUser(user);

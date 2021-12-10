@@ -4,6 +4,7 @@ import {
   Animated,
   Image,
   Keyboard,
+  KeyboardAvoidingView,
   Platform,
   StyleSheet,
   Text,
@@ -73,21 +74,26 @@ const UploadScreen = () => {
   }, [navigation, onSubmit]);
 
   return (
-    <View style={styles.block}>
-      <Animated.Image
-        source={{uri: res.assets[0]?.uri}}
-        style={[styles.image, {height: animation}]}
-        resizeMode="cover"
-      />
-      <TextInput
-        style={styles.input}
-        multiline={true}
-        placeholder="이 사진에 대한 설명을 입력하세요."
-        textAlignVertical="top"
-        value={description}
-        onChangeText={setDescription}
-      />
-    </View>
+    <KeyboardAvoidingView
+      behavior={Platform.select({ios: 'height'})}
+      style={styles.block}
+      keyboardVerticalOffset={Platform.select({ios: 180})}>
+      <View style={styles.block}>
+        <Animated.Image
+          source={{uri: res.assets[0]?.uri}}
+          style={[styles.image, {height: animation}]}
+          resizeMode="cover"
+        />
+        <TextInput
+          style={styles.input}
+          multiline={true}
+          placeholder="이 사진에 대한 설명을 입력하세요."
+          textAlignVertical="top"
+          value={description}
+          onChangeText={setDescription}
+        />
+      </View>
+    </KeyboardAvoidingView>
   );
 };
 

@@ -49,6 +49,7 @@ export default MainTab;
 const styles = StyleSheet.create({
   block: {
     flex: 1,
+    zIndex: 0,
   },
   text: {
     fontSize: 24,

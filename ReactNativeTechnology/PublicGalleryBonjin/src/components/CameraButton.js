@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/core';
 import React, {useState} from 'react';
 import {
   ActionSheetIOS,
@@ -24,6 +25,7 @@ const imagePickerOption = {
 const CameraButton = () => {
   const insets = useSafeAreaInsets();
   const [modalVisible, setModalVisible] = useState(false);
+  const navigation = useNavigation();
 
   const bottom = Platform.select({
     android: TABBAR_HEIGHT / 2,
@@ -34,7 +36,7 @@ const CameraButton = () => {
     if (res.didCancel || !res) {
       return;
     }
-    console.log(res);
+    navigation.push('Upload', {res});
   };
 
   const onLaunchCamera = () => {

@@ -16,13 +16,13 @@ export function createPost({user, photoURL, description}) {
 export async function getPosts({userId, mode, id} = {}) {
   let query = postsCollection.orderBy('createdAt', 'desc').limit(PAGE_SIZE);
   if (userId) {
-    query = query.where('uesr.id', '==', userId);
+    query = query.where('user.id', '==', userId);
   }
 
   if (id) {
     const cursorDoc = await postsCollection.doc(id).get();
     query =
-      mode === 'order'
+      mode === 'older'
         ? query.startAfter(cursorDoc)
         : query.endBefore(cursorDoc);
   }
@@ -39,7 +39,7 @@ export async function getPosts({userId, mode, id} = {}) {
 export async function getOlderPosts(id, userId) {
   return getPosts({
     id,
-    mode: 'order',
+    mode: 'older',
     userId,
   });
 }

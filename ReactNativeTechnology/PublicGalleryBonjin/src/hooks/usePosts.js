@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {getNewerPosts, getOlderPosts, getPosts, PAGE_SIZE} from '../lib/posts';
 
 export default function useProps(userId) {
@@ -18,7 +18,7 @@ export default function useProps(userId) {
     setPosts(posts.concat(olderPosts));
   };
 
-  const onRefresh = async () => {
+  const onRefresh = useCallback(async () => {
     if (!posts || posts.length === 0 || refreshing) {
       return;
     }
@@ -31,7 +31,14 @@ export default function useProps(userId) {
       return;
     }
     setPosts(newerPosts);
-  };
+  }, [posts, userId, refreshing]);
+
+  const removePost = useCallback(
+    postId => {
+      setPosts(posts.filter(post => post.id !== postId));
+    },
+    [posts],
+  );
 
   useEffect(() => {
     getPosts({userId}).then(_posts => {
@@ -48,5 +55,6 @@ export default function useProps(userId) {
     refreshing,
     onLoadMore,
     onRefresh,
+    removePost,
   };
 }

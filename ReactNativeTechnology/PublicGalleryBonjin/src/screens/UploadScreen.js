@@ -2,12 +2,10 @@ import {useNavigation, useRoute} from '@react-navigation/core';
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {
   Animated,
-  Image,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
   StyleSheet,
-  Text,
   TextInput,
   useWindowDimensions,
   View,
@@ -17,6 +15,7 @@ import {useUserContext} from '../contexts/UserContext';
 import {v4} from 'uuid';
 import storage from '@react-native-firebase/storage';
 import {createPost} from '../lib/posts';
+import events from '../lib/events';
 
 const UploadScreen = () => {
   const route = useRoute();
@@ -43,6 +42,8 @@ const UploadScreen = () => {
     }
     const photoURL = await reference.getDownloadURL();
     await createPost({description, photoURL, user});
+
+    events.emit('refresh');
   }, [navigation, res, user, description]);
 
   useEffect(() => {

@@ -1,6 +1,7 @@
 import {useNavigation, useRoute} from '@react-navigation/core';
 import React, {useState} from 'react';
 import {ActionSheetIOS, Platform} from 'react-native';
+import events from '../lib/events';
 import {removePost} from '../lib/posts';
 
 export default function usePostActions({id, description}) {
@@ -21,6 +22,8 @@ export default function usePostActions({id, description}) {
     if (route.name === 'Post') {
       navigation.pop();
     }
+
+    events.emit('removePost', id);
   };
 
   const onPressMore = () => {

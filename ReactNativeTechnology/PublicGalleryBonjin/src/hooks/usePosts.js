@@ -43,6 +43,21 @@ export default function useProps(userId) {
     [posts],
   );
 
+  const updatePost = useCallback(
+    ({postId, description}) => {
+      const nextPosts = posts.map(post =>
+        post.id === postId
+          ? {
+              ...post,
+              description,
+            }
+          : post,
+      );
+      setPosts(nextPosts);
+    },
+    [posts],
+  );
+
   useEffect(() => {
     getPosts({userId}).then(_posts => {
       setPosts(_posts);
@@ -55,6 +70,7 @@ export default function useProps(userId) {
   usePostsEventEffect({
     refresh: onRefresh,
     removePost,
+    updatePost,
     enabled: !userId || userId === user.id,
   });
 

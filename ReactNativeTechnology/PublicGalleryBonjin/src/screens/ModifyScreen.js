@@ -7,15 +7,20 @@ import {
   TextInput,
 } from 'react-native';
 import IconRightButton from '../components/IconRightButton';
+import {updatePost} from '../lib/posts';
 
 const ModifyScreen = () => {
   const navigation = useNavigation();
   const {params} = useRoute();
   const [description, setDescription] = useState(params.description);
 
-  const onSubmit = useCallback(() => {
+  const onSubmit = useCallback(async () => {
+    await updatePost({
+      id: params.id,
+      description,
+    });
     navigation.pop();
-  }, [navigation]);
+  }, [navigation, params.id, description]);
 
   useEffect(() => {
     navigation.setOptions({

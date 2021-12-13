@@ -14,7 +14,7 @@ class CounterPackage: ReactPackage {
     }
 
     override fun createViewManagers(reactContext: ReactApplicationContext): ArrayList<ViewManager<*, *>> {
-        val viewManagers = ArrayList<ViewManager<*,*>>()
+        val viewManagers = ArrayList<ViewManager<*, *>>()
         viewManagers.add(CounterManager())
         return viewManagers
     }

@@ -1,10 +1,17 @@
 import React from 'react';
-import {Button, SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {Button, SafeAreaView} from 'react-native';
+import AlertModule from './Alert';
 import ToastModule from './Toast';
 
 const App = () => {
   const onPress = () => {
-    ToastModule.show('Hello World', ToastModule.SHORT);
+    // ToastModule.show('Hello World', ToastModule.SHORT);
+
+    AlertModule.alert('Hello World');
+    console.log({
+      string: AlertModule.STRING_VALUE,
+      number: AlertModule.NUMBER_VALUE,
+    });
   };
 
   return (
@@ -15,5 +22,3 @@ const App = () => {
 };
 
 export default App;
-
-const styles = StyleSheet.create({});

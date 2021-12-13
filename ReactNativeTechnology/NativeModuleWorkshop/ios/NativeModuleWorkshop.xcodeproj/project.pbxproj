@@ -11,6 +11,7 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		3E6C910C2767438B009806D8 /* RCTAlertModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6C910B2767438B009806D8 /* RCTAlertModule.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		C598391738A34031D28291D8 /* libPods-NativeModuleWorkshop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7747ED40E5136845D876E920 /* libPods-NativeModuleWorkshop.a */; };
 		D2B95C9A293D4E327D7B7F05 /* libPods-NativeModuleWorkshop-NativeModuleWorkshopTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E419EBBCB9F281F22FE81A1 /* libPods-NativeModuleWorkshop-NativeModuleWorkshopTests.a */; };
@@ -37,6 +38,8 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = NativeModuleWorkshop/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = NativeModuleWorkshop/main.m; sourceTree = "<group>"; };
 		1E419EBBCB9F281F22FE81A1 /* libPods-NativeModuleWorkshop-NativeModuleWorkshopTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NativeModuleWorkshop-NativeModuleWorkshopTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E6C910727673B6F009806D8 /* RCTAlertModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RCTAlertModule.h; path = NativeModuleWorkshop/RCTAlertModule.h; sourceTree = "<group>"; };
+		3E6C910B2767438B009806D8 /* RCTAlertModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTAlertModule.m; path = NativeModuleWorkshop/RCTAlertModule.m; sourceTree = "<group>"; };
 		4519FDC6E2A3BA9F1B4E118F /* Pods-NativeModuleWorkshop-NativeModuleWorkshopTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NativeModuleWorkshop-NativeModuleWorkshopTests.debug.xcconfig"; path = "Target Support Files/Pods-NativeModuleWorkshop-NativeModuleWorkshopTests/Pods-NativeModuleWorkshop-NativeModuleWorkshopTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4D159AF3A1374530FF364424 /* Pods-NativeModuleWorkshop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NativeModuleWorkshop.debug.xcconfig"; path = "Target Support Files/Pods-NativeModuleWorkshop/Pods-NativeModuleWorkshop.debug.xcconfig"; sourceTree = "<group>"; };
 		7747ED40E5136845D876E920 /* libPods-NativeModuleWorkshop.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NativeModuleWorkshop.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +95,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				3E6C910727673B6F009806D8 /* RCTAlertModule.h */,
+				3E6C910B2767438B009806D8 /* RCTAlertModule.m */,
 			);
 			name = NativeModuleWorkshop;
 			sourceTree = "<group>";
@@ -114,7 +119,6 @@
 				4519FDC6E2A3BA9F1B4E118F /* Pods-NativeModuleWorkshop-NativeModuleWorkshopTests.debug.xcconfig */,
 				F732023DB68FA5F551F0C246 /* Pods-NativeModuleWorkshop-NativeModuleWorkshopTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -160,7 +164,6 @@
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				3E775010C016769145288145 /* [CP] Embed Pods Frameworks */,
 				EC0C7E2EFEE22FE3DAD7BD4F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -183,7 +186,6 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				CD62845E42E8215D7C742769 /* [CP] Embed Pods Frameworks */,
 				A9D4662A04F438599B065D23 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -265,23 +267,6 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		3E775010C016769145288145 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NativeModuleWorkshop-NativeModuleWorkshopTests/Pods-NativeModuleWorkshop-NativeModuleWorkshopTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NativeModuleWorkshop-NativeModuleWorkshopTests/Pods-NativeModuleWorkshop-NativeModuleWorkshopTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NativeModuleWorkshop-NativeModuleWorkshopTests/Pods-NativeModuleWorkshop-NativeModuleWorkshopTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5925155E9EEC2119DBF84ABC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -319,23 +304,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NativeModuleWorkshop/Pods-NativeModuleWorkshop-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CD62845E42E8215D7C742769 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NativeModuleWorkshop/Pods-NativeModuleWorkshop-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NativeModuleWorkshop/Pods-NativeModuleWorkshop-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NativeModuleWorkshop/Pods-NativeModuleWorkshop-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D6CCC8E0F57AFCCEBAC03303 /* [CP] Check Pods Manifest.lock */ = {
@@ -413,6 +381,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				3E6C910C2767438B009806D8 /* RCTAlertModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

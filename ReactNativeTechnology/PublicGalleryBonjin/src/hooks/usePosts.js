@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {useUserContext} from '../contexts/UserContext';
 import {getNewerPosts, getOlderPosts, getPosts, PAGE_SIZE} from '../lib/posts';
-import usePostsEventEffect from './usePostsEventEffct';
+import usePostsEventEffect from './usePostsEventEffect';
 
 export default function useProps(userId) {
   const [posts, setPosts] = useState(null);

@@ -1,112 +1,145 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
-import React from 'react';
-import type {Node} from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
+  Animated,
+  Dimensions,
+  Easing,
+  Image,
+  Pressable,
   StyleSheet,
-  Text,
-  useColorScheme,
   View,
 } from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const {height} = Dimensions.get('window');
+const animationEndY = Math.ceil(height * 0.7);
+const negativeEntY = animationEndY * -1;
 
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
+let headerCount = 1;
+
+const getRandomNumber = (min, max) => {
+  return Math.random() * (max - min) + min;
+};
+
+const App = () => {
+  const [hearts, setHearts] = useState([]);
+
+  const addHearts = () => {
+    console.log('addHearts', hearts);
+
+    setHearts([
+      ...hearts,
+      {
+        id: headerCount++,
+        right: getRandomNumber(20, 150),
+      },
+    ]);
+  };
+
+  const removeHeart = id => {
+    console.log('removeHeart', id);
+    setHearts(prev => prev.filter(f => f.id !== id));
+  };
+
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+    <View style={styles.container}>
+      <View style={styles.container}>
+        {hearts.map((item, index) => {
+          return (
+            <HeartContainer
+              key={index}
+              style={{right: item.right}}
+              onComplete={() => {
+                removeHeart(item.id);
+              }}
+            />
+          );
+        })}
+      </View>
+      <Pressable onPress={addHearts} style={styles.addButton}>
+        <Image
+          style={{width: 60, height: 60}}
+          source={{
+            uri: 'https://cdn.pixabay.com/photo/2017/01/10/23/01/icon-1970474_960_720.png',
+          }}
+        />
+      </Pressable>
     </View>
   );
 };
 
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+const HeartContainer = props => {
+  const {onComplete} = props;
+  const position = useRef(new Animated.Value(0)).current;
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  useEffect(() => {
+    const yAnimation = position.interpolate({
+      inputRange: [negativeEntY, 0],
+      outputRange: [animationEndY, 0],
+    });
+
+    Animated.timing(position, {
+      duration: 2000,
+      toValue: negativeEntY,
+      easing: Easing.ease,
+      useNativeDriver: true,
+    }).start(() => {
+      console.log('start callback');
+      onComplete();
+    });
+  }, []);
+
+  const animStyle = () => {
+    return {
+      transform: [{translateY: position}],
+    };
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <Animated.View style={[styles.heartContainer, animStyle(), props.style]}>
+      <Heart />
+    </Animated.View>
   );
 };
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+const Heart = props => {
+  return (
+    <View {...props} style={[styles.heart, props.style]}>
+      <Image
+        style={{width: 48, height: 48}}
+        source={{
+          uri: 'https://cdn.crowdpic.net/list-thumb/thumb_l_D0542AB6BD9DB783556A53D2FC7AA930.png',
+        }}
+      />
+    </View>
+  );
+};
 
 export default App;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  addButton: {
+    backgroundColor: '#378AD9',
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    bottom: 32,
+    left: 32,
+  },
+  heartContainer: {
+    position: 'absolute',
+    bottom: 30,
+    backgroundColor: 'transparent',
+  },
+  heart: {
+    width: 50,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+  },
+});

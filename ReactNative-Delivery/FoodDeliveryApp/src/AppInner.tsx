@@ -17,7 +17,6 @@ const Stack = createNativeStackNavigator();
 const AppInner = () => {
   const isLoggedIn = useSelector((state: RootState) => !!state.user.email);
 
-  console.log('isLoggedIn', isLoggedIn);
   return (
     <NavigationContainer>
       {isLoggedIn ? (

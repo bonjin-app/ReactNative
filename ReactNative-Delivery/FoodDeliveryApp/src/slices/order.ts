@@ -37,7 +37,7 @@ const orderSlice = createSlice({
                 state.orders.splice(index, 1);
             }
         },
-        rejectorder(state, action) {
+        rejectOrder(state, action) {
             const orderIndex = state.orders.findIndex((f) => f.orderId === action.payload)
             if (orderIndex > -1) {
                 state.orders.splice(orderIndex, 1);

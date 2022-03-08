@@ -8,6 +8,7 @@ import {RootState} from '../store/reducer';
 import {useSelector} from 'react-redux';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {LoggedInParamList} from '../AppInner';
+import EncryptedStorage from 'react-native-encrypted-storage';
 
 interface Props {
   item: Order;
@@ -38,14 +39,15 @@ const EachOrder: FC<Props> = ({item}) => {
         },
       );
       dispatch(orderSlice.actions.acceptOrder(item.orderId));
+      setLoading(false);
       navigation.navigate('Delivery');
     } catch (error) {
+      console.log('error', error);
       let errorResponse = (error as AxiosError).response;
       if (errorResponse?.status === 400) {
         Alert.alert('알림', errorResponse.data.message);
         dispatch(orderSlice.actions.rejectOrder(item.orderId));
       }
-    } finally {
       setLoading(false);
     }
   }, [dispatch]);

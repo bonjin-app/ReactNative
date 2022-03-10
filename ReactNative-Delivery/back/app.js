@@ -9,14 +9,15 @@ const shortid = require("shortid");
 const multer = require("multer");
 const admin = require("firebase-admin");
 
-let phoneToken;
-// process.env.GOOGLE_APPLICATION_CREDENTIALS =
-//   "./fooddeliveryapp-6609a-firebase-adminsdk-nev9a-603a8b9ae6.json";
-//
-// admin.initializeApp({
-//   credential: admin.credential.applicationDefault(),
-//   databaseURL: "https://fooddeliveryapp-6609a.firebaseio.com",
-// });
+let phoneToken =
+  "fyuzhVRySLeNZ01p98AAor:APA91bFTQV0G8bRVgKPbJII7IbY5be5GnSpgQFe612TKMcoU4uDu_-hDpFFKS7ItGVn2IMyXtMDZZmyU2VklSmCa-lhTQqLb1Tiygly1QJr5iCcWiond0fMg4FWmcjGs1UkgsAVkS9RF";
+process.env.GOOGLE_APPLICATION_CREDENTIALS =
+  "./fooddeliveryapp-b570c-firebase-adminsdk-exi11-a8438bd6e5.json";
+
+admin.initializeApp({
+  credential: admin.credential.applicationDefault(),
+  databaseURL: "https://fooddeliveryapp-b570c.firebaseio.com",
+});
 const orders = [];
 const app = express();
 app.use("/", express.static(path.join(__dirname, "uploads")));
@@ -278,6 +279,34 @@ io.on("connection", (socket) => {
       clearInterval(orderId);
     }
     orderId = setInterval(() => {
+      admin
+        .messaging()
+        .send({
+          token: phoneToken,
+          notification: {
+            title: "배송 완료!",
+            body: "배송이 성공적으로 완료되었습니다.",
+          },
+          android: {
+            notification: {
+              channelId: "riders",
+              vibrateTimingsMillis: [0, 500, 500, 500],
+              priority: "high",
+              defaultVibrateTimings: false,
+            },
+          },
+          apns: {
+            payload: {
+              aps: {
+                sound: "default",
+                category: "riders",
+              },
+            },
+          },
+        })
+        .then(console.log)
+        .catch(console.error);
+
       const order = {
         orderId: shortid(),
         start: {

@@ -17,6 +17,7 @@ import Config from 'react-native-config';
 import userSlice from './slices/user';
 import {useAppDispatch} from './store';
 import orderSlice from './slices/order';
+import messaging from '@react-native-firebase/messaging';
 import usePermissions from './hooks/usePermissions';
 
 export type LoggedInParamList = {
@@ -127,6 +128,23 @@ const AppInner = () => {
       }
     };
     getTokenAndRefresh();
+  }, [dispatch]);
+
+  useEffect(() => {
+    async function getToken() {
+      try {
+        if (!messaging().isDeviceRegisteredForRemoteMessages) {
+          await messaging().registerDeviceForRemoteMessages();
+        }
+        const token = await messaging().getToken();
+        console.log('phone token: ' + token);
+        dispatch(userSlice.actions.setPhoneToken(token));
+        return axios.post(`${Config.API_URL}/phonetoken`, {token: token});
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getToken();
   }, [dispatch]);
 
   return (

@@ -16,6 +16,7 @@ import {useSelector} from 'react-redux';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {LoggedInParamList} from '../AppInner';
 import NaverMapView, {Marker, Path} from 'react-native-nmap';
+import getDistanceFromLatLonInKm from '../utils/util';
 
 interface Props {
   item: Order;
@@ -35,42 +36,45 @@ const EachOrder: FC<Props> = ({item}) => {
   }, []);
 
   const onAccept = useCallback(async () => {
+    if (!accessToken) {
+      return;
+    }
     try {
-      setLoading(true);
       await axios.post(
         `${Config.API_URL}/accept`,
-        {
-          orderId: item.orderId,
-        },
-        {
-          headers: {
-            authorization: `Bearer ${accessToken}`,
-          },
-        },
+        {orderId: item.orderId},
+        {headers: {authorization: `Bearer ${accessToken}`}},
       );
       dispatch(orderSlice.actions.acceptOrder(item.orderId));
-      setLoading(false);
       navigation.navigate('Delivery');
     } catch (error) {
-      console.log('error', error);
       let errorResponse = (error as AxiosError).response;
       if (errorResponse?.status === 400) {
+        // 타인이 이미 수락한 경우
         Alert.alert('알림', errorResponse.data.message);
         dispatch(orderSlice.actions.rejectOrder(item.orderId));
       }
-      setLoading(false);
     }
-  }, [dispatch]);
+  }, [navigation, dispatch, item, accessToken]);
 
   const onReject = useCallback(() => {
     dispatch(orderSlice.actions.rejectOrder(item.orderId));
   }, [dispatch]);
 
   return (
-    <View style={styles.orderContainer}>
+    <View key={item.orderId} style={styles.orderContainer}>
       <Pressable onPress={toggleDetail} style={styles.info}>
         <Text style={styles.eachInfo}>
           {item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원
+        </Text>
+        <Text style={styles.eachInfo}>
+          {getDistanceFromLatLonInKm(
+            start.latitude,
+            start.longitude,
+            end.latitude,
+            end.longitude,
+          ).toFixed(1)}
+          km
         </Text>
         <Text>삼성동</Text>
         <Text>왕십리동</Text>

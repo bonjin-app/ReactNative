@@ -85,7 +85,7 @@ const EachOrder: FC<Props> = ({item}) => {
             }}>
             <NaverMapView
               style={{width: '100%', height: '100%'}}
-              zoomControl={false}
+              // zoomControl={false}
               center={{
                 zoom: 10,
                 tilt: 50,

@@ -367,7 +367,7 @@ import Config from 'react-native-config';
 android/app/proguard-rules.pro
 
 ```
--keep class com.fooddeliveryapp.BuildConfig { *; }
+-keep class com.bonjin.fooddeliveryapp.BuildConfig { *; }
 ```
 
 android/app/build.gradle
@@ -378,7 +378,7 @@ apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.grad
 ...
     defaultConfig {
         ...
-        resValue "string", "build_config_package", "com.fooddeliveryapp"
+        resValue "string", "build_config_package", "com.bonjin.fooddeliveryapp"
     }
 ```
 

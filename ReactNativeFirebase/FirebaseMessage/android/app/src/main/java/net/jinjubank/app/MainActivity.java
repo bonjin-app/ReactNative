@@ -1,4 +1,4 @@
-package com.firebasemessage;
+package net.jinjubank.app;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

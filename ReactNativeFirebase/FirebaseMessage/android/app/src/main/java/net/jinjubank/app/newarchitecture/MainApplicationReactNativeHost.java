@@ -1,4 +1,4 @@
-package com.firebasemessage.newarchitecture;
+package net.jinjubank.app.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.firebasemessage.BuildConfig;
-import com.firebasemessage.newarchitecture.components.MainComponentsRegistry;
-import com.firebasemessage.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import net.jinjubank.app.BuildConfig;
+import net.jinjubank.app.newarchitecture.components.MainComponentsRegistry;
+import net.jinjubank.app.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "289902731666",
+    "project_id": "jinjusavingsbank",
+    "storage_bucket": "jinjusavingsbank.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:289902731666:android:cf45938a9de33fb2d6a14b",
+        "android_client_info": {
+          "package_name": "net.jinjubank.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "289902731666-f2fnlemrqhf7nkotf07aaai2trtq6173.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "net.jinjubank.app",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "289902731666-pnj1djl6ccrj8s9hkjj02rp8k5lpbm4s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLZXi3sP9LoeJlQTKEKtjNyXtvyk9fdxQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "289902731666-pnj1djl6ccrj8s9hkjj02rp8k5lpbm4s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

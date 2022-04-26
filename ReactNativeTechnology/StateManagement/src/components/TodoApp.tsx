@@ -32,6 +32,7 @@ const TodoItem = ({
   done: boolean;
 }) => {
   const {remove, toggle} = useTodosActions();
+
   const onToggle = () => {
     toggle(id);
   };

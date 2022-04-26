@@ -1,15 +1,15 @@
 import React from 'react';
 import {Provider} from 'react-redux';
 import rootReducer from './slices';
-import {createStore} from 'redux';
-import TodoApp from './components/TodoApp';
+import {configureStore} from '@reduxjs/toolkit';
+import PostsApp from './components/PostsApp';
 
-const store = createStore(rootReducer);
+const store = configureStore({reducer: rootReducer});
 
 const App = () => {
   return (
     <Provider store={store}>
-      <TodoApp />
+      <PostsApp />
     </Provider>
   );
 };

@@ -1,4 +1,4 @@
-package net.jinjubank.app;
+package kr.co.bonjin.firebase;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

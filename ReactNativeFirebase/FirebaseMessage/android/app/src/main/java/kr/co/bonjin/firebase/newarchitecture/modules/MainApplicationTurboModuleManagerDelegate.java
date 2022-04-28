@@ -1,4 +1,4 @@
-package net.jinjubank.app.newarchitecture.modules;
+package kr.co.bonjin.firebase.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;

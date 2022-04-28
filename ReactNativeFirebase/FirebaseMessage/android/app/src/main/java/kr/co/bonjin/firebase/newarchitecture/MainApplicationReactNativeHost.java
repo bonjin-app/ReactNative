@@ -1,4 +1,4 @@
-package net.jinjubank.app.newarchitecture;
+package kr.co.bonjin.firebase.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import net.jinjubank.app.BuildConfig;
-import net.jinjubank.app.newarchitecture.components.MainComponentsRegistry;
-import net.jinjubank.app.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import kr.co.bonjin.firebase.BuildConfig;
+import kr.co.bonjin.firebase.newarchitecture.components.MainComponentsRegistry;
+import kr.co.bonjin.firebase.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

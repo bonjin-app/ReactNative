@@ -1,4 +1,4 @@
-package net.jinjubank.app.newarchitecture.components;
+package kr.co.bonjin.firebase.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;
